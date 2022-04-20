@@ -4,13 +4,15 @@
  */
 package controller;
 
-import java.sql.Statement;
+import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.TimeZone;
+import modelo.provincia;
 
 /**
  *
@@ -18,10 +20,11 @@ import java.util.TimeZone;
  */
 public class ControladorDB4Omain {
 
-    private static String BD = "";
-    private static String USUARIO = "";
+    private static ObjectContainer bd;
+    private static String BD = "paqueteria";
+    private static String USUARIO = "pablo";
     private static String PASS = "";
-    private static String HOST = "";
+    private static String HOST = "10.192.82.253";
     private static Connection connection = null;
 
     public void datosMySQL(String bd, String user, String pass, String host) {
@@ -37,6 +40,16 @@ public class ControladorDB4Omain {
         connection = (Connection) DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BD + "?user=" + USUARIO
                 + "&password" + PASS + "&useLegacyDatetimeCode=false&serverTimezone=" + zonahoraria.getID());
         return connection;
+    }
+
+    public static ArrayList<provincia> obtenerProvincias() {
+        ArrayList<provincia> peliculas = new ArrayList<provincia>();
+        provincia ejemplo = new provincia(0, null);
+        ObjectSet res = bd.queryByExample(ejemplo);
+        while (res.hasNext()) {
+            peliculas.add((provincia) res.next());
+        }
+        return peliculas;
     }
 
     public String getBD() {

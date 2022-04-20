@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.ControladorDB4O;
 import controller.ControladorDB4Omain;
 import modelo.TableModelPeliculas;
 
@@ -14,7 +15,7 @@ import modelo.TableModelPeliculas;
  */
 public class Conduce extends javax.swing.JFrame {
 
-    TableModelPeliculas t1 = new TableModelPeliculas(ControladorDB4Omain.getConnection());
+    TableModelPeliculas t1 = new TableModelPeliculas((ControladorDB4O) ControladorDB4Omain.getConnection());
 
     /**
      * Creates new form Conduce

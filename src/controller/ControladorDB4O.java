@@ -7,6 +7,8 @@ package controller;
 import controller.ControladorDB4Omain;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import modelo.provincia;
 
 /**
  *
@@ -24,6 +26,10 @@ public class ControladorDB4O {
     public static void conectarMySQL() throws SQLException {
         ControladorDB4Omain.conectarMySQL();
 
+    }
+
+    public ArrayList<provincia> obtenerProvincias() {
+        return controladorMain.obtenerProvincias();
     }
 
 }

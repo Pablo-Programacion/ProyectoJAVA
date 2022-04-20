@@ -7,12 +7,12 @@ package view;
 import modelo.TableModelPeliculas;
 import controller.ControladorDB4O;
 import controller.ControladorDB4Omain;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Admin
  */
-
 public class Provincia extends javax.swing.JFrame {
 
     TableModelPeliculas t1 = new TableModelPeliculas((ControladorDB4O) ControladorDB4Omain.getConnection());
@@ -23,6 +23,11 @@ public class Provincia extends javax.swing.JFrame {
     public Provincia() {
 
         initComponents();
+        try {
+            ControladorDB4Omain.conectarMySQL();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     /**
