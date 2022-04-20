@@ -4,13 +4,23 @@
  */
 package controller;
 
+import controller.ControladorDB4Omain;
+import java.sql.SQLException;
+
 /**
  *
  * @author Admin
  */
 public class ControladorDB4O {
 
-    public void conectar() {
-        
+    private ControladorDB4Omain controladorMain;
+
+    public void datosMySQL(String bd, String user, String pass, String host) throws SQLException {
+        controladorMain.datosMySQL(bd, user, pass, host);
     }
+
+    public static void conectarMySQL() throws SQLException {
+        ControladorDB4Omain.conectarMySQL();
+    }
+
 }

@@ -4,16 +4,22 @@
  */
 package view;
 
+import modelo.TableModelPeliculas;
+import controller.ControladorDB4O;
 /**
  *
  * @author Admin
  */
+
 public class Provincia extends javax.swing.JFrame {
 
+    TableModelPeliculas t1 = new TableModelPeliculas(ControladorDB4O.conectarMySQL());
+    
     /**
      * Creates new form Provincia
      */
     public Provincia() {
+
         initComponents();
     }
 
