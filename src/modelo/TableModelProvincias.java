@@ -13,7 +13,7 @@ import modelo.provincia;
  */
 public class TableModelProvincias extends AbstractTableModel {
 
-    private static final String[] columnNames = { "Código", "Nombre" };
+    private static final String[] columnNames = {"Código", "Nombre"};
     private final LinkedList<provincia> list;
     private ControladorDB4O conn;
 
@@ -48,6 +48,11 @@ public class TableModelProvincias extends AbstractTableModel {
         /**
          * * COMPLETAR CÓDIGO **
          */
+        cargarPeliculas();
+    }
+
+    public void limpiarTabla() throws SQLException {
+        ControladorDB4O.limpiarTabla();
         cargarPeliculas();
     }
 

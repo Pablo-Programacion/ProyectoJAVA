@@ -75,7 +75,7 @@ public class ControladorDB4Omain {
 
     /* Borra todos los registros de la base de datos */
     public static int limpiarTabla() throws SQLException {
-        String insert = "DELETE FROM provincias WHERE 1 = 1";
+        String insert = "DELETE FROM provincia WHERE 1 = 1";
         System.out.println(insert);
         Statement stmt = connection.createStatement();
         int filas = stmt.executeUpdate(insert);
