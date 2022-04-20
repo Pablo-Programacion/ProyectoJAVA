@@ -39,10 +39,8 @@ public class TableModelProvincias extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-    public void insertar(String titulo, int año, int puntuacion, String sinopsis) throws SQLException {
-        /**
-         * * COMPLETAR CÓDIGO **
-         */
+    public void insertarProvincias(int codigo, String nombre) throws SQLException {
+        ControladorDB4O.insertar(codigo, nombre);
         cargarPeliculas();
     }
 

@@ -4,7 +4,6 @@
  */
 package controller;
 
-import controller.ControladorDB4Omain;
 import modelo.TableModelProvincias;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -34,8 +33,12 @@ public class ControladorDB4O {
         return ControladorDB4Omain.obtenerProvincias();
     }
 
-    public static void insertar(int codigo, String nombre) throws SQLException {
-        ControladorDB4Omain.insertar(codigo, nombre);
+    public static int insertar(int codigo, String nombre) throws SQLException {
+        return ControladorDB4Omain.insertar(codigo, nombre);
+    }
+
+    public static int limpiarTabla() throws SQLException {
+        return ControladorDB4Omain.limpiarTabla();
     }
 
 }

@@ -6,6 +6,7 @@ package controller;
 
 import java.util.ArrayList;
 
+import modelo.TableModelProvincias;
 import modelo.provincia;
 import view.Provincia;
 
@@ -63,11 +64,30 @@ public class ControladorDB4Omain {
         return provincias;
     }
 
-    public static void insertar(int codigo, String nombre) throws SQLException {
-        String insert = "INSERT INTO provincia (codigo,nombre) values ("codigo","nombre")";
+    /* Insertar datos a la tabla */
+    public static int insertar(int codigo, String nombre) throws SQLException {
+        String insert = "INSERT INTO provincia (codigo,nombre) values (%s,'%s')".formatted(codigo, nombre);
+        System.out.println(insert);
         Statement stmt = connection.createStatement();
         int filas = stmt.executeUpdate(insert);
         return filas;
+    }
+
+    /* Borra todos los registros de la base de datos */
+    public static int limpiarTabla() throws SQLException {
+        String insert = "DELETE FROM provincias WHERE 1 = 1";
+        System.out.println(insert);
+        Statement stmt = connection.createStatement();
+        int filas = stmt.executeUpdate(insert);
+        return filas;
+    }
+
+    /* Dexconexion de la base de datos */
+    public static boolean desconectar() throws SQLException {
+        if (connection != null && !connection.isClosed()) {
+            connection.close();
+        }
+        return true;
     }
 
     public String getBD() {
@@ -90,10 +110,4 @@ public class ControladorDB4Omain {
         return connection;
     }
 
-    public static boolean desconectar() throws SQLException {
-        if (connection != null && !connection.isClosed()) {
-            connection.close();
-        }
-        return true;
-    }
 }
