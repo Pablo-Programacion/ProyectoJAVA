@@ -28,12 +28,12 @@ public class TableModelPeliculas extends AbstractTableModel {
 
     public void cargarPeliculas() throws SQLException {
         // Obtiene la lista de peliculas de la BD
-        ArrayList<provincia> peliculas = conn.obtenerProvincias();
-        System.out.println(peliculas.size());
-
-        // Borra el contenido anterior y añade el nuevo.
-        list.clear();
-        list.addAll(peliculas);
+//        ArrayList<provincia> peliculas = conn.obtenerProvincias();
+//        System.out.println(peliculas.size());
+//
+//        // Borra el contenido anterior y añade el nuevo.
+//        list.clear();
+//        list.addAll(peliculas);
 
         // Notifica a la vista que el contenido ha cambiado para que se refresque.
         fireTableDataChanged();

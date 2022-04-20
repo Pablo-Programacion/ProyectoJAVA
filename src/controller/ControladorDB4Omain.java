@@ -4,15 +4,16 @@
  */
 package controller;
 
-import com.db4o.ObjectContainer;
-import com.db4o.ObjectSet;
+import java.util.ArrayList;
+
+import modelo.provincia;
+import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.TimeZone;
-import modelo.provincia;
 
 /**
  *
@@ -20,12 +21,15 @@ import modelo.provincia;
  */
 public class ControladorDB4Omain {
 
-    private static ObjectContainer bd;
+//    private static ObjectContainer bd;
     private static String BD = "paqueteria";
-    private static String USUARIO = "pablo";
+    private static String USUARIO = "root";
     private static String PASS = "";
     private static String HOST = "10.192.82.253";
     private static Connection connection = null;
+    Calendar now = null;
+    TimeZone zonahoraria = null;
+    Statement stmt = null;
 
     public void datosMySQL(String bd, String user, String pass, String host) {
         this.BD = BD;
@@ -42,13 +46,23 @@ public class ControladorDB4Omain {
         return connection;
     }
 
-    public static ArrayList<provincia> obtenerProvincias() {
-        ArrayList<provincia> peliculas = new ArrayList<provincia>();
-        provincia ejemplo = new provincia(0, null);
-        ObjectSet res = bd.queryByExample(ejemplo);
-        while (res.hasNext()) {
-            peliculas.add((provincia) res.next());
+    public static ArrayList<provincia> obtenerProvincias() throws SQLException {
+        ArrayList<provincia> provincias = new ArrayList<provincia>();
+        Statement stmt = (Statement) connection.createStatement();
+        ResultSet rset = stmt.executeQuery('SELECT * FROM provincia');
+        ResultSet resultado = stmt.executeQuery(nConsulta);
+        String ciudad = "";
+        int contador = 1;
+
+        while (resultado.next()) {
+            ciudad += contador + resultado.getString("Name") + "\n";
+            contador++;
         }
+//        return ciudad;
+//        
+//        while (res.hasNext()) {
+//            peliculas.add((provincia) res.next());
+//        }
         return peliculas;
     }
 

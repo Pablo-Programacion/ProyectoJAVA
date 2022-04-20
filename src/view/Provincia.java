@@ -25,6 +25,7 @@ public class Provincia extends javax.swing.JFrame {
         initComponents();
         try {
             ControladorDB4Omain.conectarMySQL();
+            JOptionPane.showMessageDialog(null, "Conectado");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
