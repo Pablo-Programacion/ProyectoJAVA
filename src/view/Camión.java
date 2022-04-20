@@ -7,7 +7,7 @@ package view;
 
 import controller.ControladorDB4O;
 import controller.ControladorDB4Omain;
-import modelo.TableModelPeliculas;
+import modelo.TableModelProvincias;
 
 /**
  *
@@ -15,7 +15,7 @@ import modelo.TableModelPeliculas;
  */
 public class Camión extends javax.swing.JFrame {
 
-    TableModelPeliculas t1 = new TableModelPeliculas((ControladorDB4O) ControladorDB4Omain.getConnection());
+   
 
     /**
      * Creates new form Camión
@@ -105,7 +105,7 @@ public class Camión extends javax.swing.JFrame {
 
         jButton2.setText("Cancelar");
 
-        jTable4.setModel(t1);
+       
         jScrollPane4.setViewportView(jTable4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

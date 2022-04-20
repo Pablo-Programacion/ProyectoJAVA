@@ -11,13 +11,13 @@ import modelo.provincia;
  *
  * @author MEDAC
  */
-public class TableModelPeliculas extends AbstractTableModel {
+public class TableModelProvincias extends AbstractTableModel {
 
-    private static final String[] columnNames = {"Código", "Nombre"};
+    private static final String[] columnNames = { "Código", "Nombre" };
     private final LinkedList<provincia> list;
     private ControladorDB4O conn;
 
-    public TableModelPeliculas(ControladorDB4O conexion) {
+    public TableModelProvincias(ControladorDB4O conexion) {
         list = new LinkedList<>();
         conn = conexion;
     }
@@ -28,12 +28,12 @@ public class TableModelPeliculas extends AbstractTableModel {
 
     public void cargarPeliculas() throws SQLException {
         // Obtiene la lista de peliculas de la BD
-//        ArrayList<provincia> peliculas = conn.obtenerProvincias();
-//        System.out.println(peliculas.size());
-//
-//        // Borra el contenido anterior y añade el nuevo.
-//        list.clear();
-//        list.addAll(peliculas);
+        ArrayList<provincia> peliculas = conn.obtenerProvincias();
+        System.out.println(peliculas.size());
+
+        // Borra el contenido anterior y añade el nuevo.
+        list.clear();
+        list.addAll(peliculas);
 
         // Notifica a la vista que el contenido ha cambiado para que se refresque.
         fireTableDataChanged();
@@ -53,7 +53,8 @@ public class TableModelPeliculas extends AbstractTableModel {
         cargarPeliculas();
     }
 
-    public int actualizar(String tituloOriginal, String titulo, int año, int puntuacion, String sinopsis) throws SQLException {
+    public int actualizar(String tituloOriginal, String titulo, int año, int puntuacion, String sinopsis)
+            throws SQLException {
         int nfilas = 0;
         /**
          * * COMPLETAR CÓDIGO **

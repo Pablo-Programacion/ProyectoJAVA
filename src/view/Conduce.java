@@ -7,7 +7,7 @@ package view;
 
 import controller.ControladorDB4O;
 import controller.ControladorDB4Omain;
-import modelo.TableModelPeliculas;
+import modelo.TableModelProvincias;
 
 /**
  *
@@ -15,7 +15,7 @@ import modelo.TableModelPeliculas;
  */
 public class Conduce extends javax.swing.JFrame {
 
-    TableModelPeliculas t1 = new TableModelPeliculas((ControladorDB4O) ControladorDB4Omain.getConnection());
+   
 
     /**
      * Creates new form Conduce
@@ -82,7 +82,7 @@ public class Conduce extends javax.swing.JFrame {
 
         jButton2.setText("Cancelar");
 
-        jTable3.setModel(t1);
+       
         jScrollPane3.setViewportView(jTable3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

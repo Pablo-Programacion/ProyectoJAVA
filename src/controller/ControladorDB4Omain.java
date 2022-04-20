@@ -7,6 +7,8 @@ package controller;
 import java.util.ArrayList;
 
 import modelo.provincia;
+import view.Provincia;
+
 import java.sql.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,12 +23,13 @@ import java.util.TimeZone;
  */
 public class ControladorDB4Omain {
 
-//    private static ObjectContainer bd;
+    // private static ObjectContainer bd;
     private static String BD = "paqueteria";
     private static String USUARIO = "root";
     private static String PASS = "";
-    private static String HOST = "10.192.82.253";
+    private static String HOST = "localhost";
     private static Connection connection = null;
+    private static provincia provincia;
     Calendar now = null;
     TimeZone zonahoraria = null;
     Statement stmt = null;
@@ -48,22 +51,16 @@ public class ControladorDB4Omain {
 
     public static ArrayList<provincia> obtenerProvincias() throws SQLException {
         ArrayList<provincia> provincias = new ArrayList<provincia>();
-        Statement stmt = (Statement) connection.createStatement();
-        ResultSet rset = stmt.executeQuery('SELECT * FROM provincia');
-        ResultSet resultado = stmt.executeQuery(nConsulta);
-        String ciudad = "";
-        int contador = 1;
 
+        Statement stmt = (Statement) connection.createStatement();
+        ResultSet resultado = stmt.executeQuery("SELECT * FROM provincia");
         while (resultado.next()) {
-            ciudad += contador + resultado.getString("Name") + "\n";
-            contador++;
+            int codigo = resultado.getInt("codigo");
+            String nombre = resultado.getString("nombre");
+            provincia = new provincia(codigo, nombre);
+            provincias.add(provincia);
         }
-//        return ciudad;
-//        
-//        while (res.hasNext()) {
-//            peliculas.add((provincia) res.next());
-//        }
-        return peliculas;
+        return provincias;
     }
 
     public String getBD() {
@@ -86,7 +83,7 @@ public class ControladorDB4Omain {
         return connection;
     }
 
-    public boolean desconectar() throws SQLException {
+    public static boolean desconectar() throws SQLException {
         if (connection != null && !connection.isClosed()) {
             connection.close();
         }
