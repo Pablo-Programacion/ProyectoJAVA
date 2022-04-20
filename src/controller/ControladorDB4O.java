@@ -34,4 +34,8 @@ public class ControladorDB4O {
         return ControladorDB4Omain.obtenerProvincias();
     }
 
+    public static void insertar(int codigo, String nombre) throws SQLException {
+        ControladorDB4Omain.insertar(codigo, nombre);
+    }
+
 }

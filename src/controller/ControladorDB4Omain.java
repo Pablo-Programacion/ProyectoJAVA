@@ -63,6 +63,13 @@ public class ControladorDB4Omain {
         return provincias;
     }
 
+    public static void insertar(int codigo, String nombre) throws SQLException {
+        String insert = "INSERT INTO provincia (codigo,nombre) values ("codigo","nombre")";
+        Statement stmt = connection.createStatement();
+        int filas = stmt.executeUpdate(insert);
+        return filas;
+    }
+
     public String getBD() {
         return BD;
     }
