@@ -6,6 +6,8 @@ package view;
 
 import modelo.TableModelPeliculas;
 import controller.ControladorDB4O;
+import controller.ControladorDB4Omain;
+
 /**
  *
  * @author Admin
@@ -13,8 +15,8 @@ import controller.ControladorDB4O;
 
 public class Provincia extends javax.swing.JFrame {
 
-    TableModelPeliculas t1 = new TableModelPeliculas(ControladorDB4O.conectarMySQL());
-    
+    TableModelPeliculas t1 = new TableModelPeliculas((ControladorDB4O) ControladorDB4Omain.getConnection());
+
     /**
      * Creates new form Provincia
      */

@@ -5,6 +5,7 @@
 package controller;
 
 import controller.ControladorDB4Omain;
+import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
@@ -14,6 +15,7 @@ import java.sql.SQLException;
 public class ControladorDB4O {
 
     private ControladorDB4Omain controladorMain;
+    private static Connection conexion;
 
     public void datosMySQL(String bd, String user, String pass, String host) throws SQLException {
         controladorMain.datosMySQL(bd, user, pass, host);
@@ -21,6 +23,7 @@ public class ControladorDB4O {
 
     public static void conectarMySQL() throws SQLException {
         ControladorDB4Omain.conectarMySQL();
+
     }
 
 }

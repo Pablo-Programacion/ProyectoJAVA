@@ -55,7 +55,7 @@ public class ControladorDB4Omain {
         return HOST;
     }
 
-    public Connection getConnection() {
+    public static Connection getConnection() {
         return connection;
     }
 

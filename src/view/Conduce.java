@@ -5,11 +5,16 @@
  */
 package view;
 
+import controller.ControladorDB4Omain;
+import modelo.TableModelPeliculas;
+
 /**
  *
  * @author HP
  */
 public class Conduce extends javax.swing.JFrame {
+
+    TableModelPeliculas t1 = new TableModelPeliculas(ControladorDB4Omain.getConnection());
 
     /**
      * Creates new form Conduce

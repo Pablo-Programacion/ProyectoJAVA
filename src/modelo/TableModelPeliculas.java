@@ -13,9 +13,9 @@ public class TableModelPeliculas extends AbstractTableModel {
 
     private static final String[] columnNames = {"Titulo", "Año", "Puntuación", "Sinopsis"};
     private final LinkedList<Pelicula> list;
-    private ConexionDB4O conn;
+    private controller.ControladorDB4O conn;
 
-    public TableModelPeliculas(ConexionDB4O conexion) {
+    public TableModelPeliculas(controller.ControladorDB4O conexion) {
         list = new LinkedList<>();
         conn = conexion;
     }
