@@ -1,27 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package modelo;
+
+import java.util.Date;
 
 /**
  *
- * @author admin
+ * @author alex
  */
 public class paquete {
 
     int codigo;
     String descripcion;
     int destinatario;
-    int direccion;
-    date fecha;
+    String direccion;
+    Date fecha;
+    camionero c1;
+    provincia p1;
 
-    public paquete(int codigo, String descripcion, int destinatario, int direccion) {
+    public paquete(int codigo, String descripcion, int destinatario, String direccion, Date fecha, camionero c1, provincia p1) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.destinatario = destinatario;
         this.direccion = direccion;
+        this.fecha = fecha;
+        this.c1 = c1;
+        this.p1 = p1;
+    }
+
+    public camionero getC1() {
+        return c1;
     }
 
     public int getCodigo() {
@@ -36,8 +42,16 @@ public class paquete {
         return destinatario;
     }
 
-    public int getDireccion() {
+    public String getDireccion() {
         return direccion;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public provincia getP1() {
+        return p1;
     }
 
     public void setCodigo(int codigo) {
@@ -52,8 +66,20 @@ public class paquete {
         this.destinatario = destinatario;
     }
 
-    public void setDireccion(int direccion) {
+    public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public void setC1(camionero c1) {
+        this.c1 = c1;
+    }
+
+    public void setP1(provincia p1) {
+        this.p1 = p1;
     }
 
 }
