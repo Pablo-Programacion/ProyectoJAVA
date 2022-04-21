@@ -16,16 +16,14 @@ import modelo.provincia;
  */
 public class ControladorDB4O {
 
-    private ControladorDB4Omain controladorMain;
     private static TableModelProvincias tabla;
     private static Connection conexion;
 
-    public void datosMySQL(String bd, String user, String pass, String host) throws SQLException {
-        controladorMain.datosMySQL(bd, user, pass, host);
+    public static void datosMySQL(String bd, String user, String pass, String host) throws SQLException {
+        ControladorDB4Omain.datosMySQL(bd, user, pass, host);
     }
 
     public static void conectarMySQL() throws SQLException {
-
         ControladorDB4Omain.conectarMySQL();
     }
 

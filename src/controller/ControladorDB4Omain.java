@@ -35,11 +35,11 @@ public class ControladorDB4Omain {
     TimeZone zonahoraria = null;
     Statement stmt = null;
 
-    public void datosMySQL(String bd, String user, String pass, String host) {
-        this.BD = BD;
-        this.USUARIO = user;
-        this.PASS = pass;
-        this.HOST = host;
+    public static void datosMySQL(String bd, String user, String pass, String host) {
+        ControladorDB4Omain.BD = BD;
+        ControladorDB4Omain.USUARIO = user;
+        ControladorDB4Omain.PASS = pass;
+        ControladorDB4Omain.HOST = host;
     }
 
     public static Connection conectarMySQL() throws SQLException {
