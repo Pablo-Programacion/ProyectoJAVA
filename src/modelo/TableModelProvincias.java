@@ -6,15 +6,14 @@ import java.util.LinkedList;
 import javax.swing.table.AbstractTableModel;
 import controller.ControladorDB4O;
 import controller.ControladorDB4Omain;
-import modelo.provincia;
 
 /**
  *
  * @author MEDAC
  */
 public class TableModelProvincias extends AbstractTableModel {
-   
-    private static final String[] columnNames = {"Código", "Nombre"};
+
+    private static final String[] columnNames = { "Código", "Nombre" };
     private final LinkedList<provincia> list;
     private ControladorDB4O conn;
 
@@ -27,14 +26,14 @@ public class TableModelProvincias extends AbstractTableModel {
         return list.get(rowIndex);
     }
 
-    public void cargarPeliculas() throws SQLException {
-        // Obtiene la lista de peliculas de la BD
-        ArrayList<provincia> peliculas = conn.obtenerProvincias();
-        System.out.println(peliculas.size());
+    public void cargarProvincias() throws SQLException {
+        // Obtiene la lista de provincias de la BD
+        ArrayList<provincia> provincias = ControladorDB4Omain.getProvincias();
+        System.out.println(provincias.size());
 
         // Borra el contenido anterior y añade el nuevo.
         list.clear();
-        list.addAll(peliculas);
+        list.addAll(provincias);
 
         // Notifica a la vista que el contenido ha cambiado para que se refresque.
         fireTableDataChanged();
@@ -42,19 +41,14 @@ public class TableModelProvincias extends AbstractTableModel {
 
     public void insertarProvincias(int codigo, String nombre) throws SQLException {
         ControladorDB4O.insertar(codigo, nombre);
-        cargarPeliculas();
+        cargarProvincias();
     }
 
     public void eliminar(String titulo) throws SQLException {
         /**
          * * COMPLETAR CÓDIGO **
          */
-        cargarPeliculas();
-    }
-
-    public void limpiarTabla() throws SQLException {
-        ControladorDB4O.limpiarTabla();
-        cargarPeliculas();
+        cargarProvincias();
     }
 
     public int actualizar(String tituloOriginal, String titulo, int año, int puntuacion, String sinopsis)
@@ -63,7 +57,7 @@ public class TableModelProvincias extends AbstractTableModel {
         /**
          * * COMPLETAR CÓDIGO **
          */
-        cargarPeliculas();
+        cargarProvincias();
         return nfilas;
     }
 

@@ -7,7 +7,15 @@ package view;
 import modelo.TableModelProvincias;
 import controller.ControladorDB4O;
 import controller.ControladorDB4Omain;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.time.LocalDate;
+import java.util.Random;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 
 /**
  *
@@ -21,18 +29,15 @@ public class Provincia extends javax.swing.JFrame {
      * Creates new form Provincia
      */
     public Provincia() {
-
-        initComponents();
-      
         try {
-            t1.cargarPeliculas();
-            /*
-             * Tenemos que modificar esto, segun dijieron en la clase la vista solo peude
-             * acceder al controlador he estado intentandolo creado metodos en el
-             * controoolador pero no he podido si podeis intentarlo, si no preguntamos el
-             * viernes
-             */
-
+            initComponents();
+            popupMetodo();
+            jTable1.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 12));
+            jTable1.getTableHeader().setOpaque(false);
+            jTable1.getTableHeader().setBackground(new Color(32, 136, 203));
+            jTable1.getTableHeader().setForeground(new Color(0, 0, 0));
+            jTable1.setRowHeight(25);
+            ControladorDB4O.obtenerProvincias();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -46,9 +51,9 @@ public class Provincia extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
@@ -123,13 +128,11 @@ public class Provincia extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1020, Short.MAX_VALUE)
-        );
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 1020, Short.MAX_VALUE));
         jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 670, Short.MAX_VALUE)
-        );
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 670, Short.MAX_VALUE));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 670));
 
@@ -137,22 +140,22 @@ public class Provincia extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton2ActionPerformed
         try {
-            t1.limpiarTabla();
+            ControladorDB4O.limpiarTabla();
             JOptionPane.showMessageDialog(null, "Se eliminaron todos los registros");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }// GEN-LAST:event_jButton2ActionPerformed
 
-    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel11MouseClicked
         System.exit(0);
-    }//GEN-LAST:event_jLabel11MouseClicked
+    }// GEN-LAST:event_jLabel11MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
         try {
-            t1.insertarProvincias(Integer.parseInt(jTextField1.getText()), jTextField2.getText());
+            ControladorDB4O.insertar(Integer.parseInt(jTextField1.getText()), jTextField2.getText());
             JOptionPane.showMessageDialog(null, "Insertado");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -198,7 +201,37 @@ public class Provincia extends javax.swing.JFrame {
         });
     }
 
+    public void popupMetodo() {
+        JPopupMenu popupMenu = new JPopupMenu();
+        JMenuItem menuItem1 = new JMenuItem("Editar");
+        JMenuItem menuItem2 = new JMenuItem("Eliminar");
+    //  EDITAR: Al hacer click se cogera esa fila selecionada y con los getters extraigo los datos
+        menuItem1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int index = jTable1.getSelectedRow();
+                
+    //              Hacer visible el JFrame de editar
+                new JFrameEditor().setVisible(true);
+
+            }
+        });
+    //  ELIMINAR: Lo mismo que editar solo que aqui no hay jFrame le paso el metodo de eliminar y recargar la tabla
+        menuItem2.addActionListener(
+                new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+           
+            }
+        }
+        );
+    //  Añadir los addActionListener al menu creado
+        popupMenu.add(menuItem1);
+        popupMenu.add(menuItem2);
+    //      Los añadimos a la tabla
+        jTable1.setComponentPopupMenu(popupMenu);
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    //**
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;

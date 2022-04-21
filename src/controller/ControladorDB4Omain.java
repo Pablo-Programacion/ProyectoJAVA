@@ -25,7 +25,8 @@ import java.util.TimeZone;
 public class ControladorDB4Omain {
 
     // private static ObjectContainer bd;
-    private static TableModelProvincias t1 = new TableModelProvincias((ControladorDB4O) ControladorDB4Omain.getConnection());
+    private static TableModelProvincias t1 = new TableModelProvincias(
+            (ControladorDB4O) ControladorDB4Omain.getConnection());
     private static String BD = "paqueteria";
     private static String USUARIO = "root";
     private static String PASS = "";
@@ -35,6 +36,7 @@ public class ControladorDB4Omain {
     Calendar now = null;
     TimeZone zonahoraria = null;
     Statement stmt = null;
+    static ArrayList<provincia> provincias;
 
     public static TableModelProvincias getT1() {
         return t1;
@@ -55,9 +57,8 @@ public class ControladorDB4Omain {
         return connection;
     }
 
-    public static ArrayList<provincia> obtenerProvincias() throws SQLException {
-        ArrayList<provincia> provincias = new ArrayList<provincia>();
-
+    public static void obtenerProvincias() throws SQLException {
+        provincias = new ArrayList<provincia>();
         Statement stmt = (Statement) connection.createStatement();
         ResultSet resultado = stmt.executeQuery("SELECT * FROM provincia");
         while (resultado.next()) {
@@ -66,7 +67,19 @@ public class ControladorDB4Omain {
             provincia = new provincia(codigo, nombre);
             provincias.add(provincia);
         }
+        t1.cargarProvincias();
+    }
+
+    public static ArrayList<provincia> getProvincias() {
         return provincias;
+    }
+
+    public static void setProvincia(provincia provincia) {
+        ControladorDB4Omain.provincia = provincia;
+    }
+
+    public static void setProvincias(ArrayList<provincia> provincias) {
+        ControladorDB4Omain.provincias = provincias;
     }
 
     /* Insertar datos a la tabla */
@@ -75,6 +88,7 @@ public class ControladorDB4Omain {
         System.out.println(insert);
         Statement stmt = connection.createStatement();
         int filas = stmt.executeUpdate(insert);
+        ControladorDB4Omain.obtenerProvincias();
         return filas;
     }
 
@@ -84,6 +98,7 @@ public class ControladorDB4Omain {
         System.out.println(insert);
         Statement stmt = connection.createStatement();
         int filas = stmt.executeUpdate(insert);
+        ControladorDB4Omain.obtenerProvincias();
         return filas;
     }
 

@@ -26,9 +26,9 @@ public class ControladorDB4O {
     public static void conectarMySQL() throws SQLException {
         ControladorDB4Omain.conectarMySQL();
     }
-
-    public static ArrayList<provincia> obtenerProvincias() throws SQLException {
-        return ControladorDB4Omain.obtenerProvincias();
+    
+    public static void obtenerProvincias() throws SQLException {
+        ControladorDB4Omain.obtenerProvincias();
     }
 
     public static int insertar(int codigo, String nombre) throws SQLException {
