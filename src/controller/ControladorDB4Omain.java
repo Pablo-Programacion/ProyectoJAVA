@@ -25,6 +25,7 @@ import java.util.TimeZone;
 public class ControladorDB4Omain {
 
     // private static ObjectContainer bd;
+    private static TableModelProvincias t1 = new TableModelProvincias((ControladorDB4O) ControladorDB4Omain.getConnection());
     private static String BD = "paqueteria";
     private static String USUARIO = "root";
     private static String PASS = "";
@@ -34,6 +35,10 @@ public class ControladorDB4Omain {
     Calendar now = null;
     TimeZone zonahoraria = null;
     Statement stmt = null;
+
+    public static TableModelProvincias getT1() {
+        return t1;
+    }
 
     public static void datosMySQL(String bd, String user, String pass, String host) {
         ControladorDB4Omain.BD = BD;

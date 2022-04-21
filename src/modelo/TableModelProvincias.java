@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.swing.table.AbstractTableModel;
 import controller.ControladorDB4O;
+import controller.ControladorDB4Omain;
 import modelo.provincia;
 
 /**
@@ -12,7 +13,7 @@ import modelo.provincia;
  * @author MEDAC
  */
 public class TableModelProvincias extends AbstractTableModel {
-
+   
     private static final String[] columnNames = {"Código", "Nombre"};
     private final LinkedList<provincia> list;
     private ControladorDB4O conn;
