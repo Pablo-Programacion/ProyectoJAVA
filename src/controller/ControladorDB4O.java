@@ -7,8 +7,6 @@ package controller;
 import modelo.TableModelProvincias;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import modelo.provincia;
 
 /**
  *
@@ -26,7 +24,7 @@ public class ControladorDB4O {
     public static void conectarMySQL() throws SQLException {
         ControladorDB4Omain.conectarMySQL();
     }
-    
+
     public static void obtenerProvincias() throws SQLException {
         ControladorDB4Omain.obtenerProvincias();
     }
@@ -39,4 +37,12 @@ public class ControladorDB4O {
         return ControladorDB4Omain.limpiarTabla();
     }
 
+    public static void eliminarProvincia(int codigo, String nombre) throws SQLException {
+        ControladorDB4Omain.eliminarProvincia(codigo, nombre);
+
+    }
+
+    public static void actualizar(int codigo, String nombre) throws SQLException {
+        ControladorDB4Omain.actualizar(codigo, nombre);
+    }
 }

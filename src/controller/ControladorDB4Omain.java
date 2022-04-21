@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import modelo.TableModelProvincias;
 import modelo.provincia;
-import view.Provincia;
+import view.provincia.Provincia;
 
 import java.sql.Statement;
 import java.sql.Connection;
@@ -17,6 +17,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.TimeZone;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -70,6 +71,32 @@ public class ControladorDB4Omain {
         t1.cargarProvincias();
     }
 
+    public static int eliminarProvincia(int codigo, String nombre) throws SQLException {
+        String delete = "DELETE FROM provincia where codigo = %s and nombre = '%s'".formatted(codigo, nombre);
+        Statement stmt = connection.createStatement();
+        int filas = stmt.executeUpdate(delete);
+        ControladorDB4Omain.obtenerProvincias();
+        t1.cargarProvincias();
+        return filas;
+    }
+
+    public static int actualizar(int codigo, String nombre) throws SQLException {
+        int filas = 0;
+        try {
+            int codigoTabla = provincia.getCodigo();
+            String nombreTabla = provincia.getNombre();
+            System.out.println(codigoTabla + " " + nombreTabla);
+            System.out.println("asddad");
+            String update = "UPDATE provincia SET codigo=%s,nombre='%s' where codigo = %s and nombre = '%s'".formatted(codigo, nombre, codigoTabla, nombreTabla);
+            Statement stmt = connection.createStatement();
+            filas = stmt.executeUpdate(update);
+            ControladorDB4Omain.obtenerProvincias();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return filas;
+    }
+
     public static ArrayList<provincia> getProvincias() {
         return provincias;
     }
@@ -85,7 +112,6 @@ public class ControladorDB4Omain {
     /* Insertar datos a la tabla */
     public static int insertar(int codigo, String nombre) throws SQLException {
         String insert = "INSERT INTO provincia (codigo,nombre) values (%s,'%s')".formatted(codigo, nombre);
-        System.out.println(insert);
         Statement stmt = connection.createStatement();
         int filas = stmt.executeUpdate(insert);
         ControladorDB4Omain.obtenerProvincias();
@@ -95,7 +121,6 @@ public class ControladorDB4Omain {
     /* Borra todos los registros de la base de datos */
     public static int limpiarTabla() throws SQLException {
         String insert = "DELETE FROM provincia WHERE 1 = 1";
-        System.out.println(insert);
         Statement stmt = connection.createStatement();
         int filas = stmt.executeUpdate(insert);
         ControladorDB4Omain.obtenerProvincias();
