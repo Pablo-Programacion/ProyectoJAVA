@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import modelo.TableModelProvincias;
 import modelo.provincia;
-import view.provincia.Provincia;
 
 import java.sql.Statement;
 import java.sql.Connection;
@@ -85,9 +84,9 @@ public class ControladorDB4Omain {
         try {
             int codigoTabla = provincia.getCodigo();
             String nombreTabla = provincia.getNombre();
-            System.out.println(codigoTabla + " " + nombreTabla);
-            System.out.println("asddad");
-            String update = "UPDATE provincia SET codigo=%s,nombre='%s' where codigo = %s and nombre = '%s'".formatted(codigo, nombre, codigoTabla, nombreTabla);
+
+            String update = "UPDATE provincia SET codigo=%s,nombre='%s' where codigo = %s and nombre = '%s'"
+                    .formatted(codigo, nombre, codigoTabla, nombreTabla);
             Statement stmt = connection.createStatement();
             filas = stmt.executeUpdate(update);
             ControladorDB4Omain.obtenerProvincias();

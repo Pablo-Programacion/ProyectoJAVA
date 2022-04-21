@@ -5,7 +5,7 @@
  */
 package view;
 
-import view.provincia.Provincia;
+
 import controller.ControladorDB4O;
 import controller.ControladorDB4Omain;
 

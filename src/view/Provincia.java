@@ -1,9 +1,9 @@
+package view;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package view.provincia;
-
 import modelo.TableModelProvincias;
 import controller.ControladorDB4O;
 import controller.ControladorDB4Omain;
@@ -12,12 +12,11 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.Random;
+
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
-import view.ProvinciaEditar;
+
 
 /**
  *
@@ -244,6 +243,7 @@ public class Provincia extends javax.swing.JFrame {
                 ControladorDB4O.actualizar(codigo, nombre);
                 //Hacer visible el JFrame de editar
                 new ProvinciaEditar().setVisible(true);
+                
                 } catch (Exception t) {
                     JOptionPane.showMessageDialog(null, t);
                 }
