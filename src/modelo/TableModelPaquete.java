@@ -39,9 +39,10 @@ public class TableModelPaquete extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-    public void insertarProvincias(int codigo, String nombre) throws SQLException {
-        ControladorDB4O.insertar(codigo, nombre);
+    public void insertarPaquete(int codigo, String descripcion, String destinatario, String direccion, String fecha, String dni_camionero, int cod_provincia) throws SQLException {
+        ControladorDB4O.insertar(codigo, descripcion, destinatario, direccion, fecha, dni_camionero, cod_provincia);
         cargarPaquetes();
+       
     }
 
     public void eliminar(String titulo) throws SQLException {

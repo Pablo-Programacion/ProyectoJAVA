@@ -49,4 +49,14 @@ public class ControladorDB4O {
     public static void obtenerCamioneros() throws SQLException {
         ControladorDB4Omain.obtenerCamioneros();
     }
+
+    public static void insertar(int codigo, String descripcion, String destinatario, String direccion, String fecha, String dni_camionero, int cod_provincia) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void insertar(String dni_camionero, String matricula_camion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+  
 }

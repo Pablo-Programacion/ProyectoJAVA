@@ -44,7 +44,7 @@ public class TableModelProvincias extends AbstractTableModel {
         cargarProvincias();
     }
 
-    public void eliminar(String titulo) throws SQLException {
+    public void eliminar(int codigo, String nombre) throws SQLException {
         /**
          * * COMPLETAR CÓDIGO **
          */
