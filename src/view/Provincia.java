@@ -177,7 +177,7 @@ public class Provincia extends javax.swing.JFrame {
     }// GEN-LAST:event_jButton2ActionPerformed
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel11MouseClicked
-        System.exit(0);
+        dispose();
     }// GEN-LAST:event_jLabel11MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
