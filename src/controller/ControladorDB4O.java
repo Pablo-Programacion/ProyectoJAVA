@@ -30,11 +30,11 @@ public class ControladorDB4O {
     }
 
     public static int insertar(int codigo, String nombre) throws SQLException {
-        return ControladorDB4Omain.insertar(codigo, nombre);
+        return ControladorDB4Omain.insertarProvincia(codigo, nombre);
     }
 
     public static int limpiarTabla() throws SQLException {
-        return ControladorDB4Omain.limpiarTabla();
+        return ControladorDB4Omain.limpiarTablaProvincia();
     }
 
     public static void eliminarProvincia(int codigo, String nombre) throws SQLException {
@@ -43,6 +43,10 @@ public class ControladorDB4O {
     }
 
     public static void actualizar(int codigo, String nombre) throws SQLException {
-        ControladorDB4Omain.actualizar(codigo, nombre);
+        ControladorDB4Omain.actualizarProvincia(codigo, nombre);
+    }
+
+    public static void obtenerCamioneros() throws SQLException {
+        ControladorDB4Omain.obtenerCamioneros();
     }
 }

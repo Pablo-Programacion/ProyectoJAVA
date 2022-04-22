@@ -17,6 +17,8 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.TimeZone;
 import javax.swing.JOptionPane;
+import modelo.TableModelCamionero;
+import modelo.camionero;
 
 /**
  *
@@ -24,23 +26,21 @@ import javax.swing.JOptionPane;
  */
 public class ControladorDB4Omain {
 
-    // private static ObjectContainer bd;
+    Calendar now = null;
+    TimeZone zonahoraria = null;
+    Statement stmt = null;
     private static TableModelProvincias t1 = new TableModelProvincias(
             (ControladorDB4O) ControladorDB4Omain.getConnection());
+    private static TableModelCamionero t2 = new TableModelCamionero((ControladorDB4O) ControladorDB4Omain.getConnection());
     private static String BD = "paqueteria";
     private static String USUARIO = "root";
     private static String PASS = "";
     private static String HOST = "localhost";
     private static Connection connection = null;
     private static provincia provincia;
-    Calendar now = null;
-    TimeZone zonahoraria = null;
-    Statement stmt = null;
+    private static camionero camionero;
     static ArrayList<provincia> provincias;
-
-    public static TableModelProvincias getT1() {
-        return t1;
-    }
+    static ArrayList<camionero> camioneros;
 
     public static void datosMySQL(String bd, String user, String pass, String host) {
         ControladorDB4Omain.BD = BD;
@@ -79,7 +79,7 @@ public class ControladorDB4Omain {
         return filas;
     }
 
-    public static int actualizar(int codigo, String nombre) throws SQLException {
+    public static int actualizarProvincia(int codigo, String nombre) throws SQLException {
         int filas = 0;
         try {
             int codigoTabla = provincia.getCodigo();
@@ -109,7 +109,7 @@ public class ControladorDB4Omain {
     }
 
     /* Insertar datos a la tabla */
-    public static int insertar(int codigo, String nombre) throws SQLException {
+    public static int insertarProvincia(int codigo, String nombre) throws SQLException {
         String insert = "INSERT INTO provincia (codigo,nombre) values (%s,'%s')".formatted(codigo, nombre);
         Statement stmt = connection.createStatement();
         int filas = stmt.executeUpdate(insert);
@@ -118,7 +118,7 @@ public class ControladorDB4Omain {
     }
 
     /* Borra todos los registros de la base de datos */
-    public static int limpiarTabla() throws SQLException {
+    public static int limpiarTablaProvincia() throws SQLException {
         String insert = "DELETE FROM provincia WHERE 1 = 1";
         Statement stmt = connection.createStatement();
         int filas = stmt.executeUpdate(insert);
@@ -152,6 +152,36 @@ public class ControladorDB4Omain {
 
     public static Connection getConnection() {
         return connection;
+    }
+
+    public static TableModelProvincias getT1() {
+        return t1;
+    }
+
+    // CAMIONEROS
+    public static void obtenerCamioneros() throws SQLException {
+        camioneros = new ArrayList<camionero>();
+        Statement stmt = (Statement) connection.createStatement();
+        ResultSet resultado = stmt.executeQuery("SELECT * FROM camionero");
+        while (resultado.next()) {
+            String dni = resultado.getString("Dni");
+            String nombre = resultado.getString("Nombre");
+            int telefono = resultado.getInt("Telefono");
+            String poblacion = resultado.getString("Poblacion");
+            String direccion = resultado.getString("Direccion");
+            int salario = resultado.getInt("Salario");
+            camionero = new camionero(dni, nombre, telefono, poblacion, direccion, salario);
+            camioneros.add(camionero);
+        }
+        t2.cargarCamionero();
+    }
+
+    public static ArrayList<camionero> getCamioneros() {
+        return camioneros;
+    }
+
+    public static TableModelCamionero getT2() {
+        return t2;
     }
 
 }

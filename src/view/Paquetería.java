@@ -5,7 +5,6 @@
  */
 package view;
 
-
 import controller.ControladorDB4O;
 import controller.ControladorDB4Omain;
 
@@ -104,12 +103,22 @@ public class Paquetería extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Paquete");
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(325, 0, -1, 70));
 
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Camionero");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(444, 0, -1, 70));
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -201,7 +210,7 @@ public class Paquetería extends javax.swing.JFrame {
             if (ControladorDB4Omain.getConnection() != null) {
                 Provincia frameProvincia = new Provincia();
                 frameProvincia.show();
-                
+
             } else {
                 JOptionPane.showMessageDialog(null, "Necesitas conectarte a la base de datos");
             }
@@ -209,6 +218,24 @@ public class Paquetería extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+     
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+           try {
+            if (ControladorDB4Omain.getConnection() != null) {
+                Camionero frameProvincia = new Camionero();
+                frameProvincia.show();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Necesitas conectarte a la base de datos");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
