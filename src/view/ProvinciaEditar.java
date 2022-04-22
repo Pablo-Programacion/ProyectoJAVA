@@ -117,7 +117,7 @@ public class ProvinciaEditar extends javax.swing.JFrame {
             int codigo = Integer.parseInt(jTextField1.getText());
             String nombre = jTextField2.getText();
           
-            ControladorDB4O.actualizar(codigo, nombre);
+            ControladorDB4O.actualizarProvincia(codigo, nombre);
             dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);

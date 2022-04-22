@@ -169,7 +169,7 @@ public class Provincia extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton2ActionPerformed
         try {
-            ControladorDB4O.limpiarTabla();
+            ControladorDB4O.limpiarTablaProvincia();
             JOptionPane.showMessageDialog(null, "Se eliminaron todos los registros");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -182,7 +182,7 @@ public class Provincia extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
         try {
-            ControladorDB4O.insertar(Integer.parseInt(jTextField1.getText()), jTextField2.getText());
+            ControladorDB4O.insertarProvincia(Integer.parseInt(jTextField1.getText()), jTextField2.getText());
             JOptionPane.showMessageDialog(null, "Insertado");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -240,7 +240,7 @@ public class Provincia extends javax.swing.JFrame {
                     int index = jTable1.getSelectedRow();
                 codigo = Integer.parseInt(jTable1.getValueAt(index, 0).toString());
                 nombre = jTable1.getValueAt(index, 1).toString();
-                ControladorDB4O.actualizar(codigo, nombre);
+                ControladorDB4O.actualizarProvincia(codigo, nombre);
                 //Hacer visible el JFrame de editar
                 new ProvinciaEditar().setVisible(true);
                 

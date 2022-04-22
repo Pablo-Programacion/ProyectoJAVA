@@ -7,6 +7,7 @@ package view;
 
 import controller.ControladorDB4O;
 import controller.ControladorDB4Omain;
+import javax.swing.JOptionPane;
 import modelo.TableModelCamionero;
 import modelo.TableModelProvincias;
 
@@ -59,6 +60,7 @@ public class Camionero extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jSpinner1 = new javax.swing.JSpinner();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -91,6 +93,11 @@ public class Camionero extends javax.swing.JFrame {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, -1, 30));
 
         jButton1.setText("Añadir");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 30, 90, -1));
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
@@ -107,7 +114,7 @@ public class Camionero extends javax.swing.JFrame {
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 30, 30));
         jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(829, 80, 190, -1));
 
-        jLabel3.setText("Teléfonio:");
+        jLabel3.setText("Teléfono:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 76, -1, 30));
         jPanel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(588, 80, 170, -1));
 
@@ -124,11 +131,16 @@ public class Camionero extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1160, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(188, 188, 188)
+                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(934, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 140, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 114, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 140));
@@ -137,6 +149,20 @@ public class Camionero extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        try {
+            String dni = jTextField6.getText();
+            String nombre = jTextField4.getText();
+            int telefono = Integer.parseInt(jTextField3.getText());
+            String poblacion = jTextField5.getText();
+            String direccion = jTextField2.getText();
+            int salario = Integer.parseInt(jTextField1.getText());
+            ControladorDB4O.insertarCamionero(dni, nombre, telefono, poblacion, direccion, salario);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -187,6 +213,7 @@ public class Camionero extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField1;

@@ -40,7 +40,7 @@ public class TableModelCamionero extends AbstractTableModel {
     }
 
     public void insertarProvincias(int codigo, String nombre) throws SQLException {
-        ControladorDB4O.insertar(codigo, nombre);
+        ControladorDB4O.insertarProvincia(codigo, nombre);
         cargarCamionero();
     }
 
