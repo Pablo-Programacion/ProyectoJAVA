@@ -1,6 +1,6 @@
 package modelo;
 
-import java.util.Date;
+
 
 /**
  *
@@ -10,24 +10,20 @@ public class paquete {
 
     int codigo;
     String descripcion;
-    int destinatario;
+    String destinatario;
     String direccion;
-    Date fecha;
-    camionero c1;
-    provincia p1;
+    String fecha;
+    String dni_camionero;
+    int cod_provincia;
 
-    public paquete(int codigo, String descripcion, int destinatario, String direccion, Date fecha, camionero c1, provincia p1) {
+    public paquete(int codigo, String descripcion, String destinatario, String direccion, String fecha, String c1, int p1) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.destinatario = destinatario;
         this.direccion = direccion;
         this.fecha = fecha;
-        this.c1 = c1;
-        this.p1 = p1;
-    }
-
-    public camionero getC1() {
-        return c1;
+        this.dni_camionero = c1;
+        this.cod_provincia = p1;
     }
 
     public int getCodigo() {
@@ -38,7 +34,7 @@ public class paquete {
         return descripcion;
     }
 
-    public int getDestinatario() {
+    public String getDestinatario() {
         return destinatario;
     }
 
@@ -46,13 +42,10 @@ public class paquete {
         return direccion;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public provincia getP1() {
-        return p1;
-    }
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
@@ -62,7 +55,7 @@ public class paquete {
         this.descripcion = descripcion;
     }
 
-    public void setDestinatario(int destinatario) {
+    public void setDestinatario(String destinatario) {
         this.destinatario = destinatario;
     }
 
@@ -70,16 +63,23 @@ public class paquete {
         this.direccion = direccion;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
+    }  
+
+    public String getDni_camionero() {
+        return dni_camionero;
     }
 
-    public void setC1(camionero c1) {
-        this.c1 = c1;
+    public void setDni_camionero(String dni_camionero) {
+        this.dni_camionero = dni_camionero;
     }
 
-    public void setP1(provincia p1) {
-        this.p1 = p1;
+    public int getCod_provincia() {
+        return cod_provincia;
     }
 
+    public void setCod_provincia(int cod_provincia) {
+        this.cod_provincia = cod_provincia;
+    }
 }

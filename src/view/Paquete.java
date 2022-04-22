@@ -7,7 +7,7 @@ package view;
 
 import controller.ControladorDB4O;
 import controller.ControladorDB4Omain;
-import modelo.TableModelProvincias;
+import modelo.TableModelPaquete;
 
 /**
  *
@@ -15,7 +15,7 @@ import modelo.TableModelProvincias;
  */
 public class Paquete extends javax.swing.JFrame {
 
-   
+    TableModelPaquete table = ControladorDB4Omain.getT3();
 
     /**
      * Creates new form Paquete
@@ -91,7 +91,7 @@ public class Paquete extends javax.swing.JFrame {
 
         jButton2.setText("Cancelar");
 
-        
+        jTable3.setModel(t3);
         jScrollPane3.setViewportView(jTable3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -113,15 +113,12 @@ public class Paquete extends javax.swing.JFrame {
                     .addComponent(jTextField2)
                     .addComponent(jTextField3)
                     .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(22, 22, 22))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -17,8 +17,13 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.TimeZone;
 import javax.swing.JOptionPane;
+
 import modelo.TableModelCamionero;
 import modelo.camionero;
+
+import modelo.TableModelPaquete;
+import modelo.paquete;
+
 
 /**
  *
@@ -32,15 +37,21 @@ public class ControladorDB4Omain {
     private static TableModelProvincias t1 = new TableModelProvincias(
             (ControladorDB4O) ControladorDB4Omain.getConnection());
     private static TableModelCamionero t2 = new TableModelCamionero((ControladorDB4O) ControladorDB4Omain.getConnection());
+    private static TableModelPaquete t3 = new TableModelPaquete((ControladorDB4O) ControladorDB4Omain.getConnection());
     private static String BD = "paqueteria";
     private static String USUARIO = "root";
     private static String PASS = "";
     private static String HOST = "localhost";
+
+    
     private static Connection connection = null;
     private static provincia provincia;
     private static camionero camionero;
+    private static paquete paquete;
+    
     static ArrayList<provincia> provincias;
     static ArrayList<camionero> camioneros;
+    static ArrayList<paquete> paquetes;
 
     public static void datosMySQL(String bd, String user, String pass, String host) {
         ControladorDB4Omain.BD = BD;
@@ -179,9 +190,35 @@ public class ControladorDB4Omain {
     public static ArrayList<camionero> getCamioneros() {
         return camioneros;
     }
-
+    
     public static TableModelCamionero getT2() {
         return t2;
     }
+    
+    /*Paquete*/
+    public static TableModelPaquete getT3() {
+        return t3;
+    }
 
+    public static ArrayList<paquete> getPaquetes() {
+        return paquetes;
+    }
+    
+    public static void obtenerPaquetes() throws SQLException {
+        paquetes = new ArrayList <paquete>();
+        Statement stmt = (Statement) connection.createStatement();
+        ResultSet resultado = stmt.executeQuery("SELECT * FROM paquete");
+        while (resultado.next()) {
+            int codigo = resultado.getInt("codigo");
+            String descripcion = resultado.getString("descripcion");
+            String destinatario = resultado.getString("destinatario");
+            String direccion = resultado.getString("direccion");
+            String fecha = resultado.getString("fecha");
+            String dni_camionero = resultado.getString("dni_camionero");
+            int cod_provincia = resultado.getInt("cod_provincia");
+            paquete = new paquete(codigo, descripcion, destinatario, direccion, fecha, dni_camionero, cod_provincia);
+            paquetes.add(paquete);
+        }
+        t3.cargarPaquetes();
+    }
 }

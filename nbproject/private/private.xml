@@ -3,10 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Proyecto/src/modelo/TableModelProvincias.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Proyecto/src/view/Provincia.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Proyecto/src/view/ProvinciaEditar.java</file>
-            <file>file:/C:/Users/Admin/Documents/NetBeansProjects/Proyecto/src/controller/ControladorDB4Omain.java</file>
+            <file>file:/C:/Users/Borja%20Benegas/Documents/NetBeansProjects/ProyectoJAVA/src/modelo/paquete.java</file>
+            <file>file:/C:/Users/Borja%20Benegas/Documents/NetBeansProjects/ProyectoJAVA/src/modelo/TableModelCamionero.java</file>
+            <file>file:/C:/Users/Borja%20Benegas/Documents/NetBeansProjects/ProyectoJAVA/src/controller/ControladorDB4Omain.java</file>
+            <file>file:/C:/Users/Borja%20Benegas/Documents/NetBeansProjects/ProyectoJAVA/src/modelo/TableModelPaquete.java</file>
         </group>
     </open-files>
 </project-private>

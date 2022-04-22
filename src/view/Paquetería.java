@@ -220,7 +220,17 @@ public class Paquetería extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-     
+        try {
+            if (ControladorDB4Omain.getConnection() != null) {
+                Paquete framePaquete = new Paquete();
+                framePaquete.show();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Necesitas conectarte a la base de datos");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
