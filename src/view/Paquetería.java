@@ -7,7 +7,6 @@ package view;
 
 import controller.Conexion;
 
-
 import javax.swing.JOptionPane;
 
 /**
@@ -236,7 +235,7 @@ public class Paquetería extends javax.swing.JFrame {
     }// GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel2MouseClicked
-        
+
         try {
             if (Conexion.getConnection() != null) {
                 Camionero frameProvincia = new Camionero();

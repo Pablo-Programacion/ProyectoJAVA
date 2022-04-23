@@ -24,8 +24,8 @@ import javax.swing.JPopupMenu;
 public class Provincia extends javax.swing.JFrame {
 
     TableModelProvincias t1 = ControladorProvincia.getT1();
-    static int codigo;
-    static String nombre;
+    static int codigoTabla;
+    static String nombreTabla;
 
     /**
      * Creates new form Provincia
@@ -237,9 +237,9 @@ public class Provincia extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     int index = jTable1.getSelectedRow();
-                    codigo = Integer.parseInt(jTable1.getValueAt(index, 0).toString());
-                    nombre = jTable1.getValueAt(index, 1).toString();
-                    ControladorProvincia.actualizarProvincia(codigo, nombre);
+                    codigoTabla = Integer.parseInt(jTable1.getValueAt(index, 0).toString());
+                    nombreTabla = jTable1.getValueAt(index, 1).toString();
+
                     // Hacer visible el JFrame de editar
                     new ProvinciaEditar().setVisible(true);
 
@@ -273,12 +273,20 @@ public class Provincia extends javax.swing.JFrame {
         jTable1.setComponentPopupMenu(popupMenu);
     }
 
-    public static int getCodigo() {
-        return codigo;
+    public static int getCodigoTabla() {
+        return codigoTabla;
     }
 
-    public static String getNombre() {
-        return nombre;
+    public static void setCodigoTabla(int codigoTabla) {
+        Provincia.codigoTabla = codigoTabla;
+    }
+
+    public static String getNombreTabla() {
+        return nombreTabla;
+    }
+
+    public static void setNombreTabla(String nombreTabla) {
+        Provincia.nombreTabla = nombreTabla;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

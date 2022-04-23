@@ -1,8 +1,8 @@
 package view;
 
-import controller.ControladorProvincia;
-
 import javax.swing.JOptionPane;
+
+import controller.ControladorProvincia;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,12 +13,20 @@ import javax.swing.JOptionPane;
  * @author FER
  */
 public class ProvinciaEditar extends javax.swing.JFrame {
+    static int codigo;
+    static String nombre;
+    int codigoTabla;
+    String nombreTabla;
 
     /**
      * Creates new form asddasd
      */
     public ProvinciaEditar() {
         initComponents();
+        this.codigoTabla = Provincia.getCodigoTabla();
+        this.nombreTabla = Provincia.getNombreTabla();
+        actualizarNombresJtextField(codigoTabla, nombreTabla);
+
     }
 
     /**
@@ -112,13 +120,16 @@ public class ProvinciaEditar extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public void actualizarNombresJtextField(int codigoTabla, String nombreTabla) {
+        jTextField1.setText(codigoTabla + "");
+        jTextField2.setText(nombreTabla);
+    }
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
         try {
-
-            int codigo = Integer.parseInt(jTextField1.getText());
-            String nombre = jTextField2.getText();
-
-            ControladorProvincia.actualizarProvincia(codigo, nombre);
+            codigo = Integer.parseInt(jTextField1.getText());
+            nombre = jTextField2.getText();
+            ControladorProvincia.actualizarProvincia(codigo, nombre, codigoTabla, nombreTabla);
             dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);

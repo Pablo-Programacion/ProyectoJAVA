@@ -18,11 +18,11 @@ public class TableModelPaquete extends AbstractTableModel {
     private static paquete paquete;
     static ArrayList<paquete> paquetes;
     static Connection connection = Conexion.getConnection();
+    private static Conexion conn;
     //
-    private static TableModelPaquete t3 = new TableModelPaquete((Conexion) Conexion.getConnection());
+    private static TableModelPaquete t3 = new TableModelPaquete(conn);
     private static final String[] columnNames = { "Dni", "Nombre", "Telefono", "Poblacion", "Direccion", "Salario" };
     private final LinkedList<paquete> list;
-    private Conexion conn;
 
     public TableModelPaquete(Conexion conexion) {
         list = new LinkedList<>();

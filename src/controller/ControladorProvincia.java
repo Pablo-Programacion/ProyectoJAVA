@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import modelo.TableModelProvincias;
 import modelo.provincia;
+import view.ProvinciaEditar;
+
 import java.sql.SQLException;
 
 public class ControladorProvincia {
@@ -15,12 +17,11 @@ public class ControladorProvincia {
     }
 
     public static int eliminarProvincia(int codigo, String nombre) throws SQLException {
-        return TableModelProvincias.insertarProvincias(codigo, nombre);
+        return TableModelProvincias.eliminarProvincia(codigo, nombre);
     }
 
-    public static int actualizarProvincia(int codigo, String nombre) throws SQLException {
-        int codigoTabla = provincia.getCodigo();
-        String nombreTabla = provincia.getNombre();
+    public static int actualizarProvincia(int codigo, String nombre, int codigoTabla, String nombreTabla)
+            throws SQLException {
         return TableModelProvincias.actualizar(codigo, nombre, codigoTabla, nombreTabla);
     }
 

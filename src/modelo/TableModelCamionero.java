@@ -18,11 +18,11 @@ public class TableModelCamionero extends AbstractTableModel {
     static ArrayList<camionero> camioneros;
     private static camionero camionero;
     static Connection connection = Conexion.getConnection();
+    private static Conexion conn;
     /// ATRIBUTOS DE LA TABLA
-    private static TableModelCamionero t2 = new TableModelCamionero((Conexion) Conexion.getConnection());
+    private static TableModelCamionero t2 = new TableModelCamionero(conn);
     private static final String[] columnNames = { "Dni", "Nombre", "Telefono", "Poblacion", "Direccion", "Salario" };
     private final LinkedList<camionero> list;
-    private Conexion conn;
 
     public TableModelCamionero(Conexion conexion) {
         list = new LinkedList<>();

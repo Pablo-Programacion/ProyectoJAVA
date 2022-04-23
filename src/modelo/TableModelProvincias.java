@@ -16,11 +16,11 @@ import controller.Conexion;
  */
 public class TableModelProvincias extends AbstractTableModel {
     static Connection connection = Conexion.getConnection();
-    private Conexion conn;
+    private static Conexion conn;
     static ArrayList<provincia> provincias;
     private static provincia provincia;
     /// ATRIBUTOS DE LA TABLA
-    private static TableModelProvincias t1 = new TableModelProvincias((Conexion) Conexion.getConnection());
+    private static TableModelProvincias t1 = new TableModelProvincias(conn);
     private static final String[] columnNames = { "Código", "Nombre" };
     private final LinkedList<provincia> list;
 
