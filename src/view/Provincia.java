@@ -5,8 +5,8 @@ package view;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 import modelo.TableModelProvincias;
-import controller.ControladorDB4O;
-import controller.ControladorDB4Omain;
+import controller.ControladorProvincia;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -17,14 +17,13 @@ import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 
-
 /**
  *
  * @author Admin
  */
 public class Provincia extends javax.swing.JFrame {
 
-    TableModelProvincias t1 = ControladorDB4Omain.getT1();
+    TableModelProvincias t1 = ControladorProvincia.getT1();
     static int codigo;
     static String nombre;
 
@@ -40,7 +39,7 @@ public class Provincia extends javax.swing.JFrame {
             jTable1.getTableHeader().setBackground(new Color(32, 136, 203));
             jTable1.getTableHeader().setForeground(new Color(0, 0, 0));
             jTable1.setRowHeight(25);
-            ControladorDB4O.obtenerProvincias();
+            ControladorProvincia.obtenerProvincias();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -55,7 +54,8 @@ public class Provincia extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
@@ -81,23 +81,23 @@ public class Provincia extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1020, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1020, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+                jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 1020, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1020,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))));
         jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+                jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 580, Short.MAX_VALUE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 580,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1020, 580));
 
@@ -153,13 +153,11 @@ public class Provincia extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1020, Short.MAX_VALUE)
-        );
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 1020, Short.MAX_VALUE));
         jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 660, Short.MAX_VALUE)
-        );
+                jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 660, Short.MAX_VALUE));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 660));
 
@@ -169,7 +167,7 @@ public class Provincia extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton2ActionPerformed
         try {
-            ControladorDB4O.limpiarTablaProvincia();
+            ControladorProvincia.limpiarTablaProvincia();
             JOptionPane.showMessageDialog(null, "Se eliminaron todos los registros");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -182,7 +180,7 @@ public class Provincia extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
         try {
-            ControladorDB4O.insertarProvincia(Integer.parseInt(jTextField1.getText()), jTextField2.getText());
+            ControladorProvincia.insertarProvincias(Integer.parseInt(jTextField1.getText()), jTextField2.getText());
             JOptionPane.showMessageDialog(null, "Insertado");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -232,45 +230,46 @@ public class Provincia extends javax.swing.JFrame {
         JPopupMenu popupMenu = new JPopupMenu();
         JMenuItem menuItem1 = new JMenuItem("Editar");
         JMenuItem menuItem2 = new JMenuItem("Eliminar");
-        //  EDITAR: Al hacer click se cogera esa fila selecionada y con los getters extraigo los datos
+        // EDITAR: Al hacer click se cogera esa fila selecionada y con los getters
+        // extraigo los datos
         menuItem1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     int index = jTable1.getSelectedRow();
-                codigo = Integer.parseInt(jTable1.getValueAt(index, 0).toString());
-                nombre = jTable1.getValueAt(index, 1).toString();
-                ControladorDB4O.actualizarProvincia(codigo, nombre);
-                //Hacer visible el JFrame de editar
-                new ProvinciaEditar().setVisible(true);
-                
+                    codigo = Integer.parseInt(jTable1.getValueAt(index, 0).toString());
+                    nombre = jTable1.getValueAt(index, 1).toString();
+                    ControladorProvincia.actualizarProvincia(codigo, nombre);
+                    // Hacer visible el JFrame de editar
+                    new ProvinciaEditar().setVisible(true);
+
                 } catch (Exception t) {
                     JOptionPane.showMessageDialog(null, t);
                 }
 
             }
         });
-        //  ELIMINAR: Lo mismo que editar solo que aqui no hay jFrame le paso el metodo de eliminar y recargar la tabla
+        // ELIMINAR: Lo mismo que editar solo que aqui no hay jFrame le paso el metodo
+        // de eliminar y recargar la tabla
         menuItem2.addActionListener(
                 new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        try {
 
-                    int index = jTable1.getSelectedRow();
-                    int codigo = Integer.parseInt(jTable1.getValueAt(index, 0).toString());
-                    String nombre = jTable1.getValueAt(index, 1).toString();
-                    ControladorDB4O.eliminarProvincia(codigo, nombre);
-                } catch (SQLException r) {
-                    JOptionPane.showMessageDialog(null, r);
-                }
-            }
-        }
-        );
-        //  Añadir los addActionListener al menu creado
+                            int index = jTable1.getSelectedRow();
+                            int codigo = Integer.parseInt(jTable1.getValueAt(index, 0).toString());
+                            String nombre = jTable1.getValueAt(index, 1).toString();
+                            ControladorProvincia.eliminarProvincia(codigo, nombre);
+                        } catch (SQLException r) {
+                            JOptionPane.showMessageDialog(null, r);
+                        }
+                    }
+                });
+        // Añadir los addActionListener al menu creado
         popupMenu.add(menuItem1);
         popupMenu.add(menuItem2);
-        //      Los añadimos a la tabla
+        // Los añadimos a la tabla
         jTable1.setComponentPopupMenu(popupMenu);
     }
 

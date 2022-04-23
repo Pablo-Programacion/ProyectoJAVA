@@ -1,23 +1,30 @@
 package modelo;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.swing.table.AbstractTableModel;
-import controller.ControladorDB4O;
-import controller.ControladorDB4Omain;
+
+import controller.Conexion;
 
 /**
  *
  * @author MEDAC
  */
 public class TableModelPaquete extends AbstractTableModel {
-
-    private static final String[] columnNames = {"Dni", "Nombre", "Telefono", "Poblacion", "Direccion", "Salario"};
+    private static paquete paquete;
+    static ArrayList<paquete> paquetes;
+    static Connection connection = Conexion.getConnection();
+    //
+    private static TableModelPaquete t3 = new TableModelPaquete((Conexion) Conexion.getConnection());
+    private static final String[] columnNames = { "Dni", "Nombre", "Telefono", "Poblacion", "Direccion", "Salario" };
     private final LinkedList<paquete> list;
-    private ControladorDB4O conn;
+    private Conexion conn;
 
-    public TableModelPaquete (ControladorDB4O conexion) {
+    public TableModelPaquete(Conexion conexion) {
         list = new LinkedList<>();
         conn = conexion;
     }
@@ -26,9 +33,9 @@ public class TableModelPaquete extends AbstractTableModel {
         return list.get(rowIndex);
     }
 
-    public void cargarPaquetes(){
+    public void cargarPaquetes() {
         // Obtiene la lista de provincias de la BD
-        ArrayList <paquete> paquetes = ControladorDB4Omain.getPaquetes();
+        ArrayList<paquete> paquetes = getPaquetes();
         System.out.println(paquetes.size());
 
         // Borra el contenido anterior y añade el nuevo.
@@ -39,10 +46,31 @@ public class TableModelPaquete extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-    public void insertarPaquete(int codigo, String descripcion, String destinatario, String direccion, String fecha, String dni_camionero, int cod_provincia) throws SQLException {
-        ControladorDB4O.insertar(codigo, descripcion, destinatario, direccion, fecha, dni_camionero, cod_provincia);
+    public static void obtenerPaquetes() throws SQLException {
+        paquetes = new ArrayList<paquete>();
+        Statement stmt = (Statement) connection.createStatement();
+        ResultSet resultado = stmt.executeQuery("SELECT * FROM paquete");
+        while (resultado.next()) {
+            int codigo = resultado.getInt("codigo");
+            String descripcion = resultado.getString("descripcion");
+            String destinatario = resultado.getString("destinatario");
+            String direccion = resultado.getString("direccion");
+            String fecha = resultado.getString("fecha");
+            String dni_camionero = resultado.getString("dni_camionero");
+            int cod_provincia = resultado.getInt("cod_provincia");
+            paquete = new paquete(codigo, descripcion, destinatario, direccion, fecha, dni_camionero, cod_provincia);
+            paquetes.add(paquete);
+        }
+        t3.cargarPaquetes();
+    }
+
+    public void insertarPaquete(int codigo, String descripcion, String destinatario, String direccion, String fecha,
+            String dni_camionero, int cod_provincia) throws SQLException {
+        /**
+         * * COMPLETAR CÓDIGO **
+         */
         cargarPaquetes();
-       
+
     }
 
     public void eliminar(String titulo) throws SQLException {
@@ -97,6 +125,18 @@ public class TableModelPaquete extends AbstractTableModel {
                 return list.get(rowIndex).getCod_provincia();
         }
         return null;
+    }
+
+    public static TableModelPaquete getT3() {
+        return t3;
+    }
+
+    public static ArrayList<paquete> getPaquetes() {
+        return paquetes;
+    }
+
+    public static void setPaquetes(ArrayList<paquete> paquetes) {
+        TableModelPaquete.paquetes = paquetes;
     }
 
 }

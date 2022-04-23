@@ -1,23 +1,30 @@
 package modelo;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.swing.table.AbstractTableModel;
-import controller.ControladorDB4O;
-import controller.ControladorDB4Omain;
+
+import controller.Conexion;
 
 /**
  *
  * @author MEDAC
  */
 public class TableModelCamionero extends AbstractTableModel {
-
-    private static final String[] columnNames = {"Dni", "Nombre", "Telefono", "Poblacion", "Direccion", "Salario"};
+    static ArrayList<camionero> camioneros;
+    private static camionero camionero;
+    static Connection connection = Conexion.getConnection();
+    /// ATRIBUTOS DE LA TABLA
+    private static TableModelCamionero t2 = new TableModelCamionero((Conexion) Conexion.getConnection());
+    private static final String[] columnNames = { "Dni", "Nombre", "Telefono", "Poblacion", "Direccion", "Salario" };
     private final LinkedList<camionero> list;
-    private ControladorDB4O conn;
+    private Conexion conn;
 
-    public TableModelCamionero(ControladorDB4O conexion) {
+    public TableModelCamionero(Conexion conexion) {
         list = new LinkedList<>();
         conn = conexion;
     }
@@ -27,8 +34,8 @@ public class TableModelCamionero extends AbstractTableModel {
     }
 
     public void cargarCamionero() throws SQLException {
-        // Obtiene la lista de provincias de la BD
-        ArrayList<camionero> camioneros = ControladorDB4Omain.getCamioneros();
+        // Obtiene la lista de camionero de la BD
+        ArrayList<camionero> camioneros = getCamioneros();
         System.out.println(camioneros.size());
 
         // Borra el contenido anterior y añade el nuevo.
@@ -39,9 +46,14 @@ public class TableModelCamionero extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-    public void insertarProvincias(int codigo, String nombre) throws SQLException {
-        ControladorDB4O.insertarProvincia(codigo, nombre);
-        cargarCamionero();
+    public static int insertarCamionero(String dni, String nombre, int telefono, String poblacion, String direccion,
+            int salario) throws SQLException {
+        String insert = "INSERT INTO provincia (dni,nombre,telefono,,poblacion,direccionn,salario) values ('%s','%s',%s,'%s','%s',%s)"
+                .formatted(dni, nombre, telefono, poblacion, direccion, salario);
+        Statement stmt = connection.createStatement();
+        int filas = stmt.executeUpdate(insert);
+        obtenerCamioneros();
+        return filas;
     }
 
     public void eliminar(String titulo) throws SQLException {
@@ -59,6 +71,23 @@ public class TableModelCamionero extends AbstractTableModel {
          */
         cargarCamionero();
         return nfilas;
+    }
+
+    public static void obtenerCamioneros() throws SQLException {
+        camioneros = new ArrayList<camionero>();
+        Statement stmt = (Statement) connection.createStatement();
+        ResultSet resultado = stmt.executeQuery("SELECT * FROM camionero");
+        while (resultado.next()) {
+            String dni = resultado.getString("Dni");
+            String nombre = resultado.getString("Nombre");
+            int telefono = resultado.getInt("Telefono");
+            String poblacion = resultado.getString("Poblacion");
+            String direccion = resultado.getString("Direccion");
+            int salario = resultado.getInt("Salario");
+            camionero = new camionero(dni, nombre, telefono, poblacion, direccion, salario);
+            camioneros.add(camionero);
+        }
+        t2.cargarCamionero();
     }
 
     @Override
@@ -94,6 +123,22 @@ public class TableModelCamionero extends AbstractTableModel {
                 return list.get(rowIndex).getSalario();
         }
         return null;
+    }
+
+    public static ArrayList<camionero> getCamioneros() {
+        return camioneros;
+    }
+
+    public static void setCamioneros(ArrayList<camionero> camioneros) {
+        TableModelCamionero.camioneros = camioneros;
+    }
+
+    public static TableModelCamionero getT2() {
+        return t2;
+    }
+
+    public static void setT2(TableModelCamionero t2) {
+        TableModelCamionero.t2 = t2;
     }
 
 }

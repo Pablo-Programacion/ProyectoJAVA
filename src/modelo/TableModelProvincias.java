@@ -4,20 +4,27 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.swing.table.AbstractTableModel;
-import controller.ControladorDB4O;
-import controller.ControladorDB4Omain;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import controller.Conexion;
 
 /**
  *
  * @author MEDAC
  */
 public class TableModelProvincias extends AbstractTableModel {
-
+    static Connection connection = Conexion.getConnection();
+    private Conexion conn;
+    static ArrayList<provincia> provincias;
+    private static provincia provincia;
+    /// ATRIBUTOS DE LA TABLA
+    private static TableModelProvincias t1 = new TableModelProvincias((Conexion) Conexion.getConnection());
     private static final String[] columnNames = { "Código", "Nombre" };
     private final LinkedList<provincia> list;
-    private ControladorDB4O conn;
 
-    public TableModelProvincias(ControladorDB4O conexion) {
+    public TableModelProvincias(Conexion conexion) {
         list = new LinkedList<>();
         conn = conexion;
     }
@@ -28,7 +35,7 @@ public class TableModelProvincias extends AbstractTableModel {
 
     public void cargarProvincias() throws SQLException {
         // Obtiene la lista de provincias de la BD
-        ArrayList<provincia> provincias = ControladorDB4Omain.getProvincias();
+        ArrayList<provincia> provincias = getProvincias();
         System.out.println(provincias.size());
 
         // Borra el contenido anterior y añade el nuevo.
@@ -39,26 +46,54 @@ public class TableModelProvincias extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-    public void insertarProvincias(int codigo, String nombre) throws SQLException {
-        ControladorDB4O.insertar(codigo, nombre);
-        cargarProvincias();
+    public static void obtenerProvincias() throws SQLException {
+        provincias = new ArrayList<provincia>();
+        Statement stmt = (Statement) connection.createStatement();
+        ResultSet resultado = stmt.executeQuery("SELECT * FROM provincia");
+        while (resultado.next()) {
+            int codigo = resultado.getInt("codigo");
+            String nombre = resultado.getString("nombre");
+            provincia = new provincia(codigo, nombre);
+            provincias.add(provincia);
+        }
+        t1.cargarProvincias();
     }
 
-    public void eliminar(int codigo, String nombre) throws SQLException {
-        /**
-         * * COMPLETAR CÓDIGO **
-         */
-        cargarProvincias();
+    public static int insertarProvincias(int codigo, String nombre) throws SQLException {
+        String insert = "INSERT INTO provincia (codigo,nombre) values (%s,'%s')".formatted(codigo, nombre);
+        Statement stmt = connection.createStatement();
+        int filas = stmt.executeUpdate(insert);
+        obtenerProvincias();
+        return filas;
     }
 
-    public int actualizar(String tituloOriginal, String titulo, int año, int puntuacion, String sinopsis)
+    public static int eliminarProvincia(int codigo, String nombre) throws SQLException {
+        String delete = "DELETE FROM provincia where codigo = %s and nombre = '%s'".formatted(codigo, nombre);
+        Statement stmt = connection.createStatement();
+        int filas = stmt.executeUpdate(delete);
+        obtenerProvincias();
+        t1.cargarProvincias();
+        return filas;
+    }
+
+    public static int actualizar(int codigo, String nombre, int codigoTabla, String nombreTabla)
             throws SQLException {
-        int nfilas = 0;
-        /**
-         * * COMPLETAR CÓDIGO **
-         */
-        cargarProvincias();
-        return nfilas;
+        int filas = 0;
+        String update = "UPDATE provincia SET codigo=%s,nombre='%s' where codigo = %s and nombre = '%s'"
+                .formatted(codigo, nombre, codigoTabla, nombreTabla);
+        Statement stmt = connection.createStatement();
+        filas = stmt.executeUpdate(update);
+        obtenerProvincias();
+
+        return filas;
+    }
+
+    public static int limpiarTablaProvincia() throws SQLException {
+        String insert = "DELETE FROM provincia WHERE 1 = 1";
+        Statement stmt = connection.createStatement();
+        int filas = stmt.executeUpdate(insert);
+        obtenerProvincias();
+        return filas;
     }
 
     @Override
@@ -85,6 +120,22 @@ public class TableModelProvincias extends AbstractTableModel {
                 return list.get(rowIndex).getNombre();
         }
         return null;
+    }
+
+    public static ArrayList<provincia> getProvincias() {
+        return provincias;
+    }
+
+    public static void setProvincias(ArrayList<provincia> provincias) {
+        TableModelProvincias.provincias = provincias;
+    }
+
+    public static TableModelProvincias getT1() {
+        return t1;
+    }
+
+    public static void setT1(TableModelProvincias t1) {
+        TableModelProvincias.t1 = t1;
     }
 
 }

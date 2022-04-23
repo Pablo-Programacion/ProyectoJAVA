@@ -1,6 +1,7 @@
 package view;
 
-import controller.ControladorDB4O;
+import controller.ControladorProvincia;
+
 import javax.swing.JOptionPane;
 
 /*
@@ -113,11 +114,11 @@ public class ProvinciaEditar extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
         try {
-            
+
             int codigo = Integer.parseInt(jTextField1.getText());
             String nombre = jTextField2.getText();
-          
-            ControladorDB4O.actualizarProvincia(codigo, nombre);
+
+            ControladorProvincia.actualizarProvincia(codigo, nombre);
             dispose();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
