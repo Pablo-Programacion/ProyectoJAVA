@@ -1,8 +1,10 @@
 package controller;
 
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import modelo.TableModelCamionero;
+import static modelo.TableModelProvincias.obtenerProvincias;
 
 public class ControladorCamionero {
 
@@ -20,6 +22,13 @@ public class ControladorCamionero {
 
     public static TableModelCamionero getT2() {
         return TableModelCamionero.getT2();
+    }
+
+    public static int actualizar(String dni, String poblacion, String nombre, int telefono, String direccion,
+            int salario, String dni2, String poblacion2, String nombre2, int telefono2, String direccion2,
+            int salario2)
+            throws SQLException {
+        return TableModelCamionero.actualizar(dni, poblacion, nombre, telefono, direccion, salario, dni2, poblacion2, nombre2, telefono2, direccion2, salario2);
     }
 
 }

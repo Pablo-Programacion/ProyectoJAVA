@@ -14,7 +14,6 @@ import controller.Conexion;
  *
  * @author MEDAC
  */
-
 public class TableModelCamionero extends AbstractTableModel {
 
     static ArrayList<camionero> camioneros;
@@ -23,7 +22,7 @@ public class TableModelCamionero extends AbstractTableModel {
     private static Conexion conn;
     /// ATRIBUTOS DE LA TABLA
     private static TableModelCamionero t2 = new TableModelCamionero(conn);
-    private static final String[] columnNames = { "Dni", "Poblacion", "Nombre", "Telefono", "Direccion", "Salario" };
+    private static final String[] columnNames = {"Dni", "Poblacion", "Nombre", "Telefono", "Direccion", "Salario"};
     private final LinkedList<camionero> list;
 
     public TableModelCamionero(Conexion conexion) {
@@ -65,19 +64,23 @@ public class TableModelCamionero extends AbstractTableModel {
         Statement stmt = connection.createStatement();
         int filas = stmt.executeUpdate(delete);
         obtenerCamioneros();
-        t2.cargarCamionero();
         return filas;
 
     }
 
-    public int actualizar(String tituloOriginal, String titulo, int año, int puntuacion, String sinopsis)
+    public static int actualizar(String dni, String poblacion, String nombre, int telefono, String direccion,
+            int salario, String dni2, String poblacion2, String nombre2, int telefono2, String direccion2,
+            int salario2)
             throws SQLException {
-        int nfilas = 0;
-        /**
-         * * COMPLETAR CÓDIGO **
-         */
-        cargarCamionero();
-        return nfilas;
+        String update = "UPDATE camionero SET dni='%s',poblacion='%s',nombre='%s',telefono=%s,direccion = '%s',salario = %s where dni='%s'and poblacion='%s'and nombre='%s'and telefono=%s and direccion = '%s' and salario = %s"
+                .formatted(dni, poblacion, nombre, telefono, direccion,
+                        salario, dni2, poblacion2, nombre2, telefono2, direccion2,
+                        salario2);
+        Statement stmt = connection.createStatement();
+        int filas = stmt.executeUpdate(update);
+        System.out.println(filas+ " asdasdasdasdasdasd");
+        obtenerCamioneros();
+        return filas;
     }
 
     public static void obtenerCamioneros() throws SQLException {

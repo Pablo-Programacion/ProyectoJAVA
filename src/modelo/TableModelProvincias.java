@@ -84,7 +84,6 @@ public class TableModelProvincias extends AbstractTableModel {
         Statement stmt = connection.createStatement();
         filas = stmt.executeUpdate(update);
         obtenerProvincias();
-
         return filas;
     }
 

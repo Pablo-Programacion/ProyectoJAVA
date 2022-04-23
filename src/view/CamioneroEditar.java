@@ -4,30 +4,34 @@
  */
 package view;
 
+import controller.ControladorCamionero;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author FER
  */
 public class CamioneroEditar extends javax.swing.JFrame {
-    String dni;
-    String poblacion;
-    String nombre;
-    int telefono;
-    String direccion;
-    int salario;
+
+    String dni2;
+    String poblacion2;
+    String nombre2;
+    int telefono2;
+    String direccion2;
+    int salario2;
 
     /**
      * Creates new form CamioneroEditar
      */
     public CamioneroEditar() {
         initComponents();
-        this.dni = Camionero.getDni();
-        this.nombre = Camionero.getNombre();
-        this.poblacion = Camionero.getPoblacion();
-        this.telefono = Camionero.getTelefono();
-        this.direccion = Camionero.getDireccion();
-        this.salario = Camionero.getSalario();
-        actualizarNombresJtextField(dni, poblacion, nombre, telefono, direccion, salario);
+        this.dni2 = Camionero.getDni();
+        this.nombre2 = Camionero.getNombre();
+        this.poblacion2 = Camionero.getPoblacion();
+        this.telefono2 = Camionero.getTelefono();
+        this.direccion2 = Camionero.getDireccion();
+        this.salario2 = Camionero.getSalario();
+        actualizarNombresJtextField(dni2, poblacion2, nombre2, telefono2, direccion2, salario2);
     }
 
     /**
@@ -37,7 +41,7 @@ public class CamioneroEditar extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
@@ -107,6 +111,11 @@ public class CamioneroEditar extends javax.swing.JFrame {
         jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 80, 150, -1));
 
         jButton1.setText("Actualizar");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 30, -1, -1));
 
         jButton2.setText("Cancelar");
@@ -133,6 +142,21 @@ public class CamioneroEditar extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        try {
+            String dni = jTextField2.getText();
+            String nombre = jTextField4.getText();
+            int salario = Integer.parseInt(jTextField1.getText());
+            String direccion = jTextField6.getText();
+            String poblacion = jTextField3.getText();
+            int telefono = Integer.parseInt(jTextField5.getText());
+            ControladorCamionero.actualizar(dni, poblacion, nombre, telefono, direccion, salario, dni2, poblacion2, nombre2, telefono2, direccion2, salario2);
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_jButton1MouseClicked
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel11MouseClicked
         dispose();
@@ -213,7 +237,6 @@ public class CamioneroEditar extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
-
     // End of variables declaration//GEN-END:variables
     public class setVisible {
     }
