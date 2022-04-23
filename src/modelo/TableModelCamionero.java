@@ -9,13 +9,12 @@ import java.util.LinkedList;
 import javax.swing.table.AbstractTableModel;
 
 import controller.Conexion;
-import static modelo.TableModelProvincias.connection;
-import static modelo.TableModelProvincias.obtenerProvincias;
 
 /**
  *
  * @author MEDAC
  */
+
 public class TableModelCamionero extends AbstractTableModel {
 
     static ArrayList<camionero> camioneros;
@@ -24,7 +23,7 @@ public class TableModelCamionero extends AbstractTableModel {
     private static Conexion conn;
     /// ATRIBUTOS DE LA TABLA
     private static TableModelCamionero t2 = new TableModelCamionero(conn);
-    private static final String[] columnNames = {"Dni", "Nombre", "Telefono", "Poblacion", "Direccion", "Salario"};
+    private static final String[] columnNames = { "Dni", "Poblacion", "Nombre", "Telefono", "Direccion", "Salario" };
     private final LinkedList<camionero> list;
 
     public TableModelCamionero(Conexion conexion) {
@@ -49,8 +48,9 @@ public class TableModelCamionero extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-    public static int insertarCamionero(String dni, String poblacion, String nombre, int telefono, String direccion, int salario) throws SQLException {
-        String insert = "INSERT INTO camionero (dni,poblacion,nombre,telefono,direccion,salario) values ('%s','%s','%s',%s,'%s',%s)"
+    public static int insertarCamionero(String dni, String poblacion, String nombre, int telefono, String direccion,
+            int salario) throws SQLException {
+        String insert = "INSERT INTO camionero (dni, poblacion, nombre, telefono, direccion, salario) values ('%s','%s','%s',%s,'%s',%s)"
                 .formatted(dni, poblacion, nombre, telefono, direccion, salario);
         Statement stmt = connection.createStatement();
         int filas = stmt.executeUpdate(insert);
@@ -58,8 +58,10 @@ public class TableModelCamionero extends AbstractTableModel {
         return filas;
     }
 
-    public static int eliminarCamionero(String dni, String poblacion, String nombre, int telefono, String direccion, int salario) throws SQLException {
-        String delete = "DELETE FROM camionero where dni = '%s' and poblacion = '%s' and nombre = '%s' and telefono = %s and direccion = '%s' and salario = %s".formatted(dni, poblacion, nombre, telefono, direccion, salario);
+    public static int eliminarCamionero(String dni, String poblacion, String nombre, int telefono, String direccion,
+            int salario) throws SQLException {
+        String delete = "DELETE FROM camionero where dni = '%s' and poblacion = '%s' and nombre = '%s' and telefono = %s and direccion = '%s' and salario = %s"
+                .formatted(dni, poblacion, nombre, telefono, direccion, salario);
         Statement stmt = connection.createStatement();
         int filas = stmt.executeUpdate(delete);
         obtenerCamioneros();
@@ -110,26 +112,6 @@ public class TableModelCamionero extends AbstractTableModel {
         return list.size();
     }
 
-    @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {
-        switch (columnIndex) {
-            case 0:
-                return list.get(rowIndex).getDni();
-            case 1:
-                return list.get(rowIndex).getNombre();
-
-            case 2:
-                return list.get(rowIndex).getTelefono();
-            case 3:
-                return list.get(rowIndex).getPoblacion();
-            case 4:
-                return list.get(rowIndex).getDireccion();
-            case 5:
-                return list.get(rowIndex).getSalario();
-        }
-        return null;
-    }
-
     public static ArrayList<camionero> getCamioneros() {
         return camioneros;
     }
@@ -144,6 +126,25 @@ public class TableModelCamionero extends AbstractTableModel {
 
     public static void setT2(TableModelCamionero t2) {
         TableModelCamionero.t2 = t2;
+    }
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        switch (columnIndex) {
+            case 0:
+                return list.get(rowIndex).getDni();
+            case 1:
+                return list.get(rowIndex).getPoblacion();
+            case 2:
+                return list.get(rowIndex).getNombre();
+            case 3:
+                return list.get(rowIndex).getTelefono();
+            case 4:
+                return list.get(rowIndex).getDireccion();
+            case 5:
+                return list.get(rowIndex).getSalario();
+        }
+        return null;
     }
 
 }
