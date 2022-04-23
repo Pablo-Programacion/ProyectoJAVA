@@ -8,10 +8,10 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 public class Conexion {
-    private static String BD = "paqueteria";
-    private static String USUARIO = "root";
+    private static String BD = "";
+    private static String USUARIO = "";
     private static String PASS = "";
-    private static String HOST = "localhost";
+    private static String HOST = "";
     Calendar now = null;
     TimeZone zonahoraria = null;
     Statement stmt = null;

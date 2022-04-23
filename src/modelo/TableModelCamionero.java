@@ -9,6 +9,8 @@ import java.util.LinkedList;
 import javax.swing.table.AbstractTableModel;
 
 import controller.Conexion;
+import static modelo.TableModelProvincias.connection;
+import static modelo.TableModelProvincias.obtenerProvincias;
 
 /**
  *
@@ -56,11 +58,14 @@ public class TableModelCamionero extends AbstractTableModel {
         return filas;
     }
 
-    public void eliminar(String titulo) throws SQLException {
-        /**
-         * * COMPLETAR CÓDIGO **
-         */
-        cargarCamionero();
+    public static int eliminarCamionero(String dni, String poblacion, String nombre, int telefono, String direccion, int salario) throws SQLException {
+        String delete = "DELETE FROM camionero where dni = '%s' and poblacion = '%s' and nombre = '%s' and telefono = %s and direccion = '%s' and salario = %s".formatted(dni, poblacion, nombre, telefono, direccion, salario);
+        Statement stmt = connection.createStatement();
+        int filas = stmt.executeUpdate(delete);
+        obtenerCamioneros();
+        t2.cargarCamionero();
+        return filas;
+
     }
 
     public int actualizar(String tituloOriginal, String titulo, int año, int puntuacion, String sinopsis)

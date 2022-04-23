@@ -8,7 +8,13 @@ package view;
 import javax.swing.JOptionPane;
 
 import controller.ControladorCamionero;
+import java.awt.Color;
+import java.awt.Font;
 import modelo.TableModelCamionero;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 
 /**
  *
@@ -24,6 +30,12 @@ public class Camionero extends javax.swing.JFrame {
     public Camionero() {
         try {
             initComponents();
+            jTable1.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 12));
+            jTable1.getTableHeader().setOpaque(false);
+            jTable1.getTableHeader().setBackground(new Color(32, 136, 203));
+            jTable1.getTableHeader().setForeground(new Color(0, 0, 0));
+            jTable1.setRowHeight(25);
+            popupMetodo();
             ControladorCamionero.obtenerCamioneros();
         } catch (Exception e) {
         }
@@ -154,13 +166,10 @@ public class Camionero extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextField2)))
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jLabel5)))
+                .addGap(50, 50, 50)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -222,7 +231,7 @@ public class Camionero extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
-         dispose();
+        dispose();
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jButton1MouseClicked
@@ -278,6 +287,45 @@ public class Camionero extends javax.swing.JFrame {
         });
     }
 
+    public void popupMetodo() {
+        JPopupMenu popupMenu = new JPopupMenu();
+        JMenuItem menuItem1 = new JMenuItem("Editar");
+        JMenuItem menuItem2 = new JMenuItem("Eliminar");
+        // EDITAR: Al hacer click se cogera esa fila selecionada y con los getters
+        // extraigo los datos
+        menuItem1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        // ELIMINAR: Lo mismo que editar solo que aqui no hay jFrame le paso el metodo
+        // de eliminar y recargar la tabla
+        menuItem2.addActionListener(
+                new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int index = jTable2.getSelectedRow();
+                    String dni = jTable2.getValueAt(index, 0).toString();
+                    String poblacion = jTable2.getValueAt(index, 1).toString();
+                    String nombre = jTable2.getValueAt(index, 2).toString();
+                    int telefono = Integer.parseInt(jTable2.getValueAt(index, 3).toString());
+                    String direccion = jTable2.getValueAt(index, 4).toString();
+                    int salario = Integer.parseInt(jTable2.getValueAt(index, 5).toString());
+                    System.out.println(dni + " " + poblacion + " " + nombre + " " + telefono + " " + direccion + " " + salario);
+                    ControladorCamionero.eliminarCamionero(dni, poblacion, nombre, telefono, direccion, salario);
+                } catch (Exception y) {
+                    JOptionPane.showMessageDialog(null, y);
+                }
+            }
+        });
+        // Añadir los addActionListener al menu creado
+        popupMenu.add(menuItem1);
+        popupMenu.add(menuItem2);
+        // Los añadimos a la tabla
+        jTable2.setComponentPopupMenu(popupMenu);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
