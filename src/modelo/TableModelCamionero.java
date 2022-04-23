@@ -15,13 +15,14 @@ import controller.Conexion;
  * @author MEDAC
  */
 public class TableModelCamionero extends AbstractTableModel {
+
     static ArrayList<camionero> camioneros;
     private static camionero camionero;
     static Connection connection = Conexion.getConnection();
     private static Conexion conn;
     /// ATRIBUTOS DE LA TABLA
     private static TableModelCamionero t2 = new TableModelCamionero(conn);
-    private static final String[] columnNames = { "Dni", "Nombre", "Telefono", "Poblacion", "Direccion", "Salario" };
+    private static final String[] columnNames = {"Dni", "Nombre", "Telefono", "Poblacion", "Direccion", "Salario"};
     private final LinkedList<camionero> list;
 
     public TableModelCamionero(Conexion conexion) {
@@ -46,10 +47,9 @@ public class TableModelCamionero extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-    public static int insertarCamionero(String dni, String nombre, int telefono, String poblacion, String direccion,
-            int salario) throws SQLException {
-        String insert = "INSERT INTO provincia (dni,nombre,telefono,,poblacion,direccionn,salario) values ('%s','%s',%s,'%s','%s',%s)"
-                .formatted(dni, nombre, telefono, poblacion, direccion, salario);
+    public static int insertarCamionero(String dni, String poblacion, String nombre, int telefono, String direccion, int salario) throws SQLException {
+        String insert = "INSERT INTO camionero (dni,poblacion,nombre,telefono,direccion,salario) values ('%s','%s','%s',%s,'%s',%s)"
+                .formatted(dni, poblacion, nombre, telefono, direccion, salario);
         Statement stmt = connection.createStatement();
         int filas = stmt.executeUpdate(insert);
         obtenerCamioneros();
@@ -79,12 +79,12 @@ public class TableModelCamionero extends AbstractTableModel {
         ResultSet resultado = stmt.executeQuery("SELECT * FROM camionero");
         while (resultado.next()) {
             String dni = resultado.getString("Dni");
+            String poblacion = resultado.getString("Poblacion");
             String nombre = resultado.getString("Nombre");
             int telefono = resultado.getInt("Telefono");
-            String poblacion = resultado.getString("Poblacion");
             String direccion = resultado.getString("Direccion");
             int salario = resultado.getInt("Salario");
-            camionero = new camionero(dni, nombre, telefono, poblacion, direccion, salario);
+            camionero = new camionero(dni, poblacion, nombre, telefono, direccion, salario);
             camioneros.add(camionero);
         }
         t2.cargarCamionero();

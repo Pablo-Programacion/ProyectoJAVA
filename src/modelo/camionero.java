@@ -13,7 +13,7 @@ public class camionero {
     String direccion;
     int salario;
 
-    public camionero(String dni, String nombre, int telefono, String poblacion, String direccion, int salario) {
+    public camionero(String dni, String poblacion, String nombre, int telefono, String direccion, int salario) {
         this.dni = dni;
         this.nombre = nombre;
         this.telefono = telefono;
