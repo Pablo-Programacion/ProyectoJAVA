@@ -4,13 +4,12 @@ import java.util.ArrayList;
 
 import modelo.TableModelProvincias;
 import modelo.provincia;
-import view.ProvinciaEditar;
 
 import java.sql.SQLException;
 
 public class ControladorProvincia {
     static ArrayList<provincia> provincias;
-    private static provincia provincia;
+  
 
     public static void obtenerProvincias() throws SQLException {
         TableModelProvincias.obtenerProvincias();

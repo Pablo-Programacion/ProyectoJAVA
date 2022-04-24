@@ -19,15 +19,14 @@ public class TableModelCamionero extends AbstractTableModel {
     static ArrayList<camionero> camioneros;
     private static camionero camionero;
     static Connection connection = Conexion.getConnection();
-    private static Conexion conn;
     /// ATRIBUTOS DE LA TABLA
-    private static TableModelCamionero t2 = new TableModelCamionero(conn);
-    private static final String[] columnNames = {"Dni", "Poblacion", "Nombre", "Telefono", "Direccion", "Salario"};
+    private static TableModelCamionero t2 = new TableModelCamionero(connection);
+    private static final String[] columnNames = { "Dni", "Poblacion", "Nombre", "Telefono", "Direccion", "Salario" };
     private final LinkedList<camionero> list;
 
-    public TableModelCamionero(Conexion conexion) {
+    public TableModelCamionero(Connection conexion) {
         list = new LinkedList<>();
-        conn = conexion;
+
     }
 
     public camionero getValueAt(int rowIndex) {
@@ -37,7 +36,6 @@ public class TableModelCamionero extends AbstractTableModel {
     public void cargarCamionero() throws SQLException {
         // Obtiene la lista de camionero de la BD
         ArrayList<camionero> camioneros = getCamioneros();
-        System.out.println(camioneros.size());
 
         // Borra el contenido anterior y añade el nuevo.
         list.clear();
@@ -78,7 +76,7 @@ public class TableModelCamionero extends AbstractTableModel {
                         salario2);
         Statement stmt = connection.createStatement();
         int filas = stmt.executeUpdate(update);
-        System.out.println(filas+ " asdasdasdasdasdasd");
+        System.out.println(filas + " asdasdasdasdasdasd");
         obtenerCamioneros();
         return filas;
     }

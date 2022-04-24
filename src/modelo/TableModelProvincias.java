@@ -16,17 +16,15 @@ import controller.Conexion;
  */
 public class TableModelProvincias extends AbstractTableModel {
     static Connection connection = Conexion.getConnection();
-    private static Conexion conn;
     static ArrayList<provincia> provincias;
     private static provincia provincia;
     /// ATRIBUTOS DE LA TABLA
-    private static TableModelProvincias t1 = new TableModelProvincias(conn);
+    private static TableModelProvincias t1 = new TableModelProvincias(connection);
     private static final String[] columnNames = { "Código", "Nombre" };
     private final LinkedList<provincia> list;
 
-    public TableModelProvincias(Conexion conexion) {
+    public TableModelProvincias(Connection conexion) {
         list = new LinkedList<>();
-        conn = conexion;
     }
 
     public provincia getValueAt(int rowIndex) {
@@ -36,7 +34,6 @@ public class TableModelProvincias extends AbstractTableModel {
     public void cargarProvincias() throws SQLException {
         // Obtiene la lista de provincias de la BD
         ArrayList<provincia> provincias = getProvincias();
-        System.out.println(provincias.size());
 
         // Borra el contenido anterior y añade el nuevo.
         list.clear();
