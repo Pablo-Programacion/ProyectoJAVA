@@ -15,20 +15,17 @@ import controller.Conexion;
  * @author MEDAC
  */
 public class TableModelProvincias extends AbstractTableModel {
+
     static Connection connection = Conexion.getConnection();
     static ArrayList<provincia> provincias;
     private static provincia provincia;
     /// ATRIBUTOS DE LA TABLA
     private static TableModelProvincias t1 = new TableModelProvincias(connection);
-    private static final String[] columnNames = { "Código", "Nombre" };
+    private static final String[] columnNames = {"Código", "Nombre"};
     private final LinkedList<provincia> list;
 
     public TableModelProvincias(Connection conexion) {
         list = new LinkedList<>();
-    }
-
-    public provincia getValueAt(int rowIndex) {
-        return list.get(rowIndex);
     }
 
     public void cargarProvincias() throws SQLException {
@@ -105,6 +102,10 @@ public class TableModelProvincias extends AbstractTableModel {
     @Override
     public int getRowCount() {
         return list.size();
+    }
+
+    public provincia getValueAt(int rowIndex) {
+        return list.get(rowIndex);
     }
 
     @Override
