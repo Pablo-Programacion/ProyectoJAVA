@@ -10,6 +10,7 @@ import javax.swing.table.AbstractTableModel;
 
 import controller.Conexion;
 
+
 /**
  *
  * @author MEDAC
@@ -21,7 +22,7 @@ public class TableModelPaquete extends AbstractTableModel {
     private static Conexion conn;
     //
     private static TableModelPaquete t3 = new TableModelPaquete(conn);
-    private static final String[] columnNames = { "Dni", "Nombre", "Telefono", "Poblacion", "Direccion", "Salario" };
+    private static final String[] columnNames = {"codigo", "descripcion", "destinatario", "direccion", "fecha", "dni_camionero", "cod_provincia"};
     private final LinkedList<paquete> list;
 
     public TableModelPaquete(Conexion conexion) {
@@ -64,13 +65,13 @@ public class TableModelPaquete extends AbstractTableModel {
         t3.cargarPaquetes();
     }
 
-    public void insertarPaquete(int codigo, String descripcion, String destinatario, String direccion, String fecha,
-            String dni_camionero, int cod_provincia) throws SQLException {
-        /**
-         * * COMPLETAR CÓDIGO **
-         */
-        cargarPaquetes();
-
+    public static int insertarPaquete(int nCodigo, String nDescripcion, String nDestinatario, String nDireccion, String nFecha, String nDni_Camionero, int nCod_Provincia) throws SQLException {
+        String insert = "INSERT INTO paquete (codigo, descripcion, destinatario, direccion, fecha, dni_camionero, cod_provincia) values (%s,'%s', '%s','%s','%s','%s',%s)".formatted(nCodigo, nDescripcion,  nDestinatario, nDireccion,nFecha, nDni_Camionero, nCod_Provincia);
+        Statement stmt = connection.createStatement();
+        int filas = stmt.executeUpdate(insert);
+        t3.obtenerPaquetes();
+        t3.cargarPaquetes();
+        return filas;
     }
 
     public void eliminar(String titulo) throws SQLException {
