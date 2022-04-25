@@ -25,11 +25,11 @@ public class Conduce extends javax.swing.JFrame {
     public Conduce() {
         try {
             initComponents();
-            jTable1.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 12));
-            jTable1.getTableHeader().setOpaque(false);
-            jTable1.getTableHeader().setBackground(new Color(32, 136, 203));
-            jTable1.getTableHeader().setForeground(new Color(0, 0, 0));
-            jTable1.setRowHeight(25);
+            jTable3.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 12));
+            jTable3.getTableHeader().setOpaque(false);
+            jTable3.getTableHeader().setBackground(new Color(32, 136, 203));
+            jTable3.getTableHeader().setForeground(new Color(0, 0, 0));
+            jTable3.setRowHeight(25);
             ControladorConduce.obtenerConductores();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
