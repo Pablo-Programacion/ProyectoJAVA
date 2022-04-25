@@ -12,6 +12,10 @@ public class ControladorCamion {
         return TableModelCamion.insertarCamion(matricula, potencia, Modelo, tipo);
     }
 
+    public static int actualizar(String matricula, int potencia, String modelo, String tipo, String matricula2, int potencia2, String modelo2, String tipo2) throws SQLException {
+        return TableModelCamion.actualizar(matricula, potencia, modelo, tipo, matricula2, potencia2, modelo2, tipo2);
+    }
+
     public static void obtenerCamion() throws SQLException {
         TableModelCamion.obtenerCamiones();
     }
@@ -25,11 +29,4 @@ public class ControladorCamion {
 
     }
 
-    public static int actualizar(String dni, String poblacion, String nombre, int telefono, String direccion,
-            int salario, String dni2, String poblacion2, String nombre2, int telefono2, String direccion2,
-            int salario2)
-            throws SQLException {
-        return 1;
-    }
-      
 }

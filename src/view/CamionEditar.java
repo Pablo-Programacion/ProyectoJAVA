@@ -4,12 +4,15 @@
  */
 package view;
 
+import controller.ControladorCamion;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author FER
  */
 public class CamionEditar extends javax.swing.JFrame {
-
+    
     String matricula;
     int potencia;
     String modelo;
@@ -24,7 +27,6 @@ public class CamionEditar extends javax.swing.JFrame {
         this.potencia = Camion.getPotencia();
         this.modelo = Camion.getModelo();
         this.tipo = Camion.getTipo();
-        System.out.println(Camion.getMatricula());
         actualizarNombresJtextField(matricula, potencia, modelo, tipo);
     }
 
@@ -125,7 +127,11 @@ public class CamionEditar extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:
+        try {
+            ControladorCamion.actualizar(jTextField2.getText(), Integer.parseInt(jTextField1.getText()), jTextField3.getText(), jTextField4.getText(), matricula, potencia, modelo, tipo);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_jButton2MouseClicked
 
     /**
@@ -162,13 +168,13 @@ public class CamionEditar extends javax.swing.JFrame {
             }
         });
     }
-
+    
     public void actualizarNombresJtextField(String matricula, int potencia, String modelo, String tipo) {
         jTextField2.setText(matricula);
         jTextField4.setText(tipo);
         jTextField1.setText(potencia + "");
         jTextField3.setText(modelo);
-
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
