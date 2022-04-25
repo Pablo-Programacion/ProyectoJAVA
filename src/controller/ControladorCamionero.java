@@ -1,10 +1,10 @@
 package controller;
 
 import java.sql.SQLException;
-import java.sql.Statement;
+
 
 import modelo.TableModelCamionero;
-import static modelo.TableModelProvincias.obtenerProvincias;
+
 
 public class ControladorCamionero {
 

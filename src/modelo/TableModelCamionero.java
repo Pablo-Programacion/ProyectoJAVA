@@ -26,7 +26,6 @@ public class TableModelCamionero extends AbstractTableModel {
 
     public TableModelCamionero(Connection conexion) {
         list = new LinkedList<>();
-
     }
 
     public camionero getValueAt(int rowIndex) {
@@ -84,12 +83,12 @@ public class TableModelCamionero extends AbstractTableModel {
     public static void obtenerCamioneros() throws SQLException {
         camioneros = new ArrayList<camionero>();
         Statement stmt = (Statement) connection.createStatement();
-        ResultSet resultado = stmt.executeQuery("SELECT * FROM camionero");
+        ResultSet resultado = stmt.executeQuery("SELECT * FROM camion");
         while (resultado.next()) {
-            String dni = resultado.getString("Dni");
-            String poblacion = resultado.getString("Poblacion");
-            String nombre = resultado.getString("Nombre");
-            int telefono = resultado.getInt("Telefono");
+            String dni = resultado.getString("Matricula");
+            String poblacion = resultado.getString("Potencia");
+            String nombre = resultado.getString("Modelo");
+            int telefono = resultado.getInt("Tipo");
             String direccion = resultado.getString("Direccion");
             int salario = resultado.getInt("Salario");
             camionero = new camionero(dni, poblacion, nombre, telefono, direccion, salario);
