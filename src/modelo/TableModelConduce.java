@@ -20,17 +20,17 @@ public class TableModelConduce extends AbstractTableModel {
     static Connection connection = Conexion.getConnection();
     private static Conexion conn;
     //
-    private static TableModelConduce c3 = new TableModelConduce(conn);
+    private static TableModelConduce c3 = new TableModelConduce(connection);
     private static final String[] columnNames = { "Dni Camionero", "Matricula Camion"};
     private final LinkedList<conduce> list;
 
-    private TableModelConduce(Conexion conn) {
+    private TableModelConduce(Connection conn) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public TableModelConduce(Conexion conexion) {
         list = new LinkedList<>();
-        conn = conexion;
+        
     }
 
     public conduce getValueAt(int rowIndex) {
@@ -39,8 +39,8 @@ public class TableModelConduce extends AbstractTableModel {
 
     public void cargarPaquetes() {
         // Obtiene la lista de provincias de la BD
-        ArrayList<paquete> paquetes = getPaquetes();
-        System.out.println(paquetes.size());
+        ArrayList<conduce> conduces = ControladorConduce.getInstance().obtenerConduces();
+        System.out.println(conduces.size());
 
         // Borra el contenido anterior y añade el nuevo.
         list.clear();
@@ -60,32 +60,26 @@ public class TableModelConduce extends AbstractTableModel {
             conduce = new conduce(dni_camionero, matricula_camion);
             conduces.add(conduce);
         }
-        c3.cargarPaquetes();
+        c3.cargarConduces();
     }
 
     public void insertarConduce(String dni_camionero, String matricula_camion) throws SQLException {
-        /**
-         * * COMPLETAR CÓDIGO **
-         */
-        cargarPaquetes();
+        conduce c3= new conduce(dni_camionero,matricula_camion);
+        ControladorConduce.getInstance().insertar(c3);
+        cargarConduces();
 
     }
 
-    public void eliminar(String titulo) throws SQLException {
-        /**
-         * * COMPLETAR CÓDIGO **
-         */
-        cargarPaquetes();
+    public void eliminar(String dni_camionero) throws SQLException {
+        ControladorConduce.getInstance().eliminar(dni_camionero);
+        cargarConduces();
     }
 
-    public int actualizar(String tituloOriginal, String titulo, int año, int puntuacion, String sinopsis)
-            throws SQLException {
-        int nfilas = 0;
-        /**
-         * * COMPLETAR CÓDIGO **
-         */
-        cargarPaquetes();
-        return nfilas;
+    public void actualizar(String dni_camionero, String matricula_camion) throws SQLException{
+        ControladorConduce.getInstance().actualizar(dni_camionero, matricula_camion);
+        
+        cargarConduces();
+        
     }
 
     @Override
@@ -113,6 +107,10 @@ public class TableModelConduce extends AbstractTableModel {
 
         }
         return null;
+    }
+
+    private void cargarConduces() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
