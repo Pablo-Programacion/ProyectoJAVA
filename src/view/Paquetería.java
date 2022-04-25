@@ -194,7 +194,7 @@ public class Paquetería extends javax.swing.JFrame {
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         try {
             if (Conexion.getConnection() != null) {
-                Camión frameCamion = new Camión();
+                Camion frameCamion = new Camion();
                 frameCamion.show();
 
             } else {

@@ -6,25 +6,37 @@
 package view;
 
 import controller.ControladorCamion;
+import controller.ControladorProvincia;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 import modelo.TableModelCamion;
+
 
 /**
  *
  * @author HP
  */
-public class Camión extends javax.swing.JFrame {
+public class Camion extends javax.swing.JFrame {
 
     TableModelCamion t6 = ControladorCamion.getT6();
+    static int potencia;
+    static String matricula;
+    static String modelo;
+    static String tipo;
 
     /**
      * Creates new form Camión
      */
-    public Camión() {
+    public Camion() {
         try {
             initComponents();
+            popupMetodo();
             jTable4.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 12));
             jTable4.getTableHeader().setOpaque(false);
             jTable4.getTableHeader().setBackground(new Color(32, 136, 203));
@@ -171,7 +183,7 @@ public class Camión extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 0, 20, 20));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 170));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 160));
 
         pack();
         setLocationRelativeTo(null);
@@ -212,22 +224,86 @@ public class Camión extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Camión.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Camion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Camión.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Camion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Camión.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Camion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Camión.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Camion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        // </editor-fold>
         // </editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Camión().setVisible(true);
+                new Camion().setVisible(true);
             }
         });
+    }
+
+    public void popupMetodo() {
+        JPopupMenu popupMenu = new JPopupMenu();
+        JMenuItem menuItem1 = new JMenuItem("Editar");
+        JMenuItem menuItem2 = new JMenuItem("Eliminar");
+        // EDITAR: Al hacer click se cogera esa fila selecionada y con los getters
+        // extraigo los datos
+        menuItem1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int index = jTable4.getSelectedRow();
+                    matricula = jTable4.getValueAt(index, 0).toString();
+                    potencia = Integer.parseInt(jTable4.getValueAt(index, 1).toString());
+                    modelo = jTable4.getValueAt(index, 2).toString();
+                    tipo = jTable4.getValueAt(index, 3).toString();
+                    // Hacer visible el JFrame de editar
+                    new CamionEditar().setVisible(true);
+                } catch (Exception t) {
+                    JOptionPane.showMessageDialog(null, t);
+                }
+
+            }
+        });
+        // ELIMINAR: Lo mismo que editar solo que aqui no hay jFrame le paso el metodo
+        // de eliminar y recargar la tabla
+        menuItem2.addActionListener(
+                new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+
+                    int index = jTable4.getSelectedRow();
+                    int codigo = Integer.parseInt(jTable4.getValueAt(index, 0).toString());
+                    String nombre = jTable4.getValueAt(index, 1).toString();
+                    ControladorProvincia.eliminarProvincia(codigo, nombre);
+                } catch (SQLException r) {
+                    JOptionPane.showMessageDialog(null, r);
+                }
+            }
+        });
+        // Añadir los addActionListener al menu creado
+        popupMenu.add(menuItem1);
+        popupMenu.add(menuItem2);
+        // Los añadimos a la tabla
+        jTable4.setComponentPopupMenu(popupMenu);
+    }
+
+    public static int getPotencia() {
+        return potencia;
+    }
+
+    public static String getMatricula() {
+        return matricula;
+    }
+
+    public static String getModelo() {
+        return modelo;
+    }
+
+    public static String getTipo() {
+        return tipo;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
