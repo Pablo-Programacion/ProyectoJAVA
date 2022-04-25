@@ -37,9 +37,9 @@ public class TableModelConduce extends AbstractTableModel {
         return list.get(rowIndex);
     }
 
-    public void cargarPaquetes() {
+    public void cargarConduces() {
         // Obtiene la lista de provincias de la BD
-        ArrayList<conduce> conduces = ControladorConduce.getInstance().obtenerConduces();
+        ArrayList<conduce> conduces = getCoduces();
         System.out.println(conduces.size());
 
         // Borra el contenido anterior y añade el nuevo.
@@ -50,7 +50,7 @@ public class TableModelConduce extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-    public static void obtenerPaquetes() throws SQLException {
+    public static void obtenerConduces() throws SQLException {
         conduces = new ArrayList<conduce>();
         Statement stmt = (Statement) connection.createStatement();
         ResultSet resultado = stmt.executeQuery("SELECT * FROM conduce");
@@ -63,22 +63,31 @@ public class TableModelConduce extends AbstractTableModel {
         c3.cargarConduces();
     }
 
-    public void insertarConduce(String dni_camionero, String matricula_camion) throws SQLException {
-        conduce c3= new conduce(dni_camionero,matricula_camion);
-        ControladorConduce.getInstance().insertar(c3);
-        cargarConduces();
-
-    }
-
-    public void eliminar(String dni_camionero) throws SQLException {
-        ControladorConduce.getInstance().eliminar(dni_camionero);
-        cargarConduces();
-    }
-
-    public void actualizar(String dni_camionero, String matricula_camion) throws SQLException{
-        ControladorConduce.getInstance().actualizar(dni_camionero, matricula_camion);
+    public static int insertarConduce(String dni_camionero, String matricula_camion) throws SQLException {
+        String insert = "INSERT INTO conduce(dni_camionero, matricula_camion) values (%s,'%s')".formatted(dni_camionero, matricula_camion);
+        Statement stmt = connection.createStatement();
+        int filas =  stmt.executeUpdate(insert);
+        obtenerConduces();
+        return filas;
         
-        cargarConduces();
+    }
+
+    public static int eliminarConduce(String dni_camionero, String matricula_camion) throws SQLException {
+        String delete = "DELETE FROM conduce WHERE dni_camionero = %s and matricula_camion = '%s'".formatted(dni_camionero, matricula_camion);
+        Statement stmt = connection.createStatement();
+        int filas = stmt.executeUpdate(delete);
+        obtenerConduces();
+        c3.cargarConduces();
+        return filas;
+    }
+
+    public static int actualizar(String dni_camionero, String matricula_camion) throws SQLException{
+        int filas = 0;
+        String update = "UPDATE conduce SET dni_camionero=%s,matricula_camion='%s' where dni_camionero = %s and matricula_camion = '%s'".formatted(dni_camionero,matricula_camion);
+        Statement stmt = connection.createStatement();
+        filas = stmt.executeUpdate(update);
+        obtenerConduces();
+        return filas;
         
     }
 
@@ -109,8 +118,5 @@ public class TableModelConduce extends AbstractTableModel {
         return null;
     }
 
-    private void cargarConduces() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+
 }
