@@ -15,32 +15,22 @@ import static modelo.TableModelPaquete.getPaquetes;
  * @author admin
  */
 public class TableModelConduce extends AbstractTableModel {
+
     private static conduce conduce;
-    static ArrayList<conduce> conduces;
+    static ArrayList<conduce> conductores;
     static Connection connection = Conexion.getConnection();
-    private static Conexion conn;
     //
-    private static TableModelConduce c3 = new TableModelConduce(connection);
-    private static final String[] columnNames = { "Dni Camionero", "Matricula Camion"};
+    private static TableModelConduce t5 = new TableModelConduce(connection);
+    private static final String[] columnNames = {"Dni Camionero", "Matricula Camion"};
     private final LinkedList<conduce> list;
 
-    private TableModelConduce(Connection conn) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public TableModelConduce(Conexion conexion) {
+    public TableModelConduce(Connection conexion) {
         list = new LinkedList<>();
-        
-    }
-
-    public conduce getValueAt(int rowIndex) {
-        return list.get(rowIndex);
     }
 
     public void cargarConduces() {
         // Obtiene la lista de provincias de la BD
-        ArrayList<conduce> conduces = getCoduces();
-        System.out.println(conduces.size());
+        ArrayList<conduce> conduces = getConductores();
 
         // Borra el contenido anterior y añade el nuevo.
         list.clear();
@@ -50,45 +40,45 @@ public class TableModelConduce extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-    public static void obtenerConduces() throws SQLException {
-        conduces = new ArrayList<conduce>();
+    public static void obtenerConductores() throws SQLException {
+        conductores = new ArrayList<conduce>();
         Statement stmt = (Statement) connection.createStatement();
         ResultSet resultado = stmt.executeQuery("SELECT * FROM conduce");
         while (resultado.next()) {
-            String dni_camionero = resultado.getString("DNI Camionero");
-            String matricula_camion = resultado.getString("Matricula del Camion");
+            String dni_camionero = resultado.getString("dni_camionero");
+            String matricula_camion = resultado.getString("matricula_camion");
             conduce = new conduce(dni_camionero, matricula_camion);
-            conduces.add(conduce);
+            conductores.add(conduce);
         }
-        c3.cargarConduces();
+        t5.cargarConduces();
     }
 
     public static int insertarConduce(String dni_camionero, String matricula_camion) throws SQLException {
-        String insert = "INSERT INTO conduce(dni_camionero, matricula_camion) values (%s,'%s')".formatted(dni_camionero, matricula_camion);
+        String insert = "INSERT INTO conduce(dni_camionero, matricula_camion) values ('%s','%s')".formatted(dni_camionero, matricula_camion);
         Statement stmt = connection.createStatement();
-        int filas =  stmt.executeUpdate(insert);
-        obtenerConduces();
+        int filas = stmt.executeUpdate(insert);
+        obtenerConductores();
         return filas;
-        
+
     }
 
     public static int eliminarConduce(String dni_camionero, String matricula_camion) throws SQLException {
         String delete = "DELETE FROM conduce WHERE dni_camionero = %s and matricula_camion = '%s'".formatted(dni_camionero, matricula_camion);
         Statement stmt = connection.createStatement();
         int filas = stmt.executeUpdate(delete);
-        obtenerConduces();
-        c3.cargarConduces();
+        obtenerConductores();
+        t5.cargarConduces();
         return filas;
     }
 
-    public static int actualizar(String dni_camionero, String matricula_camion) throws SQLException{
+    public static int actualizar(String dni_camionero, String matricula_camion) throws SQLException {
         int filas = 0;
-        String update = "UPDATE conduce SET dni_camionero=%s,matricula_camion='%s' where dni_camionero = %s and matricula_camion = '%s'".formatted(dni_camionero,matricula_camion);
+        String update = "UPDATE conduce SET dni_camionero=%s,matricula_camion='%s' where dni_camionero = %s and matricula_camion = '%s'".formatted(dni_camionero, matricula_camion);
         Statement stmt = connection.createStatement();
         filas = stmt.executeUpdate(update);
-        obtenerConduces();
+        obtenerConductores();
         return filas;
-        
+
     }
 
     @Override
@@ -106,6 +96,10 @@ public class TableModelConduce extends AbstractTableModel {
         return list.size();
     }
 
+    public conduce getValueAt(int rowIndex) {
+        return list.get(rowIndex);
+    }
+
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
@@ -118,5 +112,12 @@ public class TableModelConduce extends AbstractTableModel {
         return null;
     }
 
+    public static ArrayList<conduce> getConductores() {
+        return conductores;
+    }
+
+    public static TableModelConduce getT5() {
+        return t5;
+    }
 
 }

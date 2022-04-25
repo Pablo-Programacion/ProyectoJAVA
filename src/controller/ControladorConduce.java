@@ -2,26 +2,19 @@ package controller;
 
 import java.sql.SQLException;
 
-import modelo.TableModelCamion;
 import modelo.TableModelConduce;
-import modelo.TableModelProvincias;
 
-public class ControladorCamion {
+public class ControladorConduce {
 
-    public static int insertarCamion(String matricula, int potencia, String Modelo, String tipo) throws SQLException {
-        return TableModelCamion.insertarCamion(matricula, potencia, Modelo, tipo);
+    public static int insertarConductores(String dni_camionero,String matricula) throws SQLException {
+        return TableModelConduce.insertarConduce(dni_camionero, matricula);
     }
 
-    public static void obtenerCamion() throws SQLException {
-        TableModelCamion.obtenerCamiones();
+    public static void obtenerConductores() throws SQLException {
+        TableModelConduce.obtenerConductores();
     }
 
     public static void eliminarCamionero(String dni, String poblacion, String nombre, int telefono, String direccion, int salario) throws SQLException {
-
-    }
-
-    public static TableModelCamion getT6() {
-        return TableModelCamion.getT6();
 
     }
 
@@ -31,5 +24,9 @@ public class ControladorCamion {
             throws SQLException {
         return 1;
     }
-      
+
+    public static TableModelConduce getT5() {
+        return TableModelConduce.getT5();
+
+    }
 }

@@ -125,6 +125,11 @@ public class Paquetería extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Conduce");
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 0, -1, 70));
 
         jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -187,7 +192,6 @@ public class Paquetería extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        
         try {
             if (Conexion.getConnection() != null) {
                 Camión frameCamion = new Camión();
@@ -200,6 +204,20 @@ public class Paquetería extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        try {
+            if (Conexion.getConnection() != null) {
+                Conduce frameConduce = new Conduce();
+                frameConduce.show();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Necesitas conectarte a la base de datos");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel11MouseClicked
         System.exit(0);

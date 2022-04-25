@@ -6,6 +6,8 @@
 package view;
 
 import controller.ControladorCamion;
+import java.awt.Color;
+import java.awt.Font;
 import javax.swing.JOptionPane;
 import modelo.TableModelCamion;
 
@@ -23,8 +25,14 @@ public class Camión extends javax.swing.JFrame {
     public Camión() {
         try {
             initComponents();
+            jTable4.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 12));
+            jTable4.getTableHeader().setOpaque(false);
+            jTable4.getTableHeader().setBackground(new Color(32, 136, 203));
+            jTable4.getTableHeader().setForeground(new Color(0, 0, 0));
+            jTable4.setRowHeight(25);
             ControladorCamion.obtenerCamion();
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
         }
     }
 

@@ -47,18 +47,18 @@ public class TableModelCamion extends AbstractTableModel {
         Statement stmt = (Statement) connection.createStatement();
         ResultSet resultado = stmt.executeQuery("SELECT * FROM camion");
         while (resultado.next()) {
-            String Matriucula = resultado.getString("Matricula");
-            String Potencia = resultado.getString("Potencia");
-            int Modelo = resultado.getInt("Modelo");
-            String Tipo = resultado.getString("Tipo");
-            camion = new camion(Matriucula, Potencia, Modelo, Tipo);
+            String matricula = resultado.getString("matricula");
+            int potencia = resultado.getInt("potencia");
+            String modelo = resultado.getString("modelo");
+            String tipo = resultado.getString("tipo");
+            camion = new camion(matricula, potencia, modelo, tipo);
             camiones.add(camion);
         }
         t6.cargarCamion();
     }
 
     public static int insertarCamion(String matricula, int potencia, String modelo, String tipo) throws SQLException {
-         String insert = "INSERT INTO camion (matricula,potencia,modelo,tipo) values ('%s',%s,'%s',%s)".formatted(matricula,potencia,modelo,tipo);
+         String insert = "INSERT INTO camion (matricula,potencia,modelo,tipo) values ('%s',%s,'%s','%s')".formatted(matricula,potencia,modelo,tipo);
         Statement stmt = connection.createStatement();
         int filas = stmt.executeUpdate(insert);
         obtenerCamiones();
