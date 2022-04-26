@@ -88,7 +88,7 @@ public class TableModelPaquete extends AbstractTableModel {
     }
 
     public static int actualizarPaquete(int nCodigo, String nDescripcion, String nDestinatario, String nDireccion, String nFecha, String nDni_Camionero, int nCod_Provincia,int nCodigo2, String nDescripcion2, String nDestinatario2, String nDireccion2, String nFecha2, String nDni_Camionero2, int nCod_Provincia2)throws SQLException {
-        String update = "UPDATE paquete SET codigo =" + nCodigo + " and descripcion = '"+ nDescripcion +"' and destinatario = '"+ nDestinatario +"' and direccion = '"+ nDireccion +"' and fecha = '"+nFecha+"' and dni_camionero = '"+nDni_Camionero+"' and cod_provincia = "+nCod_Provincia+"  where codigo =" + nCodigo2 + " and descripcion = '"+ nDescripcion2 +"' and destinatario = '"+ nDestinatario2 +"' and direccion = '"+ nDireccion2 +"' and fecha = '"+nFecha2+"' and dni_camionero = '"+nDni_Camionero2+"' and cod_provincia = "+nCod_Provincia2+"";
+        String update = "UPDATE paquete SET codigo =" + nCodigo + " and descripcion = '"+ nDescripcion +"' and destinatario = '"+ nDestinatario +"' and direccion = '"+ nDireccion +"' and fecha = '"+nFecha+"' and dni_camionero = '"+nDni_Camionero+"' and cod_provincia = "+nCod_Provincia+"  where codigo =" + nCodigo2;
         System.out.println(update);
         Statement stmt = connection.createStatement();
         int filas = stmt.executeUpdate(update);
