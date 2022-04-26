@@ -28,13 +28,14 @@ public class Paquete extends javax.swing.JFrame {
          * Creates new form Paquete
          */
         public Paquete() {
-                initComponents();
-                try{
+            initComponents();
+            this.popupMetodo();
+            try{
                 ControladorPaquete.obtenerPaquete();
-                } catch (Exception e){
-                    System.out.println(e.getMessage());
-                }
-                    
+            } catch (Exception e){
+                System.out.println(e.getMessage());
+            }  
+            
         }
 
         /**
@@ -97,7 +98,8 @@ public class Paquete extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("Código: ");
 
@@ -140,74 +142,86 @@ public class Paquete extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1058, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel1)))
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(dni_camionero)
-                    .addComponent(codigo, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(descripcion, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fecha, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cod_provincia, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(destinatario)
-                    .addComponent(direccion, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(limpiar))
-                .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(842, 842, 842)
+                        .addComponent(jButton1)
+                        .addGap(46, 46, 46)
+                        .addComponent(limpiar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(343, 343, 343))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel1))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel5))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jLabel4)))
+                                .addGap(3, 3, 3)))
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(destinatario, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(cod_provincia, javax.swing.GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE)
+                            .addComponent(fecha))
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dni_camionero, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(limpiar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(destinatario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(14, 14, 14)
-                        .addComponent(jLabel5))
-                    .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(jLabel2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4)
+                            .addComponent(destinatario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
-                            .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(dni_camionero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5)
+                            .addComponent(direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7)
                             .addComponent(cod_provincia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel8))
-                    .addComponent(dni_camionero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(limpiar))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3)
+                .addContainerGap())
         );
 
         pack();
@@ -223,6 +237,7 @@ public class Paquete extends javax.swing.JFrame {
             String dcamionero = dni_camionero.getText();
             int cprovincia = Integer.parseInt(cod_provincia.getText());
             ControladorPaquete.insertarPaquete(cod, desc, dest, dir, date,  dcamionero, cprovincia);
+            JOptionPane.showMessageDialog(null, "Paquete almacenado");
         } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
         }
@@ -260,8 +275,10 @@ public class Paquete extends javax.swing.JFrame {
                                     String fecha = tabla.getValueAt(index, 4).toString();
                                     String dni_camionero = tabla.getValueAt(index, 5).toString();
                                     int cod_provincia = Integer.parseInt(tabla.getValueAt(index, 6).toString());
-                                        // Hacer visible el JFrame de editar
-                                        new CamioneroEditar().setVisible(true);
+                                    
+                                    // Hacer visible el JFrame de editar
+                                    PaqueteEditar PE = new PaqueteEditar(codigo, descripcion, destinatario, direccion, fecha, dni_camionero, cod_provincia);
+                                    PE.setVisible(true);
                                 } catch (Exception t) {
                                         JOptionPane.showMessageDialog(null, t);
                                 }
@@ -274,19 +291,18 @@ public class Paquete extends javax.swing.JFrame {
                                         @Override
                                         public void actionPerformed(ActionEvent e) {
                                                 try {
-                                                        int index = jTable2.getSelectedRow();
-                                                        String dni = jTable2.getValueAt(index, 0).toString();
-                                                        String poblacion = jTable2.getValueAt(index, 1).toString();
-                                                        String nombre = jTable2.getValueAt(index, 2).toString();
-                                                        int telefono = Integer.parseInt(
-                                                                        jTable2.getValueAt(index, 3).toString());
-                                                        String direccion = jTable2.getValueAt(index, 4).toString();
-                                                        int salario = Integer.parseInt(
-                                                                        jTable2.getValueAt(index, 5).toString());
-                                                        ControladorCamionero.eliminarCamionero(dni, poblacion, nombre,
-                                                                        telefono, direccion,
-                                                                        salario);
-                                                } catch (Exception y) {
+                                                    int index = tabla.getSelectedRow();
+                                                    int codigo = Integer.parseInt(tabla.getValueAt(index, 0).toString());
+                                                    String descripcion = tabla.getValueAt(index, 1).toString();
+                                                    String destinatario = tabla.getValueAt(index, 2).toString();
+                                                    String direccion = tabla.getValueAt(index, 3).toString();
+                                                    String fecha = tabla.getValueAt(index, 4).toString();
+                                                    String dni_camionero = tabla.getValueAt(index, 5).toString();
+                                                    int cod_provincia = Integer.parseInt(tabla.getValueAt(index, 5).toString());
+                                                    
+                                                    ControladorPaquete.eliminarPaquete(codigo);
+                                                    //JOptionPane.showMessageDialog(null, "Paquete eliminado");
+                                                }catch (Exception y) {
                                                         JOptionPane.showMessageDialog(null, y);
                                                 }
                                         }
@@ -295,7 +311,7 @@ public class Paquete extends javax.swing.JFrame {
                 popupMenu.add(menuItem1);
                 popupMenu.add(menuItem2);
                 // Los añadimos a la tabla
-                jTable2.setComponentPopupMenu(popupMenu);
+                tabla.setComponentPopupMenu(popupMenu);
         }
         /**
          * @param args the command line arguments

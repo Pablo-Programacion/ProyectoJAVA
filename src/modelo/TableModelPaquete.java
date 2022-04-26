@@ -9,6 +9,8 @@ import java.util.LinkedList;
 import javax.swing.table.AbstractTableModel;
 
 import controller.Conexion;
+import javax.swing.JOptionPane;
+
 
 
 /**
@@ -16,8 +18,8 @@ import controller.Conexion;
  * @author MEDAC
  */
 public class TableModelPaquete extends AbstractTableModel {
+     static ArrayList<paquete> paquetes;
     private static paquete paquete;
-    static ArrayList<paquete> paquetes;
     static Connection connection = Conexion.getConnection();
     private static Conexion conn;
     //
@@ -69,26 +71,30 @@ public class TableModelPaquete extends AbstractTableModel {
         String insert = "INSERT INTO paquete (codigo, descripcion, destinatario, direccion, fecha, dni_camionero, cod_provincia) values (%s,'%s', '%s','%s','%s','%s',%s)".formatted(nCodigo, nDescripcion,  nDestinatario, nDireccion,nFecha, nDni_Camionero, nCod_Provincia);
         Statement stmt = connection.createStatement();
         int filas = stmt.executeUpdate(insert);
-        t3.obtenerPaquetes();
+        obtenerPaquetes();
         t3.cargarPaquetes();
         return filas;
     }
 
-    public void eliminar(String titulo) throws SQLException {
-        /**
-         * * COMPLETAR CÓDIGO **
-         */
-        cargarPaquetes();
+    public static int eliminarPaquete(int nCodigo) throws SQLException {
+        JOptionPane.showMessageDialog(null, "Llega Table Model");
+        String delete = "DELETE FROM paquete where codigo = "+ nCodigo ;
+        System.out.println(delete);
+        Statement stmt = connection.createStatement();
+        int filas = stmt.executeUpdate(delete);
+        obtenerPaquetes();
+        t3.cargarPaquetes();
+        return filas;
     }
 
-    public int actualizar(String tituloOriginal, String titulo, int año, int puntuacion, String sinopsis)
-            throws SQLException {
-        int nfilas = 0;
-        /**
-         * * COMPLETAR CÓDIGO **
-         */
-        cargarPaquetes();
-        return nfilas;
+    public static int actualizarPaquete(int nCodigo, String nDescripcion, String nDestinatario, String nDireccion, String nFecha, String nDni_Camionero, int nCod_Provincia,int nCodigo2, String nDescripcion2, String nDestinatario2, String nDireccion2, String nFecha2, String nDni_Camionero2, int nCod_Provincia2)throws SQLException {
+        String update = "UPDATE paquete SET codigo =" + nCodigo + " and descripcion = '"+ nDescripcion +"' and destinatario = '"+ nDestinatario +"' and direccion = '"+ nDireccion +"' and fecha = '"+nFecha+"' and dni_camionero = '"+nDni_Camionero+"' and cod_provincia = "+nCod_Provincia+"  where codigo =" + nCodigo2 + " and descripcion = '"+ nDescripcion2 +"' and destinatario = '"+ nDestinatario2 +"' and direccion = '"+ nDireccion2 +"' and fecha = '"+nFecha2+"' and dni_camionero = '"+nDni_Camionero2+"' and cod_provincia = "+nCod_Provincia2+"";
+        System.out.println(update);
+        Statement stmt = connection.createStatement();
+        int filas = stmt.executeUpdate(update);
+        obtenerPaquetes();
+        t3.cargarPaquetes();
+        return filas;
     }
 
     @Override

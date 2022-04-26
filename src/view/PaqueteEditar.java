@@ -4,6 +4,8 @@
  */
 package view;
 
+import controller.ControladorPaquete;
+import javax.swing.JOptionPane;
 import view.Paquete;
 /**
  *
@@ -20,12 +22,26 @@ public class PaqueteEditar extends javax.swing.JFrame {
     private String dni_camionero; 
     private int cod_provincia;
     
-    Paquete p;
-    public PaqueteEditar() {
+    public PaqueteEditar(int nCodigo, String nDescripcion, String nDestinatario, String nDireccion, String nFecha, String nDni_Camionero, int nCod_Provincia) {
         initComponents();
-        p = new Paquete();
+        this.codigo = nCodigo;
+        this.descripcion = nDescripcion;
+        this.destinatario = nDestinatario;
+        this.direccion = nDireccion;
+        this.fecha = nFecha;
+        this.dni_camionero = nDni_Camionero;
+        this.cod_provincia = nCod_Provincia;
         
+        this.codigo2.setText(this.codigo+"");
+        this.destinatario22.setText(this.destinatario);
+        this.descripcion2.setText(this.descripcion);
+        this.direccion2.setText(this.direccion);
+        this.fecha2.setText(this.fecha);
+        this.dni_camionero2.setText(this.dni_camionero);
+        this.cod_provincia2.setText(this.cod_provincia+"");
     }
+
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,22 +53,93 @@ public class PaqueteEditar extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        codigo2 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        descripcion2 = new javax.swing.JTextField();
+        destinatario2 = new javax.swing.JLabel();
+        natario = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        destinatario22 = new javax.swing.JTextField();
+        direccion2 = new javax.swing.JTextField();
+        fecha2 = new javax.swing.JTextField();
+        cod_provincia2 = new javax.swing.JTextField();
+        dni_camionero2 = new javax.swing.JTextField();
+        actualizar2 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Codigo:");
+
+        jLabel2.setText("Descripcion:");
+
+        natario.setText("Destinatario:");
+        natario.setToolTipText("");
+
+        jLabel5.setText("Dirección:");
+
+        jLabel6.setText("Fecha:");
+
+        jLabel7.setText("Cod_Provincia:");
+
+        jLabel8.setText("Dni_Camionero:");
+
+        actualizar2.setText("Actualizar");
+        actualizar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizar2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jLabel1)
+                .addGap(74, 74, 74)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(codigo2, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
+                            .addComponent(descripcion2))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addComponent(destinatario2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addComponent(natario)))))
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(destinatario22, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(direccion2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(fecha2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(dni_camionero2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(cod_provincia2, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(15, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(actualizar2)
+                .addGap(92, 92, 92))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -60,12 +147,45 @@ public class PaqueteEditar extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(259, Short.MAX_VALUE))
+                    .addComponent(codigo2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(destinatario2)
+                    .addComponent(natario)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel8)
+                    .addComponent(destinatario22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fecha2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dni_camionero2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(descripcion2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel7)
+                    .addComponent(direccion2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cod_provincia2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(actualizar2)
+                .addGap(16, 16, 16))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void actualizar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizar2ActionPerformed
+         try {
+            JOptionPane.showMessageDialog(null, "Hola");
+            int cod = Integer.parseInt(codigo2.getText());
+            String desc = descripcion2.getText();
+            String dest = destinatario2.getText();
+            String dir = direccion2.getText();
+            String date = fecha2.getText();
+            String dcamionero = dni_camionero2.getText();
+            int cprovincia = Integer.parseInt(cod_provincia2.getText());
+            ControladorPaquete.actualizarPaquete(codigo, destinatario, descripcion, direccion, fecha, dni_camionero, cod_provincia, cod, desc, dest, dir, date,  dcamionero, cprovincia);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_actualizar2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,13 +217,27 @@ public class PaqueteEditar extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PaqueteEditar().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actualizar2;
+    private javax.swing.JTextField cod_provincia2;
+    private javax.swing.JTextField codigo2;
+    private javax.swing.JTextField descripcion2;
+    private javax.swing.JLabel destinatario2;
+    private javax.swing.JTextField destinatario22;
+    private javax.swing.JTextField direccion2;
+    private javax.swing.JTextField dni_camionero2;
+    private javax.swing.JTextField fecha2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel natario;
     // End of variables declaration//GEN-END:variables
 }
