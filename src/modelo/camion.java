@@ -11,7 +11,7 @@ public class camion {
     int potencia;
     String tipo;
 
-    public camion(String matricula, String modelo, int potencia, String tipo) {
+    public camion(String matricula, int potencia, String modelo, String tipo) {
         this.matricula = matricula;
         this.modelo = modelo;
         this.potencia = potencia;

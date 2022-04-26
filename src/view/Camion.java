@@ -6,25 +6,45 @@
 package view;
 
 import controller.ControladorCamion;
+import controller.ControladorProvincia;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 import modelo.TableModelCamion;
+
 
 /**
  *
  * @author HP
  */
-public class Camión extends javax.swing.JFrame {
+public class Camion extends javax.swing.JFrame {
 
     TableModelCamion t6 = ControladorCamion.getT6();
+    static int potencia;
+    static String matricula;
+    static String modelo;
+    static String tipo;
 
     /**
      * Creates new form Camión
      */
-    public Camión() {
+    public Camion() {
         try {
             initComponents();
+            popupMetodo();
+            jTable4.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 12));
+            jTable4.getTableHeader().setOpaque(false);
+            jTable4.getTableHeader().setBackground(new Color(32, 136, 203));
+            jTable4.getTableHeader().setForeground(new Color(0, 0, 0));
+            jTable4.setRowHeight(25);
             ControladorCamion.obtenerCamion();
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
         }
     }
 
@@ -105,6 +125,11 @@ public class Camión extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton2.setText("Limpiar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 100, 90, -1));
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -121,8 +146,8 @@ public class Camión extends javax.swing.JFrame {
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Potencia:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, -1, 20));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 230, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, -1, 20));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, 230, -1));
 
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Modelo:");
@@ -137,12 +162,12 @@ public class Camión extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Tipo:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, -1, -1));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, 230, -1));
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 230, -1));
         jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 230, -1));
 
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Matrícula:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, -1, 20));
 
         jButton1.setText("Añadir");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -163,7 +188,7 @@ public class Camión extends javax.swing.JFrame {
         });
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 0, 20, 20));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 170));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 160));
 
         pack();
         setLocationRelativeTo(null);
@@ -182,6 +207,13 @@ public class Camión extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        try {
+            ControladorCamion.limpiarCamion();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -204,22 +236,88 @@ public class Camión extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Camión.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Camion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Camión.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Camion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Camión.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Camion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Camión.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Camion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        // </editor-fold>
         // </editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Camión().setVisible(true);
+                new Camion().setVisible(true);
             }
         });
+    }
+
+    public void popupMetodo() {
+        JPopupMenu popupMenu = new JPopupMenu();
+        JMenuItem menuItem1 = new JMenuItem("Editar");
+        JMenuItem menuItem2 = new JMenuItem("Eliminar");
+        // EDITAR: Al hacer click se cogera esa fila selecionada y con los getters
+        // extraigo los datos
+        menuItem1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int index = jTable4.getSelectedRow();
+                    matricula = jTable4.getValueAt(index, 0).toString();
+                    potencia = Integer.parseInt(jTable4.getValueAt(index, 1).toString());
+                    modelo = jTable4.getValueAt(index, 2).toString();
+                    tipo = jTable4.getValueAt(index, 3).toString();
+                    // Hacer visible el JFrame de editar
+                    new CamionEditar().setVisible(true);
+                } catch (Exception t) {
+                    JOptionPane.showMessageDialog(null, t);
+                }
+
+            }
+        });
+        // ELIMINAR: Lo mismo que editar solo que aqui no hay jFrame le paso el metodo
+        // de eliminar y recargar la tabla
+        menuItem2.addActionListener(
+                new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+
+                    int index = jTable4.getSelectedRow();
+                    String matricula = jTable4.getValueAt(index, 0).toString();
+                    int potencia = Integer.parseInt(jTable4.getValueAt(index, 1).toString());
+                    String modelo = jTable4.getValueAt(index, 2).toString();
+                    String tipo = jTable4.getValueAt(index, 3).toString();
+                    ControladorCamion.eliminarCamion(matricula, potencia, modelo, tipo);
+                } catch (SQLException r) {
+                    JOptionPane.showMessageDialog(null, r);
+                }
+            }
+        });
+        // Añadir los addActionListener al menu creado
+        popupMenu.add(menuItem1);
+        popupMenu.add(menuItem2);
+        // Los añadimos a la tabla
+        jTable4.setComponentPopupMenu(popupMenu);
+    }
+
+    public static int getPotencia() {
+        return potencia;
+    }
+
+    public static String getMatricula() {
+        return matricula;
+    }
+
+    public static String getModelo() {
+        return modelo;
+    }
+
+    public static String getTipo() {
+        return tipo;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -11,6 +11,8 @@ import java.sql.Statement;
 import controller.Conexion;
 import static modelo.TableModelCamionero.camioneros;
 import static modelo.TableModelCamionero.connection;
+import static modelo.TableModelProvincias.connection;
+import static modelo.TableModelProvincias.obtenerProvincias;
 
 /**
  *
@@ -47,20 +49,46 @@ public class TableModelCamion extends AbstractTableModel {
         Statement stmt = (Statement) connection.createStatement();
         ResultSet resultado = stmt.executeQuery("SELECT * FROM camion");
         while (resultado.next()) {
-            String Matriucula = resultado.getString("Matricula");
-            String Potencia = resultado.getString("Potencia");
-            int Modelo = resultado.getInt("Modelo");
-            String Tipo = resultado.getString("Tipo");
-            camion = new camion(Matriucula, Potencia, Modelo, Tipo);
+            String matricula = resultado.getString("matricula");
+            int potencia = resultado.getInt("potencia");
+            String modelo = resultado.getString("modelo");
+            String tipo = resultado.getString("tipo");
+            camion = new camion(matricula, potencia, modelo, tipo);
             camiones.add(camion);
         }
         t6.cargarCamion();
     }
 
     public static int insertarCamion(String matricula, int potencia, String modelo, String tipo) throws SQLException {
-         String insert = "INSERT INTO camion (matricula,potencia,modelo,tipo) values ('%s',%s,'%s',%s)".formatted(matricula,potencia,modelo,tipo);
+        String insert = "INSERT INTO camion (matricula,potencia,modelo,tipo) values ('%s',%s,'%s','%s')".formatted(matricula, potencia, modelo, tipo);
         Statement stmt = connection.createStatement();
         int filas = stmt.executeUpdate(insert);
+        obtenerCamiones();
+        return filas;
+    }
+
+    public static int actualizar(String matricula, int potencia, String modelo, String tipo, String matricula2, int potencia2, String modelo2, String tipo2)
+            throws SQLException {
+        int filas = 0;
+        String update = "UPDATE provincia SET matricula='%s',potencia=%s,modelo='%s',tipo='%s' where matricula = '%s' and potencia = %s and modelo = '%s' and tipo = '%s'"
+                .formatted(matricula, potencia, modelo, tipo, matricula2, potencia2, modelo2, tipo2);
+        Statement stmt = connection.createStatement();
+        filas = stmt.executeUpdate(update);
+        obtenerCamiones();
+        return filas;
+    }
+
+    public static void limpiarCamion() throws SQLException {
+        String delete = "DELETE FROM camion WHERE 1 = 1";
+        Statement stmt = connection.createStatement();
+        int filas = stmt.executeUpdate(delete);
+        obtenerCamiones();
+    }
+
+    public static int eliminarCamion(String matricula, int potencia, String modelo, String tipo) throws SQLException {
+        String delete = "DELETE FROM camion where matricula = '%s' and potencia = %s and modelo = '%s' and tipo = '%s'".formatted(matricula, potencia, modelo, tipo);
+        Statement stmt = connection.createStatement();
+        int filas = stmt.executeUpdate(delete);
         obtenerCamiones();
         return filas;
     }

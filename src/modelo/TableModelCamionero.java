@@ -21,15 +21,11 @@ public class TableModelCamionero extends AbstractTableModel {
     static Connection connection = Conexion.getConnection();
     /// ATRIBUTOS DE LA TABLA
     private static TableModelCamionero t2 = new TableModelCamionero(connection);
-    private static final String[] columnNames = { "Dni", "Poblacion", "Nombre", "Telefono", "Direccion", "Salario" };
+    private static final String[] columnNames = {"Dni", "Poblacion", "Nombre", "Telefono", "Direccion", "Salario"};
     private final LinkedList<camionero> list;
 
     public TableModelCamionero(Connection conexion) {
         list = new LinkedList<>();
-    }
-
-    public camionero getValueAt(int rowIndex) {
-        return list.get(rowIndex);
     }
 
     public void cargarCamionero() throws SQLException {
@@ -42,6 +38,23 @@ public class TableModelCamionero extends AbstractTableModel {
 
         // Notifica a la vista que el contenido ha cambiado para que se refresque.
         fireTableDataChanged();
+    }
+
+    public static void obtenerCamioneros() throws SQLException {
+        camioneros = new ArrayList<camionero>();
+        Statement stmt = (Statement) connection.createStatement();
+        ResultSet resultado = stmt.executeQuery("SELECT * FROM camionero");
+        while (resultado.next()) {
+            String dni = resultado.getString("dni");
+            String poblacion = resultado.getString("poblacion");
+            String nombre = resultado.getString("nombre");
+            int telefono = resultado.getInt("telefono");
+            String direccion = resultado.getString("direccion");
+            int salario = resultado.getInt("salario");
+            camionero = new camionero(dni, poblacion, nombre, telefono, direccion, salario);
+            camioneros.add(camionero);
+        }
+        t2.cargarCamionero();
     }
 
     public static int insertarCamionero(String dni, String poblacion, String nombre, int telefono, String direccion,
@@ -80,23 +93,6 @@ public class TableModelCamionero extends AbstractTableModel {
         return filas;
     }
 
-    public static void obtenerCamioneros() throws SQLException {
-        camioneros = new ArrayList<camionero>();
-        Statement stmt = (Statement) connection.createStatement();
-        ResultSet resultado = stmt.executeQuery("SELECT * FROM camion");
-        while (resultado.next()) {
-            String dni = resultado.getString("Matricula");
-            String poblacion = resultado.getString("Potencia");
-            String nombre = resultado.getString("Modelo");
-            int telefono = resultado.getInt("Tipo");
-            String direccion = resultado.getString("Direccion");
-            int salario = resultado.getInt("Salario");
-            camionero = new camionero(dni, poblacion, nombre, telefono, direccion, salario);
-            camioneros.add(camionero);
-        }
-        t2.cargarCamionero();
-    }
-
     @Override
     public int getColumnCount() {
         return columnNames.length;
@@ -124,8 +120,19 @@ public class TableModelCamionero extends AbstractTableModel {
         return t2;
     }
 
+    public camionero getValueAt(int rowIndex) {
+        return list.get(rowIndex);
+    }
+
     public static void setT2(TableModelCamionero t2) {
         TableModelCamionero.t2 = t2;
+    }
+
+    public static void limpiarCamionero() throws SQLException {
+        String delete = "DELETE FROM camionero WHERE 1 = 1";
+        Statement stmt = connection.createStatement();
+        int filas = stmt.executeUpdate(delete);
+        obtenerCamioneros();
     }
 
     @Override
