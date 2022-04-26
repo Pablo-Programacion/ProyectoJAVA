@@ -2,9 +2,7 @@ package controller;
 
 import java.sql.SQLException;
 
-
 import modelo.TableModelCamionero;
-
 
 public class ControladorCamionero {
 
@@ -31,4 +29,7 @@ public class ControladorCamionero {
         return TableModelCamionero.actualizar(dni, poblacion, nombre, telefono, direccion, salario, dni2, poblacion2, nombre2, telefono2, direccion2, salario2);
     }
 
+    public static void limpiarCamionero() throws SQLException {
+        TableModelCamionero.limpiarCamionero();
+    }
 }

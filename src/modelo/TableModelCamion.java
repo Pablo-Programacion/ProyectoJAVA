@@ -11,6 +11,8 @@ import java.sql.Statement;
 import controller.Conexion;
 import static modelo.TableModelCamionero.camioneros;
 import static modelo.TableModelCamionero.connection;
+import static modelo.TableModelProvincias.connection;
+import static modelo.TableModelProvincias.obtenerProvincias;
 
 /**
  *
@@ -72,6 +74,21 @@ public class TableModelCamion extends AbstractTableModel {
                 .formatted(matricula, potencia, modelo, tipo, matricula2, potencia2, modelo2, tipo2);
         Statement stmt = connection.createStatement();
         filas = stmt.executeUpdate(update);
+        obtenerCamiones();
+        return filas;
+    }
+
+    public static void limpiarCamion() throws SQLException {
+        String delete = "DELETE FROM camion WHERE 1 = 1";
+        Statement stmt = connection.createStatement();
+        int filas = stmt.executeUpdate(delete);
+        obtenerCamiones();
+    }
+
+    public static int eliminarCamion(String matricula, int potencia, String modelo, String tipo) throws SQLException {
+        String delete = "DELETE FROM camion where matricula = '%s' and potencia = %s and modelo = '%s' and tipo = '%s'".formatted(matricula, potencia, modelo, tipo);
+        Statement stmt = connection.createStatement();
+        int filas = stmt.executeUpdate(delete);
         obtenerCamiones();
         return filas;
     }

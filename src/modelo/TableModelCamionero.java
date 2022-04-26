@@ -128,6 +128,13 @@ public class TableModelCamionero extends AbstractTableModel {
         TableModelCamionero.t2 = t2;
     }
 
+    public static void limpiarCamionero() throws SQLException {
+        String delete = "DELETE FROM camionero WHERE 1 = 1";
+        Statement stmt = connection.createStatement();
+        int filas = stmt.executeUpdate(delete);
+        obtenerCamioneros();
+    }
+
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {

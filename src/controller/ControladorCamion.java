@@ -3,8 +3,6 @@ package controller;
 import java.sql.SQLException;
 
 import modelo.TableModelCamion;
-import modelo.TableModelConduce;
-import modelo.TableModelProvincias;
 
 public class ControladorCamion {
 
@@ -20,8 +18,12 @@ public class ControladorCamion {
         TableModelCamion.obtenerCamiones();
     }
 
-    public static void eliminarCamionero(String dni, String poblacion, String nombre, int telefono, String direccion, int salario) throws SQLException {
+    public static void limpiarCamion() throws SQLException {
+        TableModelCamion.limpiarCamion();
+    }
 
+    public static void eliminarCamion(String matricula, int potencia, String modelo, String tipo) throws SQLException {
+        TableModelCamion.eliminarCamion(matricula, potencia, modelo, tipo);
     }
 
     public static TableModelCamion getT6() {
