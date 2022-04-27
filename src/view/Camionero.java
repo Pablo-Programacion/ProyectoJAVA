@@ -312,6 +312,7 @@ public class Camionero extends javax.swing.JFrame {
         JPopupMenu popupMenu = new JPopupMenu();
         JMenuItem menuItem1 = new JMenuItem("Editar");
         JMenuItem menuItem2 = new JMenuItem("Eliminar");
+        JMenuItem menuItem3 = new JMenuItem("Ver Camiones a Conducir");
         // EDITAR: Al hacer click se cogera esa fila selecionada y con los getters
         // extraigo los datos
         menuItem1.addActionListener(new ActionListener() {
@@ -360,9 +361,25 @@ public class Camionero extends javax.swing.JFrame {
                 }
             }
         });
+        menuItem3.addActionListener(
+                new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int index = jTable2.getSelectedRow();
+                    String dni = jTable2.getValueAt(index, 0).toString();
+                    String nombre = jTable2.getValueAt(index, 2).toString();
+                    CamionCamionero AppVisor = new CamionCamionero(dni, nombre);
+                    AppVisor.setVisible(true);
+                } catch (Exception y) {
+                    JOptionPane.showMessageDialog(null, y);
+                }
+            }
+        });
         // Añadir los addActionListener al menu creado
         popupMenu.add(menuItem1);
         popupMenu.add(menuItem2);
+        popupMenu.add(menuItem3);
         // Los añadimos a la tabla
         jTable2.setComponentPopupMenu(popupMenu);
     }
