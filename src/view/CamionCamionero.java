@@ -46,6 +46,7 @@ public class CamionCamionero extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         jTable1.setModel(t7);
         jScrollPane1.setViewportView(jTable1);
@@ -62,6 +63,7 @@ public class CamionCamionero extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
