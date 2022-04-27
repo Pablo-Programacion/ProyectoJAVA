@@ -70,7 +70,7 @@ public class TableModelCamion extends AbstractTableModel {
     public static int actualizar(String matricula, int potencia, String modelo, String tipo, String matricula2, int potencia2, String modelo2, String tipo2)
             throws SQLException {
         int filas = 0;
-        String update = "UPDATE provincia SET matricula='%s',potencia=%s,modelo='%s',tipo='%s' where matricula = '%s' and potencia = %s and modelo = '%s' and tipo = '%s'"
+        String update = "UPDATE camion SET matricula='%s',potencia=%s,modelo='%s',tipo='%s' where matricula = '%s' and potencia = %s and modelo = '%s' and tipo = '%s'"
                 .formatted(matricula, potencia, modelo, tipo, matricula2, potencia2, modelo2, tipo2);
         Statement stmt = connection.createStatement();
         filas = stmt.executeUpdate(update);
