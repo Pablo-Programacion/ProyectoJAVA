@@ -8,6 +8,7 @@ package view;
 import controller.Conexion;
 
 import javax.swing.JOptionPane;
+import javax.swing.JProgressBar;
 
 /**
  *
@@ -15,11 +16,16 @@ import javax.swing.JOptionPane;
  */
 public class Paquetería extends javax.swing.JFrame {
 
+    int valor = 0;
+    pbThead t1;
+
     /**
      * Creates new form Paquetería
      */
     public Paquetería() {
         initComponents();
+        t1 = new pbThead(jProgressBar2);
+
     }
 
     /**
@@ -32,6 +38,7 @@ public class Paquetería extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jProgressBar2 = new javax.swing.JProgressBar();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -51,10 +58,15 @@ public class Paquetería extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jProgressBar2.setBackground(new java.awt.Color(0, 0, 0));
+        jProgressBar2.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
+        getContentPane().add(jProgressBar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 800, -1));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -185,7 +197,10 @@ public class Paquetería extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 330, 210, 30));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 440));
+        jLabel13.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 370, 20));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 430));
 
         pack();
         setLocationRelativeTo(null);
@@ -223,22 +238,87 @@ public class Paquetería extends javax.swing.JFrame {
         System.exit(0);
     }// GEN-LAST:event_jLabel11MouseClicked
 
+    class pbThead extends Thread {
+
+        JProgressBar pbar;
+
+        pbThead(JProgressBar pbar) {
+            pbar = jProgressBar2;
+        }
+
+        public void run() {
+            int min = 0;
+            int max = 110;
+            jProgressBar2.setMaximum(min);
+            jProgressBar2.setMaximum(max);
+            jProgressBar2.setValue(0);
+
+            for (int i = min; i < max; i++) {
+                jProgressBar2.setValue(i);
+                try {
+                    sleep(22);
+                    valor++;
+                    switch (valor) {
+                        case 1:
+                            jLabel13.setText("Comprobando datos");
+                            break;
+                        case 10:
+                            jLabel13.setText("Estableciendo conexión");
+                            break;
+                        case 20:
+                            jLabel13.setText("Instalando modulos");
+                            break;
+                        case 30:
+                            jLabel13.setText("Instalando dependencias");
+                            break;
+                        case 40:
+                            jLabel13.setText("Instalando librerias");
+                            break;
+                        case 70:
+                            Thread.sleep(200);
+                            jLabel13.setText("Ejecutando Base de Datos");
+                            break;
+                        case 80:
+                            Thread.sleep(300);
+                            jLabel13.setText("Iniciando Aplicacion");
+                            break;
+                        case 100:
+                            Thread.sleep(400);
+                            break;
+                    }
+
+                } catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e);
+                }
+            }
+            try {
+                jLabel13.setVisible(false);
+                jProgressBar2.setVisible(false);
+                Conexion.datosMySQL(jTextField1.getText(), jTextField2.getText(), jTextField3.getText(),
+                        jTextField4.getText());
+                Conexion.conectarMySQL();
+                JOptionPane.showMessageDialog(null, "Conectado");
+                jLabel7.setVisible(false);
+                jTextField1.setVisible(false);
+                jLabel8.setVisible(false);
+                jTextField2.setVisible(false);
+                jTextField3.setVisible(false);
+                jLabel9.setVisible(false);
+                jLabel10.setVisible(false);
+                jTextField4.setVisible(false);
+                jLabel12.setVisible(false);
+                jPanel3.setVisible(false);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }
+
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel12MouseClicked
+        jLabel13.setText("Comprobando datos");
         try {
-            Conexion.datosMySQL(jTextField1.getText(), jTextField2.getText(), jTextField3.getText(),
-                    jTextField4.getText());
-            Conexion.conectarMySQL();
-            JOptionPane.showMessageDialog(null, "Conectado");
-            jLabel7.setVisible(false);
-            jTextField1.setVisible(false);
-            jLabel8.setVisible(false);
-            jTextField2.setVisible(false);
-            jTextField3.setVisible(false);
-            jLabel9.setVisible(false);
-            jLabel10.setVisible(false);
-            jTextField4.setVisible(false);
-            jLabel12.setVisible(false);
-            jPanel3.setVisible(false);
+            t1.start();
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -335,6 +415,7 @@ public class Paquetería extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -346,6 +427,7 @@ public class Paquetería extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JProgressBar jProgressBar2;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
