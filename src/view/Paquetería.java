@@ -6,6 +6,9 @@
 package view;
 
 import controller.Conexion;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
@@ -24,6 +27,14 @@ public class Paquetería extends javax.swing.JFrame {
      */
     public Paquetería() {
         initComponents();
+        //Direccion de la imagen en tu carpeta del proyecto
+        ImageIcon imagen = new ImageIcon("src/img/download.png");
+        //Guardar la imagen de URL en tipo image. La imagen se adapta al tamaño del JLabel
+        //Image.SCALE_SMOOTH para que la imagen tenga una buena calidad al hacerla mas pequeña
+        Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(jLabel14.getWidth(),
+                jLabel14.getHeight(), Image.SCALE_SMOOTH));
+        //Colocar la imagen en el JLabel
+        jLabel14.setIcon(icono);
         t1 = new pbThead(jProgressBar2);
 
     }
@@ -59,6 +70,8 @@ public class Paquetería extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -199,6 +212,10 @@ public class Paquetería extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 370, 20));
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/download.png"))); // NOI18N
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 220, 190));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 160, 220, 190));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 430));
 
@@ -416,6 +433,8 @@ public class Paquetería extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
