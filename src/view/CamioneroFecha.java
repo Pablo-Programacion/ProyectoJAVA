@@ -6,6 +6,8 @@ package view;
 
 import controller.ControladorCamioneroFecha;
 import controller.ControladorPaquete;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JMenuItem;
@@ -19,10 +21,16 @@ import modelo.TableModelCamioneroFecha;
  * @author Borja Benegas
  */
 public class CamioneroFecha extends javax.swing.JFrame {
-    
+
     TableModelCamioneroFecha t8 = ControladorCamioneroFecha.getT8();
+
     public CamioneroFecha() {
         initComponents();
+        jTable1.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 12));
+        jTable1.getTableHeader().setOpaque(false);
+        jTable1.getTableHeader().setBackground(new Color(32, 136, 203));
+        jTable1.getTableHeader().setForeground(new Color(0, 0, 0));
+        jTable1.setRowHeight(25);
         popupMetodo();
     }
 
@@ -35,22 +43,43 @@ public class CamioneroFecha extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        dnicamionero = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        fechaenvio = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        dnicamionero = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        fechaenvio = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(t8);
         jScrollPane1.setViewportView(jTable1);
 
-        jLabel1.setText("Dni Camionero:");
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 920, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
-        jLabel2.setText("Fecha de Envio:");
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 920, 220));
+
+        jPanel1.setBackground(new java.awt.Color(102, 153, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -58,82 +87,95 @@ public class CamioneroFecha extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 110, -1));
+        jPanel1.add(dnicamionero, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 110, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(210, 210, 210)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(dnicamionero, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(34, 34, 34)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(fechaenvio, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(292, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(101, 101, 101))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(dnicamionero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(fechaenvio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Dni Camionero:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, -1, 30));
+        jPanel1.add(fechaenvio, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, 150, -1));
+
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Fecha de Envio:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 34, -1, 40));
+
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Camioneros");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, -2, -1, 110));
+
+        jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 60, 110, -1));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("X");
+        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 0, 30, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 120));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String dni = this.dnicamionero.getText();
         String fecha = this.fechaenvio.getText();
-        try{
-                if (dni.length() == 0){
-                    ControladorCamioneroFecha.obtenerPaqueteFecha(fecha);
-                } 
-                else if (fecha.length() == 0){
-                    ControladorCamioneroFecha.obtenerPaqueteDni(dni);
-                } else{
-                    ControladorCamioneroFecha.obtenerPaquete(dni,fecha);
-                }
-            } catch (Exception e){
-                System.out.println(e.getMessage());
-            }  
-    }//GEN-LAST:event_jButton1ActionPerformed
-    public void popupMetodo() {
-                JPopupMenu popupMenu = new JPopupMenu();
-                JMenuItem menuItem1 = new JMenuItem("Ver Provincia");
-               
-                menuItem1.addActionListener(new ActionListener() {
-                        @Override
-                        public void actionPerformed(ActionEvent e) {
-                                try {
-                                    int index = jTable1.getSelectedRow();
-                                    int cod_provincia = Integer.parseInt(jTable1.getValueAt(index, 6).toString());
-                                    ModeloProvincia.obtenerProvincias(cod_provincia);
-                                } catch (Exception t) {
-                                        JOptionPane.showMessageDialog(null, t);
-                                }
-                        }
-                });
-                // Añadir los addActionListener al menu creado
-                popupMenu.add(menuItem1);
-                // Los añadimos a la tabla
-                jTable1.setComponentPopupMenu(popupMenu);
+        try {
+            if (dni.length() == 0) {
+                ControladorCamioneroFecha.obtenerPaqueteFecha(fecha);
+            } else if (fecha.length() == 0) {
+                ControladorCamioneroFecha.obtenerPaqueteDni(dni);
+            } else {
+                ControladorCamioneroFecha.obtenerPaquete(dni, fecha);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        dispose();
+    }//GEN-LAST:event_jLabel12MouseClicked
+    public void popupMetodo() {
+        JPopupMenu popupMenu = new JPopupMenu();
+        JMenuItem menuItem1 = new JMenuItem("Ver Provincia");
+
+        menuItem1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    int index = jTable1.getSelectedRow();
+                    int cod_provincia = Integer.parseInt(jTable1.getValueAt(index, 6).toString());
+                    ModeloProvincia.obtenerProvincias(cod_provincia);
+                } catch (Exception t) {
+                    JOptionPane.showMessageDialog(null, t);
+                }
+            }
+        });
+        // Añadir los addActionListener al menu creado
+        popupMenu.add(menuItem1);
+        // Los añadimos a la tabla
+        jTable1.setComponentPopupMenu(popupMenu);
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -173,8 +215,13 @@ public class CamioneroFecha extends javax.swing.JFrame {
     private javax.swing.JTextField dnicamionero;
     private javax.swing.JTextField fechaenvio;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

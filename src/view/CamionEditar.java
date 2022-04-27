@@ -57,14 +57,17 @@ public class CamionEditar extends javax.swing.JFrame {
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(51, 153, 255));
+        jPanel2.setBackground(new java.awt.Color(102, 153, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Potencia:");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 40, -1, 20));
         jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, 230, -1));
 
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Modelo:");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, -1));
@@ -75,12 +78,14 @@ public class CamionEditar extends javax.swing.JFrame {
         jLabel6.setText("Camión");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 40));
 
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Tipo:");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, -1, -1));
         jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 230, -1));
         jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 100, 230, -1));
 
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Matrícula:");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, -1, 20));
@@ -102,7 +107,7 @@ public class CamionEditar extends javax.swing.JFrame {
                 jLabel11MouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 0, 20, 20));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 0, 20, 30));
 
         jButton2.setText("Añadir");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
