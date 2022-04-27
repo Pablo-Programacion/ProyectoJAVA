@@ -6,6 +6,12 @@ package view;
 
 import controller.ControladorCamioneroFecha;
 import controller.ControladorPaquete;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
+import modelo.ModeloProvincia;
 import modelo.TableModelCamioneroFecha;
 
 /**
@@ -16,7 +22,8 @@ public class CamioneroFecha extends javax.swing.JFrame {
     
     TableModelCamioneroFecha t8 = ControladorCamioneroFecha.getT8();
     public CamioneroFecha() {
-        initComponents();  
+        initComponents();
+        popupMetodo();
     }
 
     /**
@@ -36,7 +43,7 @@ public class CamioneroFecha extends javax.swing.JFrame {
         fechaenvio = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTable1.setModel(t8);
         jScrollPane1.setViewportView(jTable1);
@@ -106,7 +113,27 @@ public class CamioneroFecha extends javax.swing.JFrame {
                 System.out.println(e.getMessage());
             }  
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    public void popupMetodo() {
+                JPopupMenu popupMenu = new JPopupMenu();
+                JMenuItem menuItem1 = new JMenuItem("Ver Provincia");
+               
+                menuItem1.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                                try {
+                                    int index = jTable1.getSelectedRow();
+                                    int cod_provincia = Integer.parseInt(jTable1.getValueAt(index, 6).toString());
+                                    ModeloProvincia.obtenerProvincias(cod_provincia);
+                                } catch (Exception t) {
+                                        JOptionPane.showMessageDialog(null, t);
+                                }
+                        }
+                });
+                // Añadir los addActionListener al menu creado
+                popupMenu.add(menuItem1);
+                // Los añadimos a la tabla
+                jTable1.setComponentPopupMenu(popupMenu);
+        }
     /**
      * @param args the command line arguments
      */
