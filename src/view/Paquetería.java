@@ -380,47 +380,71 @@ public class Paquetería extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
-        if (Conexion.getConnection() != null) {
-            Inicio p1 = new Inicio();
-            p1.setSize(930, 630);
-            p1.setLocation(0, 0);
+        try {
+            if (valor < 110 && Conexion.getConnection() != null) {
+                JOptionPane.showMessageDialog(null, "Espere a que cargue la sesion");
+            }
+            if (Conexion.getConnection() == null) {
+                JOptionPane.showMessageDialog(null, "Necesitas iniciar sesion");
+            }
+            if (Conexion.getConnection() != null && valor == 110) {
+                Inicio p1 = new Inicio();
+                p1.setSize(930, 630);
+                p1.setLocation(0, 0);
 
-            jPanel3.removeAll();
-            jPanel3.add(p1, BorderLayout.CENTER);
-            jPanel3.revalidate();
-            jPanel3.repaint();
-        } else {
-            JOptionPane.showMessageDialog(null, "Necesitas iniciar sesion");
+                jPanel3.removeAll();
+                jPanel3.add(p1, BorderLayout.CENTER);
+                jPanel3.revalidate();
+                jPanel3.repaint();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jLabel15MouseClicked
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
-        if (Conexion.getConnection() != null) {
-            ProvinciaT p1 = new ProvinciaT();
-            p1.setSize(930, 630);
-            p1.setLocation(0, 0);
+        try {
+            if (valor < 110 && Conexion.getConnection() != null) {
+                JOptionPane.showMessageDialog(null, "Espere a que cargue la sesion");
+            }
+            if (Conexion.getConnection() == null) {
+                JOptionPane.showMessageDialog(null, "Necesitas iniciar sesion");
+            }
+            if (Conexion.getConnection() != null && valor == 110) {
+                ProvinciaT p1 = new ProvinciaT();
+                p1.setSize(930, 630);
+                p1.setLocation(0, 0);
 
-            jPanel3.removeAll();
-            jPanel3.add(p1, BorderLayout.CENTER);
-            jPanel3.revalidate();
-            jPanel3.repaint();
-        } else {
-            JOptionPane.showMessageDialog(null, "Necesitas iniciar sesion");
+                jPanel3.removeAll();
+                jPanel3.add(p1, BorderLayout.CENTER);
+                jPanel3.revalidate();
+                jPanel3.repaint();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jLabel16MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        if (Conexion.getConnection() != null) {
-            CamionT p1 = new CamionT();
-            p1.setSize(930, 630);
-            p1.setLocation(0, 0);
+        try {
+            if (valor < 110 && Conexion.getConnection() != null) {
+                JOptionPane.showMessageDialog(null, "Espere a que cargue la sesion");
+            }
+            if (Conexion.getConnection() == null) {
+                JOptionPane.showMessageDialog(null, "Necesitas iniciar sesion");
+            }
+            if (Conexion.getConnection() != null && valor == 110) {
+                CamionT p1 = new CamionT();
+                p1.setSize(930, 630);
+                p1.setLocation(0, 0);
 
-            jPanel3.removeAll();
-            jPanel3.add(p1, BorderLayout.CENTER);
-            jPanel3.revalidate();
-            jPanel3.repaint();
-        } else {
-            JOptionPane.showMessageDialog(null, "Necesitas iniciar sesion");
+                jPanel3.removeAll();
+                jPanel3.add(p1, BorderLayout.CENTER);
+                jPanel3.revalidate();
+                jPanel3.repaint();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jLabel6MouseClicked
 
@@ -509,16 +533,25 @@ public class Paquetería extends javax.swing.JFrame {
     }// GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel4MouseClicked
-        if (Conexion.getConnection() != null) {
-            PaqueteT p1 = new PaqueteT();
-            p1.setSize(930, 630);
-            p1.setLocation(0, 0);
-            jPanel3.removeAll();
-            jPanel3.add(p1, BorderLayout.CENTER);
-            jPanel3.revalidate();
-            jPanel3.repaint();
-        } else {
-            JOptionPane.showMessageDialog(null, "Necesitas iniciar sesion");
+        try {
+            if (valor < 110 && Conexion.getConnection() != null) {
+                JOptionPane.showMessageDialog(null, "Espere a que cargue la sesion");
+            }
+            if (Conexion.getConnection() == null) {
+                JOptionPane.showMessageDialog(null, "Necesitas iniciar sesion");
+            }
+            if (Conexion.getConnection() != null && valor == 110) {
+                PaqueteT p1 = new PaqueteT();
+                p1.setSize(930, 630);
+                p1.setLocation(0, 0);
+
+                jPanel3.removeAll();
+                jPanel3.add(p1, BorderLayout.CENTER);
+                jPanel3.revalidate();
+                jPanel3.repaint();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
         }
     }// GEN-LAST:event_jLabel4MouseClicked
 
@@ -527,17 +560,25 @@ public class Paquetería extends javax.swing.JFrame {
     }
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel2MouseClicked
-        if (Conexion.getConnection() != null) {
-            CamioneroT p1 = new CamioneroT();
-            p1.setSize(930, 630);
-            p1.setLocation(0, 0);
+          try {
+            if (valor < 110 && Conexion.getConnection() != null) {
+                JOptionPane.showMessageDialog(null, "Espere a que cargue la sesion");
+            }
+            if (Conexion.getConnection() == null) {
+                JOptionPane.showMessageDialog(null, "Necesitas iniciar sesion");
+            }
+            if (Conexion.getConnection() != null && valor == 110) {
+                CamioneroT p1 = new CamioneroT();
+                p1.setSize(930, 630);
+                p1.setLocation(0, 0);
 
-            jPanel3.removeAll();
-            jPanel3.add(p1, BorderLayout.CENTER);
-            jPanel3.revalidate();
-            jPanel3.repaint();
-        } else {
-            JOptionPane.showMessageDialog(null, "Necesitas iniciar sesion");
+                jPanel3.removeAll();
+                jPanel3.add(p1, BorderLayout.CENTER);
+                jPanel3.revalidate();
+                jPanel3.repaint();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
         }
 
     }// GEN-LAST:event_jLabel2MouseClicked
