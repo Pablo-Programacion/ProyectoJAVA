@@ -6,15 +6,18 @@
 package view;
 
 import controller.Conexion;
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Image;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+
 import java.util.Date;
-import java.util.GregorianCalendar;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 
 /**
@@ -31,6 +34,7 @@ public class Paquetería extends javax.swing.JFrame {
      */
     public Paquetería() {
         initComponents();
+
         Date dia = new Date();
         SimpleDateFormat formato = new SimpleDateFormat("dd");
         Date mes = new Date();
@@ -38,12 +42,18 @@ public class Paquetería extends javax.swing.JFrame {
         Date anio = new Date();
         SimpleDateFormat formato3 = new SimpleDateFormat("YYYY");
         jLabel7.setText("Hoy es " + formato.format(dia) + " del " + "Marzo" + " de " + formato3.format(anio));
+
         ImageIcon imagen = new ImageIcon("src/img/person.png");
 
         Icon icono = new ImageIcon(imagen.getImage().getScaledInstance(jLabel5.getWidth(),
                 jLabel5.getHeight(), Image.SCALE_SMOOTH));
 
         jLabel5.setIcon(icono);
+
+        ImageIcon imagen2 = new ImageIcon("src/img/incio.png");
+        Icon icono2 = new ImageIcon(imagen2.getImage().getScaledInstance(jLabel24.getWidth(),
+                jLabel24.getHeight(), Image.SCALE_SMOOTH));
+        jLabel24.setIcon(icono2);
 
         t1 = new pbThead(jProgressBar2);
 
@@ -73,10 +83,23 @@ public class Paquetería extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        content = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -117,7 +140,7 @@ public class Paquetería extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("PAQUETE");
+        jLabel4.setText("ENVIOS");
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -129,7 +152,7 @@ public class Paquetería extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("CAMIONERO");
+        jLabel2.setText("PERSONAL");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -165,7 +188,7 @@ public class Paquetería extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("PROVINCIA");
+        jLabel16.setText("PROVINCIAS");
         jLabel16.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -174,10 +197,11 @@ public class Paquetería extends javax.swing.JFrame {
         });
         jPanel4.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 270, 70));
 
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("CAMIÓN");
+        jLabel6.setText("FLOTA DE VEHÍCULOS");
         jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -194,8 +218,74 @@ public class Paquetería extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(102, 153, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel7.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 440, 40));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1200, 90));
+
+        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel13.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 660, 240, 20));
+
+        content.setBackground(new java.awt.Color(255, 255, 255));
+        content.setForeground(new java.awt.Color(102, 102, 102));
+        content.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel8.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Bienvenido");
+        content.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 170, 60));
+
+        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel9.setText("A HispaTrans, Software de Gestión orientado a Empresas de Paquetería para Administrar de Forma Óptima y Fácil");
+        content.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 90, 680, 30));
+
+        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel10.setText(" el Flujo de envío de Paquetes, Control de Flota de Vehículo…");
+        content.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 590, 20));
+
+        jLabel12.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel12.setText("Esta herramienta nos permite llevar un control completo y detallado de su Empresa, tendrá acceso");
+        content.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 700, 30));
+
+        jLabel17.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel17.setText(" a herramientas especiales para tareas específicas, como lo son:");
+        content.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 181, -1, -1));
+
+        jLabel18.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel18.setText("- Registrar envíos (Paquetes).");
+        content.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 400, -1));
+
+        jLabel19.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel19.setText("- Registrar nuevos trabajadores (Camioneros).");
+        content.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, -1, -1));
+
+        jLabel20.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel20.setText("- Controlar la flota de Vehículos de Transporte (Camiones).");
+        content.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 350, -1));
+
+        jLabel21.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel21.setText("- Ver que Vehículos de Transporte, tiene asignado cada Trabajador (Camionero).");
+        content.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 450, -1));
+
+        jLabel22.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel22.setText("- Búsqueda Avanzada de Envíos por Camionero (DNI) o Fecha de Envio (Paquete).");
+        content.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 450, -1));
+
+        jLabel23.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel23.setText("- Editar y Eliminar cualquier tipo de Registro.");
+        content.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 440, -1));
+        content.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, 340, 320));
+
+        jPanel1.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 930, 540));
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel11.setBackground(new java.awt.Color(0, 0, 0));
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("X");
         jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -203,33 +293,23 @@ public class Paquetería extends javax.swing.JFrame {
                 jLabel11MouseClicked(evt);
             }
         });
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 0, 20, 20));
 
-        jLabel7.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, 500, 30));
-
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 130));
-
-        jLabel13.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel13.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 660, 240, 20));
-
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 930, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(0, 910, Short.MAX_VALUE)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 80, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 930, 560));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 0, 930, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1200, 690));
 
@@ -251,21 +331,51 @@ public class Paquetería extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel3MouseClicked
 
     private void jLabel15MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel15MouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jLabel15MouseClicked
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
-        // TODO add your handling code here:
+        try {
+            if (Conexion.getConnection() != null) {
+                Provincia frameProvincia = new Provincia();
+                frameProvincia.setLocation(630, 195);
+                frameProvincia.show();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Necesitas conectarte a la base de datos");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_jLabel16MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-        // TODO add your handling code here:
+       try {
+            if (Conexion.getConnection() != null) {
+                Camion frameProvincia = new Camion();
+                frameProvincia.setLocation(630, 195);
+                frameProvincia.show();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Necesitas conectarte a la base de datos");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }//GEN-LAST:event_jLabel6MouseClicked
 
-    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel11MouseClicked
-        System.exit(0);
-    }// GEN-LAST:event_jLabel11MouseClicked
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel11MouseClicked
+    public void setColor(JPanel p) {
+        p.setBackground(new Color(255, 105, 0));
+    }
 
+    public void resColor(JPanel p2) {
+        p2.setBackground(new Color(255, 153, 0));
+    }
+
+    // GEN-LAST:event_jLabel11MouseClicked
     class pbThead extends Thread {
 
         JProgressBar pbar;
@@ -325,6 +435,7 @@ public class Paquetería extends javax.swing.JFrame {
                 jProgressBar2.setVisible(false);
 
                 Conexion.conectarMySQL();
+                content.setVisible(true);
                 JOptionPane.showMessageDialog(null, "Conectado");
 
             } catch (Exception e) {
@@ -355,6 +466,7 @@ public class Paquetería extends javax.swing.JFrame {
         try {
             if (Conexion.getConnection() != null) {
                 Paquete framePaquete = new Paquete();
+                framePaquete.setLocation(630, 195);
                 framePaquete.show();
 
             } else {
@@ -373,8 +485,9 @@ public class Paquetería extends javax.swing.JFrame {
 
         try {
             if (Conexion.getConnection() != null) {
-                Camionero frameProvincia = new Camionero();
-                frameProvincia.show();
+                Camionero frameCamionero = new Camionero();
+                frameCamionero.setLocation(630, 195);
+                frameCamionero.show();
 
             } else {
                 JOptionPane.showMessageDialog(null, "Necesitas conectarte a la base de datos");
@@ -429,23 +542,36 @@ public class Paquetería extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private static javax.swing.JPanel content;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JProgressBar jProgressBar2;
     // End of variables declaration//GEN-END:variables
 }
