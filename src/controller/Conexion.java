@@ -8,20 +8,19 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 public class Conexion {
-    private static String BD = "";
+
+    private static String BD = "paqueteria";
     private static String USUARIO = "";
     private static String PASS = "";
-    private static String HOST = "";
+    private static String HOST = "localhost";
     Calendar now = null;
     TimeZone zonahoraria = null;
     Statement stmt = null;
     private static Connection connection = null;
 
-    public static void datosMySQL(String bd, String user, String pass, String host) {
-        Conexion.BD = bd;
+    public static void datosMySQL(String user, String pass) {
         Conexion.USUARIO = user;
         Conexion.PASS = pass;
-        Conexion.HOST = host;
     }
 
     public static Connection conectarMySQL() throws SQLException {

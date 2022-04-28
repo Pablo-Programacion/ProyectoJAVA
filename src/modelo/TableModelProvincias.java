@@ -42,7 +42,7 @@ public class TableModelProvincias extends AbstractTableModel {
 
     public static void obtenerProvincias() throws SQLException {
         provincias = new ArrayList<provincia>();
-        Statement stmt = (Statement) connection.createStatement();
+        Statement stmt = (Statement) Conexion.getConnection().createStatement();
         ResultSet resultado = stmt.executeQuery("SELECT * FROM provincia");
         while (resultado.next()) {
             int codigo = resultado.getInt("codigo");

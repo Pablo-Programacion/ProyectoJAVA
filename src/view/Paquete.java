@@ -30,6 +30,7 @@ public class Paquete extends javax.swing.JFrame {
          */
         public Paquete() {
             initComponents();
+            
             this.popupMetodo();
             try{
                 ControladorPaquete.obtenerPaquete();
