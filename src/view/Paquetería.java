@@ -81,23 +81,25 @@ public class Paquetería extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        content = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
 
@@ -211,6 +213,14 @@ public class Paquetería extends javax.swing.JFrame {
         jPanel4.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 270, 70));
         jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 638, 30, 30));
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 470, -1, -1));
+
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 270, 690));
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -218,68 +228,151 @@ public class Paquetería extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(102, 153, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel10.setText(" el Flujo de envío de Paquetes, Control de Flota de Vehículo…");
+
+        jLabel8.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Bienvenido");
+
+        jLabel12.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel12.setText("Esta herramienta nos permite llevar un control completo y detallado de su Empresa, tendrá acceso");
+
+        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel9.setText("A HispaTrans, Software de Gestión orientado a Empresas de Paquetería para Administrar de Forma Óptima y Fácil");
+
+        jLabel17.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel17.setText(" a herramientas especiales para tareas específicas, como lo son:");
+
+        jLabel18.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel18.setText("- Registrar envíos (Paquetes).");
+
+        jLabel20.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel20.setText("- Controlar la flota de Vehículos de Transporte (Camiones).");
+
+        jLabel19.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel19.setText("- Registrar nuevos trabajadores (Camioneros).");
+
+        jLabel21.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel21.setText("- Ver que Vehículos de Transporte, tiene asignado cada Trabajador (Camionero).");
+
+        jLabel22.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel22.setText("- Búsqueda Avanzada de Envíos por Camionero (DNI) o Fecha de Envio (Paquete).");
+
+        jLabel23.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel23.setText("- Editar y Eliminar cualquier tipo de Registro.");
+
+        jPanel7.setBackground(new java.awt.Color(51, 153, 255));
+
         jLabel7.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 440, 40));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 1200, 90));
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(465, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(24, 24, 24)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(20, 20, 20)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel17)
+                                        .addGroup(jPanel3Layout.createSequentialGroup()
+                                            .addGap(22, 22, 22)
+                                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel19)
+                                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGap(10, 10, 10)
+                                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addGap(22, 22, 22)
+                                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addGap(2, 2, 2)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 530, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(50, 50, 50)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(70, 70, 70)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(20, 20, 20)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(31, 31, 31)
+                            .addComponent(jLabel17)
+                            .addGap(13, 13, 13)
+                            .addComponent(jLabel18)
+                            .addGap(14, 14, 14)
+                            .addComponent(jLabel19)
+                            .addGap(14, 14, 14)
+                            .addComponent(jLabel20)
+                            .addGap(14, 14, 14)
+                            .addComponent(jLabel21)
+                            .addGap(44, 44, 44)
+                            .addComponent(jLabel23))
+                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(180, 180, 180)
+                            .addComponent(jLabel22))
+                        .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addGap(10, 10, 10)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 630));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 930, 630));
 
         jLabel13.setBackground(new java.awt.Color(255, 255, 255));
         jLabel13.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 660, 240, 20));
-
-        content.setBackground(new java.awt.Color(255, 255, 255));
-        content.setForeground(new java.awt.Color(102, 102, 102));
-        content.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel8.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel8.setText("Bienvenido");
-        content.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 170, 60));
-
-        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel9.setText("A HispaTrans, Software de Gestión orientado a Empresas de Paquetería para Administrar de Forma Óptima y Fácil");
-        content.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 90, 680, 30));
-
-        jLabel10.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel10.setText(" el Flujo de envío de Paquetes, Control de Flota de Vehículo…");
-        content.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 590, 20));
-
-        jLabel12.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel12.setText("Esta herramienta nos permite llevar un control completo y detallado de su Empresa, tendrá acceso");
-        content.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 700, 30));
-
-        jLabel17.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel17.setText(" a herramientas especiales para tareas específicas, como lo son:");
-        content.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 181, -1, -1));
-
-        jLabel18.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel18.setText("- Registrar envíos (Paquetes).");
-        content.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 400, -1));
-
-        jLabel19.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel19.setText("- Registrar nuevos trabajadores (Camioneros).");
-        content.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, -1, -1));
-
-        jLabel20.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel20.setText("- Controlar la flota de Vehículos de Transporte (Camiones).");
-        content.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 350, -1));
-
-        jLabel21.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel21.setText("- Ver que Vehículos de Transporte, tiene asignado cada Trabajador (Camionero).");
-        content.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, 450, -1));
-
-        jLabel22.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel22.setText("- Búsqueda Avanzada de Envíos por Camionero (DNI) o Fecha de Envio (Paquete).");
-        content.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 450, -1));
-
-        jLabel23.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel23.setText("- Editar y Eliminar cualquier tipo de Registro.");
-        content.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 440, -1));
-        content.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, 340, 320));
-
-        jPanel1.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 930, 540));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -335,38 +428,34 @@ public class Paquetería extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel15MouseClicked
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
-        try {
-            if (Conexion.getConnection() != null) {
-                Provincia frameProvincia = new Provincia();
-                frameProvincia.setLocation(630, 195);
-                frameProvincia.show();
+        ProvinciaT p1 = new ProvinciaT();
+        p1.setSize(930, 630);
+        p1.setLocation(0, 0);
 
-            } else {
-                JOptionPane.showMessageDialog(null, "Necesitas conectarte a la base de datos");
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
+        jPanel3.removeAll();
+        jPanel3.add(p1, BorderLayout.CENTER);
+        jPanel3.revalidate();
+        jPanel3.repaint();
     }//GEN-LAST:event_jLabel16MouseClicked
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
-       try {
-            if (Conexion.getConnection() != null) {
-                Camion frameProvincia = new Camion();
-                frameProvincia.setLocation(630, 195);
-                frameProvincia.show();
+        CamionT p1 = new CamionT();
+        p1.setSize(930, 630);
+        p1.setLocation(0, 0);
 
-            } else {
-                JOptionPane.showMessageDialog(null, "Necesitas conectarte a la base de datos");
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
+        jPanel3.removeAll();
+        jPanel3.add(p1, BorderLayout.CENTER);
+        jPanel3.revalidate();
+        jPanel3.repaint();
     }//GEN-LAST:event_jLabel6MouseClicked
 
     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel11MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+    }//GEN-LAST:event_jButton1ActionPerformed
     public void setColor(JPanel p) {
         p.setBackground(new Color(255, 105, 0));
     }
@@ -435,7 +524,7 @@ public class Paquetería extends javax.swing.JFrame {
                 jProgressBar2.setVisible(false);
 
                 Conexion.conectarMySQL();
-                content.setVisible(true);
+
                 JOptionPane.showMessageDialog(null, "Conectado");
 
             } catch (Exception e) {
@@ -463,18 +552,14 @@ public class Paquetería extends javax.swing.JFrame {
     }// GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel4MouseClicked
-        try {
-            if (Conexion.getConnection() != null) {
-                Paquete framePaquete = new Paquete();
-                framePaquete.setLocation(630, 195);
-                framePaquete.show();
+        PaqueteT p1 = new PaqueteT();
+        p1.setSize(930, 630);
+        p1.setLocation(0, 0);
 
-            } else {
-                JOptionPane.showMessageDialog(null, "Necesitas conectarte a la base de datos");
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
+        jPanel3.removeAll();
+        jPanel3.add(p1, BorderLayout.CENTER);
+        jPanel3.revalidate();
+        jPanel3.repaint();
     }// GEN-LAST:event_jLabel4MouseClicked
 
     public static void start() {
@@ -482,19 +567,15 @@ public class Paquetería extends javax.swing.JFrame {
     }
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel2MouseClicked
+        CamioneroT p1 = new CamioneroT();
+        p1.setSize(930, 630);
+        p1.setLocation(0, 0);
 
-        try {
-            if (Conexion.getConnection() != null) {
-                Camionero frameCamionero = new Camionero();
-                frameCamionero.setLocation(630, 195);
-                frameCamionero.show();
+        jPanel3.removeAll();
+        jPanel3.add(p1, BorderLayout.CENTER);
+        jPanel3.revalidate();
+        jPanel3.repaint();
 
-            } else {
-                JOptionPane.showMessageDialog(null, "Necesitas conectarte a la base de datos");
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
     }// GEN-LAST:event_jLabel2MouseClicked
 
     /**
@@ -542,7 +623,7 @@ public class Paquetería extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private static javax.swing.JPanel content;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -569,9 +650,11 @@ public class Paquetería extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JProgressBar jProgressBar2;
     // End of variables declaration//GEN-END:variables
 }

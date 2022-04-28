@@ -55,7 +55,7 @@ public class TableModelProvincias extends AbstractTableModel {
 
     public static int insertarProvincias(int codigo, String nombre) throws SQLException {
         String insert = "INSERT INTO provincia (codigo,nombre) values (%s,'%s')".formatted(codigo, nombre);
-        Statement stmt = connection.createStatement();
+        Statement stmt = Conexion.getConnection().createStatement();
         int filas = stmt.executeUpdate(insert);
         obtenerProvincias();
         return filas;
