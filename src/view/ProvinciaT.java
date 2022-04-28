@@ -4,8 +4,6 @@
  */
 package view;
 
-import controller.ControladorProvincia;
-import modelo.TableModelProvincias;
 import modelo.TableModelProvincias;
 import controller.ControladorProvincia;
 
@@ -18,15 +16,16 @@ import java.sql.SQLException;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
-import static view.Provincia.codigoTabla;
-import static view.Provincia.nombreTabla;
+
 
 /**
  *
  * @author FER
  */
 public class ProvinciaT extends javax.swing.JPanel {
-    
+
+    static int codigoTabla;
+    static String nombreTabla;
     TableModelProvincias t1 = ControladorProvincia.getT1();
 
     /**
@@ -35,6 +34,10 @@ public class ProvinciaT extends javax.swing.JPanel {
     public ProvinciaT() {
         try {
             initComponents();
+            TextPrompt nombre = new TextPrompt("Código", jTextField1);
+            TextPrompt contrasena = new TextPrompt("Nombre de la provincia", jTextField2);
+            jTextField1.setBackground(new java.awt.Color(0, 0, 0, 1));
+            jTextField2.setBackground(new java.awt.Color(0, 0, 0, 1));
             popupMetodo();
             jTable133.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 12));
             jTable133.getTableHeader().setOpaque(false);
@@ -62,12 +65,11 @@ public class ProvinciaT extends javax.swing.JPanel {
         jTable133 = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
 
         setMaximumSize(new java.awt.Dimension(930, 540));
         setMinimumSize(new java.awt.Dimension(930, 540));
@@ -81,24 +83,20 @@ public class ProvinciaT extends javax.swing.JPanel {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 930, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 930, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 930, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 551, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 551, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 566, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 930, 550));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 930, 560));
 
-        jPanel4.setBackground(new java.awt.Color(102, 153, 255));
+        jPanel4.setBackground(new java.awt.Color(51, 153, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setText("Añadir");
@@ -107,18 +105,7 @@ public class ProvinciaT extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, 90, -1));
-
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("X");
-        jLabel11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel11MouseClicked(evt);
-            }
-        });
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 0, 20, 30));
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, 90, -1));
 
         jButton2.setText("Limpiar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -126,21 +113,20 @@ public class ProvinciaT extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 50, 90, -1));
-        jPanel4.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 550, -1));
-        jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 550, -1));
+        jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 60, 90, -1));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Nombre:");
-        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 50, -1, 20));
+        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField2.setBorder(null);
+        jPanel4.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 260, 20));
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Código:");
-        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, 20));
+        jTextField1.setBackground(new java.awt.Color(0, 0, 1));
+        jTextField1.setForeground(new java.awt.Color(255, 255, 255));
+        jTextField1.setBorder(null);
+        jPanel4.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 260, 20));
+        jPanel4.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 260, 10));
+        jPanel4.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 260, 10));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 80));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 100));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -150,7 +136,7 @@ public class ProvinciaT extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -162,9 +148,13 @@ public class ProvinciaT extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel11MouseClicked
+    public static int getCodigoTabla() {
+        return codigoTabla;
+    }
+
+    public static String getNombreTabla() {
+        return nombreTabla;
+    }
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         jTextField1.setText(" ");
@@ -186,11 +176,11 @@ public class ProvinciaT extends javax.swing.JPanel {
 
                     // Hacer visible el JFrame de editar
                     new ProvinciaEditar().setVisible(true);
-                    
+
                 } catch (Exception t) {
                     JOptionPane.showMessageDialog(null, t);
                 }
-                
+
             }
         });
         // ELIMINAR: Lo mismo que editar solo que aqui no hay jFrame le paso el metodo
@@ -219,13 +209,12 @@ public class ProvinciaT extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable133;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;

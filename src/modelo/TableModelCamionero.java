@@ -18,9 +18,8 @@ public class TableModelCamionero extends AbstractTableModel {
 
     static ArrayList<camionero> camioneros;
     private static camionero camionero;
-    static Connection connection = Conexion.getConnection();
     /// ATRIBUTOS DE LA TABLA
-    private static TableModelCamionero t2 = new TableModelCamionero(connection);
+    private static TableModelCamionero t2 = new TableModelCamionero(Conexion.getInstance().getConnection());
     private static final String[] columnNames = {"Dni", "Poblacion", "Nombre", "Telefono", "Direccion", "Salario"};
     private final LinkedList<camionero> list;
 
@@ -30,7 +29,7 @@ public class TableModelCamionero extends AbstractTableModel {
 
     public void cargarCamionero() throws SQLException {
         // Obtiene la lista de camionero de la BD
-        ArrayList<camionero> camioneros = getCamioneros();
+        ArrayList<camionero> camioneros = obtenerCamioneros();
 
         // Borra el contenido anterior y añade el nuevo.
         list.clear();
@@ -40,9 +39,9 @@ public class TableModelCamionero extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-    public static void obtenerCamioneros() throws SQLException {
+    public static ArrayList<camionero> obtenerCamioneros() throws SQLException {
         camioneros = new ArrayList<camionero>();
-        Statement stmt = (Statement) connection.createStatement();
+        Statement stmt = (Statement) Conexion.getInstance().getConnection().createStatement();
         ResultSet resultado = stmt.executeQuery("SELECT * FROM camionero");
         while (resultado.next()) {
             String dni = resultado.getString("dni");
@@ -55,13 +54,14 @@ public class TableModelCamionero extends AbstractTableModel {
             camioneros.add(camionero);
         }
         t2.cargarCamionero();
+        return camioneros;
     }
 
     public static int insertarCamionero(String dni, String poblacion, String nombre, int telefono, String direccion,
             int salario) throws SQLException {
         String insert = "INSERT INTO camionero (dni, poblacion, nombre, telefono, direccion, salario) values ('%s','%s','%s',%s,'%s',%s)"
                 .formatted(dni, poblacion, nombre, telefono, direccion, salario);
-        Statement stmt = connection.createStatement();
+        Statement stmt = Conexion.getInstance().getConnection().createStatement();
         int filas = stmt.executeUpdate(insert);
         obtenerCamioneros();
         return filas;
@@ -71,7 +71,7 @@ public class TableModelCamionero extends AbstractTableModel {
             int salario) throws SQLException {
         String delete = "DELETE FROM camionero where dni = '%s' and poblacion = '%s' and nombre = '%s' and telefono = %s and direccion = '%s' and salario = %s"
                 .formatted(dni, poblacion, nombre, telefono, direccion, salario);
-        Statement stmt = connection.createStatement();
+        Statement stmt = Conexion.getInstance().getConnection().createStatement();
         int filas = stmt.executeUpdate(delete);
         obtenerCamioneros();
         return filas;
@@ -86,7 +86,7 @@ public class TableModelCamionero extends AbstractTableModel {
                 .formatted(dni, poblacion, nombre, telefono, direccion,
                         salario, dni2, poblacion2, nombre2, telefono2, direccion2,
                         salario2);
-        Statement stmt = connection.createStatement();
+        Statement stmt = Conexion.getInstance().getConnection().createStatement();
         int filas = stmt.executeUpdate(update);
         System.out.println(filas + " asdasdasdasdasdasd");
         obtenerCamioneros();
@@ -130,7 +130,7 @@ public class TableModelCamionero extends AbstractTableModel {
 
     public static void limpiarCamionero() throws SQLException {
         String delete = "DELETE FROM camionero WHERE 1 = 1";
-        Statement stmt = connection.createStatement();
+        Statement stmt = Conexion.getInstance().getConnection().createStatement();
         int filas = stmt.executeUpdate(delete);
         obtenerCamioneros();
     }

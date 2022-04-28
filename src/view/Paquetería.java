@@ -5,6 +5,7 @@
  */
 package view;
 
+import java.sql.Connection;
 import controller.Conexion;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -109,11 +110,11 @@ public class Paquetería extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel23 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -245,8 +246,6 @@ public class Paquetería extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(102, 153, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel23.setForeground(new java.awt.Color(102, 102, 102));
-
         jPanel7.setBackground(new java.awt.Color(51, 153, 255));
 
         jLabel7.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
@@ -284,36 +283,44 @@ public class Paquetería extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
 
+        jLabel23.setForeground(new java.awt.Color(102, 102, 102));
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 930, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(245, 245, 245)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(245, Short.MAX_VALUE)))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 930, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(529, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(559, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addGap(270, 270, 270)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(270, Short.MAX_VALUE)))
+                    .addContainerGap(300, Short.MAX_VALUE)))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 630));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 930, 660));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, 930, 630));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 30, 930, 660));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -332,17 +339,17 @@ public class Paquetería extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(0, 910, Short.MAX_VALUE)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, 930, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 673, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -355,25 +362,30 @@ public class Paquetería extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        if (Conexion.getConnection() == null) {
+        Connection conne = null;
+        if (Conexion.getConnection() == null || valor == 0) {
+            System.out.println(valor);
             try {
                 IniciarSesion sesion = new IniciarSesion();
                 sesion.show();
-                if (Conexion.getConnection() != null) {
-                    t1.start();
-                }
-
+                
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
-        } else if (Conexion.getConnection() != null) {
+        } else if (Conexion.getConnection() != null || valor == 110) {
             try {
                 jLabel3.setText("INICIAR SESIÓN");
                 Conexion.desconectar();
-                Conexion.setConnection(null);
+                Conexion.setConnection(conne);
+                this.valor = 0;
+                jPanel3.removeAll();
+                ImageIcon imagen2 = new ImageIcon("src/img/paquete.jpg");
+                Icon icono2 = new ImageIcon(imagen2.getImage().getScaledInstance(jLabel23.getWidth(),
+                        jLabel23.getHeight(), Image.SCALE_SMOOTH));
+                jLabel23.setIcon(icono2);
                 JOptionPane.showMessageDialog(null, "Desconectado");
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, e);
+            } catch (Exception y) {
+                JOptionPane.showMessageDialog(null, y);
             }
         }
 
@@ -389,7 +401,7 @@ public class Paquetería extends javax.swing.JFrame {
             }
             if (Conexion.getConnection() != null && valor == 110) {
                 Inicio p1 = new Inicio();
-                p1.setSize(930, 630);
+                p1.setSize(930, 660);
                 p1.setLocation(0, 0);
 
                 jPanel3.removeAll();
@@ -412,7 +424,7 @@ public class Paquetería extends javax.swing.JFrame {
             }
             if (Conexion.getConnection() != null && valor == 110) {
                 ProvinciaT p1 = new ProvinciaT();
-                p1.setSize(930, 630);
+                p1.setSize(930, 6660);
                 p1.setLocation(0, 0);
 
                 jPanel3.removeAll();
@@ -435,7 +447,7 @@ public class Paquetería extends javax.swing.JFrame {
             }
             if (Conexion.getConnection() != null && valor == 110) {
                 CamionT p1 = new CamionT();
-                p1.setSize(930, 630);
+                p1.setSize(930, 660);
                 p1.setLocation(0, 0);
 
                 jPanel3.removeAll();
@@ -518,7 +530,7 @@ public class Paquetería extends javax.swing.JFrame {
                 jLabel13.setVisible(false);
                 jProgressBar2.setVisible(false);
 
-                Conexion.conectarMySQL();
+                Conexion.getInstance();
 
                 JOptionPane.showMessageDialog(null, "Conectado");
 
@@ -542,7 +554,7 @@ public class Paquetería extends javax.swing.JFrame {
             }
             if (Conexion.getConnection() != null && valor == 110) {
                 PaqueteT p1 = new PaqueteT();
-                p1.setSize(930, 630);
+                p1.setSize(930, 660);
                 p1.setLocation(0, 0);
 
                 jPanel3.removeAll();
@@ -560,7 +572,7 @@ public class Paquetería extends javax.swing.JFrame {
     }
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_jLabel2MouseClicked
-          try {
+        try {
             if (valor < 110 && Conexion.getConnection() != null) {
                 JOptionPane.showMessageDialog(null, "Espere a que cargue la sesion");
             }
@@ -569,7 +581,7 @@ public class Paquetería extends javax.swing.JFrame {
             }
             if (Conexion.getConnection() != null && valor == 110) {
                 CamioneroT p1 = new CamioneroT();
-                p1.setSize(930, 630);
+                p1.setSize(930, 660);
                 p1.setLocation(0, 0);
 
                 jPanel3.removeAll();

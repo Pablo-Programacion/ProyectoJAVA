@@ -25,12 +25,12 @@ public class CamioneroEditar extends javax.swing.JFrame {
      */
     public CamioneroEditar() {
         initComponents();
-        this.dni2 = Camionero.getDni();
-        this.nombre2 = Camionero.getNombre();
-        this.poblacion2 = Camionero.getPoblacion();
-        this.telefono2 = Camionero.getTelefono();
-        this.direccion2 = Camionero.getDireccion();
-        this.salario2 = Camionero.getSalario();
+        this.dni2 = CamioneroT.getDni();
+        this.nombre2 = CamioneroT.getNombre();
+        this.poblacion2 = CamioneroT.getPoblacion();
+        this.telefono2 = CamioneroT.getTelefono();
+        this.direccion2 = CamioneroT.getDireccion();
+        this.salario2 = CamioneroT.getSalario();
         actualizarNombresJtextField(dni2, poblacion2, nombre2, telefono2, direccion2, salario2);
     }
 

@@ -15,11 +15,10 @@ import controller.Conexion;
  */
 public class TableModelCamionCamionero extends AbstractTableModel {
 
-    static Connection connection = Conexion.getConnection();
     static ArrayList<camion> camiones;
     private static camion camion;
     /// ATRIBUTOS DE LA TABLA
-    private static TableModelCamionCamionero t7 = new TableModelCamionCamionero(connection);
+    private static TableModelCamionCamionero t7 = new TableModelCamionCamionero(Conexion.getInstance().getConnection());
     private static final String[] columnNames = {"Matricula", "Potencia", "Modelo", "Tipo"};
     private final LinkedList<camion> list;
 
@@ -41,7 +40,7 @@ public class TableModelCamionCamionero extends AbstractTableModel {
 
     public static void obtenerCamiones(String nDni) throws SQLException {
         camiones = new ArrayList<camion>();
-        Statement stmt = (Statement) connection.createStatement();
+        Statement stmt = (Statement) Conexion.getInstance().getConnection().createStatement();
         ResultSet resultado = stmt.executeQuery("SELECT camion.matricula,camion.modelo,camion.potencia,camion.tipo FROM camion INNER JOIN conduce ON camion.matricula = conduce.matricula_camion where conduce.dni_camionero ='"+nDni+"'");
         while (resultado.next()) {
             String matricula = resultado.getString("matricula");

@@ -13,22 +13,37 @@ public class Conexion {
     private static String USUARIO = "";
     private static String PASS = "";
     private static String HOST = "localhost";
-    Calendar now = null;
-    TimeZone zonahoraria = null;
-    Statement stmt = null;
+    public static Conexion conexion;
     private static Connection connection = null;
+
+    public Conexion() {
+        try {
+            Calendar now = Calendar.getInstance();
+            TimeZone zonahoraria = now.getTimeZone();
+            connection = (Connection) DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BD + "?user=" + USUARIO
+                    + "&password" + PASS + "&useLegacyDatetimeCode=false&serverTimezone=" + zonahoraria.getID());
+        } catch (Exception e) {
+        }
+    }
+
+    public static Conexion getConexion() {
+        return conexion;
+    }
+
+    public static Connection getConnection() {
+        return connection;
+    }
 
     public static void datosMySQL(String user, String pass) {
         Conexion.USUARIO = user;
         Conexion.PASS = pass;
     }
 
-    public static Connection conectarMySQL() throws SQLException {
-        Calendar now = Calendar.getInstance();
-        TimeZone zonahoraria = now.getTimeZone();
-        connection = (Connection) DriverManager.getConnection("jdbc:mysql://" + HOST + "/" + BD + "?user=" + USUARIO
-                + "&password" + PASS + "&useLegacyDatetimeCode=false&serverTimezone=" + zonahoraria.getID());
-        return connection;
+    public static Conexion getInstance() {
+        if (conexion == null) {
+            conexion = new Conexion();
+        }
+        return conexion;
     }
 
     public static boolean desconectar() throws SQLException {
@@ -68,10 +83,6 @@ public class Conexion {
 
     public static void setHOST(String hOST) {
         HOST = hOST;
-    }
-
-    public static Connection getConnection() {
-        return connection;
     }
 
     public static void setConnection(Connection connection) {

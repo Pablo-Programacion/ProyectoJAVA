@@ -6,7 +6,7 @@ package view;
 
 import controller.ControladorPaquete;
 import javax.swing.JOptionPane;
-import view.Paquete;
+
 /**
  *
  * @author Borja Benegas
@@ -165,7 +165,6 @@ public class PaqueteEditar extends javax.swing.JFrame {
 
     private void actualizar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizar2ActionPerformed
          try {
-            JOptionPane.showMessageDialog(null, "Hola");
             int cod = Integer.parseInt(codigo2.getText());
             String desc = descripcion2.getText();
             String dest = destinatario22.getText();
@@ -173,8 +172,6 @@ public class PaqueteEditar extends javax.swing.JFrame {
             String date = fecha2.getText();
             String dcamionero = dni_camionero2.getText();
             int cprovincia = Integer.parseInt(cod_provincia2.getText());
-            JOptionPane.showMessageDialog(null, codigo+ destinatario+ descripcion+ direccion+ fecha+ dni_camionero+ cod_provincia);
-            JOptionPane.showMessageDialog(null, cod+ desc+ dest+ dir + date+  dcamionero+ cprovincia);
             ControladorPaquete.actualizarPaquete(codigo, destinatario, descripcion, direccion, fecha, dni_camionero, cod_provincia, cod, desc, dest, dir, date,  dcamionero, cprovincia);
             dispose();
         } catch (Exception e) {

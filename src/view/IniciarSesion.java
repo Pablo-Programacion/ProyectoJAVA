@@ -31,6 +31,7 @@ public class IniciarSesion extends javax.swing.JFrame {
         //Colocar la imagen en el JLabel
         jLabel2.setIcon(icono);
         TextPrompt nombre = new TextPrompt("Usuario", jTextField2);
+        
         TextPrompt contrasena = new TextPrompt("Contraseña", jPasswordField1);
         jTextField2.setBackground(new java.awt.Color(0, 0, 0, 1));
         jPasswordField1.setBackground(new java.awt.Color(0, 0, 0, 1));
@@ -141,7 +142,6 @@ public class IniciarSesion extends javax.swing.JFrame {
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         try {
             Conexion.datosMySQL(jTextField2.getText(), jPasswordField1.getText());
-            Conexion.conectarMySQL();
             dispose();
             Paquetería.start();
         } catch (Exception e) {

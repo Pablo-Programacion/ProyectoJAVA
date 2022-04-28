@@ -1,8 +1,10 @@
 package controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import modelo.TableModelCamionero;
+import modelo.camionero;
 
 public class ControladorCamionero {
 
@@ -10,8 +12,8 @@ public class ControladorCamionero {
         return TableModelCamionero.insertarCamionero(dni, poblacion, nombre, telefono, direccion, salario);
     }
 
-    public static void obtenerCamioneros() throws SQLException {
-        TableModelCamionero.obtenerCamioneros();
+    public static ArrayList<camionero> obtenerCamioneros() throws SQLException {
+        return TableModelCamionero.obtenerCamioneros();
     }
 
     public static void eliminarCamionero(String dni, String poblacion, String nombre, int telefono, String direccion, int salario) throws SQLException {

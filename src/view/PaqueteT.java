@@ -4,8 +4,6 @@
  */
 package view;
 
-import controller.ControladorPaquete;
-import javax.swing.JOptionPane;
 import javax.swing.JOptionPane;
 import modelo.TableModelPaquete;
 import controller.ControladorPaquete;
@@ -13,6 +11,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import modelo.ModeloProvincia;
@@ -29,15 +28,29 @@ public class PaqueteT extends javax.swing.JPanel {
      * Creates new form PaqueteT
      */
     public PaqueteT() {
-        initComponents();
-        tabla.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        tabla.getTableHeader().setOpaque(false);
-        tabla.getTableHeader().setBackground(new Color(32, 136, 203));
-        tabla.getTableHeader().setForeground(new Color(0, 0, 0));
-        tabla.setRowHeight(25);
-        this.popupMetodo();
+
         try {
+            initComponents();
             ControladorPaquete.obtenerPaquete();
+            TextPrompt codigo2 = new TextPrompt("Código", codigo);
+            codigo.setBackground(new java.awt.Color(0, 0, 0, 1));
+
+            TextPrompt destinatario2 = new TextPrompt("Destinatario", destinatario);
+            destinatario.setBackground(new java.awt.Color(0, 0, 0, 1));
+
+            TextPrompt descripcion2 = new TextPrompt("Descripcion", descripcion);
+            descripcion.setBackground(new java.awt.Color(0, 0, 0, 1));
+
+            TextPrompt direccion2 = new TextPrompt("Dirección", direccion);
+            direccion.setBackground(new java.awt.Color(0, 0, 0, 1));
+
+            tabla.getTableHeader().setFont(new Font("Segoe UI", Font.PLAIN, 12));
+            tabla.getTableHeader().setOpaque(false);
+            tabla.getTableHeader().setBackground(new Color(32, 136, 203));
+            tabla.getTableHeader().setForeground(new Color(0, 0, 0));
+            tabla.setRowHeight(25);
+            this.popupMetodo();
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -54,17 +67,11 @@ public class PaqueteT extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         descripcion = new javax.swing.JTextField();
         codigo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         limpiar = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        fecha = new javax.swing.JTextField();
         cod_provincia = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         dni_camionero = new javax.swing.JTextField();
@@ -74,32 +81,22 @@ public class PaqueteT extends javax.swing.JPanel {
         bAvanzada = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jSeparator4 = new javax.swing.JSeparator();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
-        jPanel2.setBackground(new java.awt.Color(102, 153, 255));
+        jPanel2.setBackground(new java.awt.Color(51, 153, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Código: ");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, -1, -1));
-        jPanel2.add(descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, 88, -1));
-        jPanel2.add(codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 100, -1));
+        descripcion.setBorder(null);
+        jPanel2.add(descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 190, 20));
+
+        codigo.setBorder(null);
+        jPanel2.add(codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, 190, 20));
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(117, 110, -1, -1));
-
-        jLabel4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Destinatario:");
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, -1, 20));
-
-        jLabel3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("Descripción: ");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, -1, 20));
-
-        jLabel5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Dirección:");
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 90, -1, 20));
 
         limpiar.setText("Limpiar");
         limpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -107,12 +104,7 @@ public class PaqueteT extends javax.swing.JPanel {
                 limpiarActionPerformed(evt);
             }
         });
-        jPanel2.add(limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 130, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Fecha:");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, -1, 20));
+        jPanel2.add(limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, -1, -1));
 
         jButton1.setText("Añadir");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -120,28 +112,25 @@ public class PaqueteT extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, -1, -1));
-
-        fecha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fechaActionPerformed(evt);
-            }
-        });
-        jPanel2.add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 40, 110, -1));
-        jPanel2.add(cod_provincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 40, 90, -1));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, -1, -1));
+        jPanel2.add(cod_provincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 90, -1));
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Dni_Camionero:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 90, -1, 20));
-        jPanel2.add(dni_camionero, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 90, 91, -1));
-        jPanel2.add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 110, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, -1, 20));
+        jPanel2.add(dni_camionero, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 91, -1));
+
+        direccion.setBorder(null);
+        jPanel2.add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 190, 20));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Cod_Provincia:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, -1, 20));
-        jPanel2.add(destinatario, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, 88, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, -1, 20));
+
+        destinatario.setBorder(null);
+        jPanel2.add(destinatario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 190, 20));
 
         bAvanzada.setText("Búsqueda Avanzada");
         bAvanzada.addActionListener(new java.awt.event.ActionListener() {
@@ -149,12 +138,20 @@ public class PaqueteT extends javax.swing.JPanel {
                 bAvanzadaActionPerformed(evt);
             }
         });
-        jPanel2.add(bAvanzada, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 160, -1));
+        jPanel2.add(bAvanzada, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 160, -1));
 
         tabla.setModel(tabla2);
         jScrollPane2.setViewportView(tabla);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 930, 510));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 930, 480));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 190, 10));
+        jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 190, 10));
+        jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 190, 10));
+        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 190, 10));
+        jPanel2.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 190, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, 120, 30));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -169,7 +166,7 @@ public class PaqueteT extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 690, Short.MAX_VALUE)
+            .addGap(0, 660, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -198,7 +195,7 @@ public class PaqueteT extends javax.swing.JPanel {
         descripcion.setText("");
         destinatario.setText("");
         direccion.setText("");
-        fecha.setText("");
+     
         cod_provincia.setText("");
         dni_camionero.setText("");
     }//GEN-LAST:event_limpiarActionPerformed
@@ -248,7 +245,7 @@ public class PaqueteT extends javax.swing.JPanel {
                     int cod_provincia = Integer.parseInt(tabla.getValueAt(index, 5).toString());
 
                     ControladorPaquete.eliminarPaquete(codigo);
-                    //JOptionPane.showMessageDialog(null, "Paquete eliminado");
+
                 } catch (Exception y) {
                     JOptionPane.showMessageDialog(null, y);
                 }
@@ -280,7 +277,10 @@ public class PaqueteT extends javax.swing.JPanel {
             String desc = descripcion.getText();
             String dest = destinatario.getText();
             String dir = direccion.getText();
-            String date = fecha.getText();
+
+            SimpleDateFormat ff = new SimpleDateFormat("dd-MM-YYYY");
+            String date = ff.format(jDateChooser2.getDate());
+
             String dcamionero = dni_camionero.getText();
             int cprovincia = Integer.parseInt(cod_provincia.getText());
             ControladorPaquete.insertarPaquete(cod, desc, dest, dir, date, dcamionero, cprovincia);
@@ -289,10 +289,6 @@ public class PaqueteT extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void fechaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fechaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_fechaActionPerformed
 
     private void bAvanzadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAvanzadaActionPerformed
         CamioneroFecha VE = new CamioneroFecha();
@@ -308,19 +304,19 @@ public class PaqueteT extends javax.swing.JPanel {
     private javax.swing.JTextField destinatario;
     private javax.swing.JTextField direccion;
     private javax.swing.JTextField dni_camionero;
-    private javax.swing.JTextField fecha;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JButton limpiar;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
