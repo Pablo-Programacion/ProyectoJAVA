@@ -224,7 +224,7 @@ public class PaqueteT extends javax.swing.JPanel {
                     // Hacer visible el JFrame de editar
                     PaqueteEditar PE = new PaqueteEditar(codigo, descripcion, destinatario, direccion, fecha, dni_camionero, cod_provincia);
                     PE.setVisible(true);
-                    JOptionPane.showMessageDialog(null, "Paquete Actualizado");
+                    
                 } catch (Exception t) {
                     JOptionPane.showMessageDialog(null, t);
                 }

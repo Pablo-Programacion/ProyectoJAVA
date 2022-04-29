@@ -174,6 +174,7 @@ public class PaqueteEditar extends javax.swing.JFrame {
             int cprovincia = Integer.parseInt(cod_provincia2.getText());
             ControladorPaquete.actualizarPaquete(codigo, destinatario, descripcion, direccion, fecha, dni_camionero, cod_provincia, cod, desc, dest, dir, date,  dcamionero, cprovincia);
             dispose();
+            JOptionPane.showMessageDialog(null, "Paquete Actualizado");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }

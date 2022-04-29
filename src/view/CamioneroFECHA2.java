@@ -144,13 +144,14 @@ public class CamioneroFECHA2 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String dni = jComboBox1.getSelectedItem().toString();
-        SimpleDateFormat ff = null;
-        String fecha = null;
-        ff = new SimpleDateFormat("dd-MM-YYYY");
-        fecha = ff.format(jDateChooser1.getDate());
+        
             
         try{
+            String dni = jComboBox1.getSelectedItem().toString();
+            SimpleDateFormat ff = null;
+            String fecha = null;
+            ff = new SimpleDateFormat("dd-MM-YYYY");
+            fecha = ff.format(jDateChooser1.getDate());
             ControladorCamioneroFecha.obtenerPaquete(dni, fecha);;
         }
         catch(Exception e){

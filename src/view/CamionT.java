@@ -174,7 +174,7 @@ public class CamionT extends javax.swing.JPanel {
                     tipo = jTable4.getValueAt(index, 3).toString();
                     // Hacer visible el JFrame de editar
                     new CamionEditar().setVisible(true);
-                    JOptionPane.showMessageDialog(null, "Registro Editado Correctamente");
+                    
                 } catch (Exception t) {
                     JOptionPane.showMessageDialog(null, t);
                 }

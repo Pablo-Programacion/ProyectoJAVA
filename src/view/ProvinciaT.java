@@ -178,7 +178,7 @@ public class ProvinciaT extends javax.swing.JPanel {
                     // Hacer visible el JFrame de editar
                     ProvinciaEditar PE = new ProvinciaEditar(codigoTabla,nombreTabla);
                     PE.setVisible(true);
-                    JOptionPane.showMessageDialog(null, "Provincia Editada");
+                    
                 } catch (Exception t) {
                     JOptionPane.showMessageDialog(null, t);
                 }

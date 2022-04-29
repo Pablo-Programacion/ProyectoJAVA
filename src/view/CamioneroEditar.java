@@ -154,6 +154,7 @@ public class CamioneroEditar extends javax.swing.JFrame {
             int telefono = Integer.parseInt(jTextField5.getText());
             ControladorCamionero.actualizar(dni, poblacion, nombre, telefono, direccion, salario, dni2, poblacion2, nombre2, telefono2, direccion2, salario2);
             dispose();
+            JOptionPane.showMessageDialog(null, "Registro Editado");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }

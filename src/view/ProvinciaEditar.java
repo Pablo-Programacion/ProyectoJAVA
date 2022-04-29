@@ -113,6 +113,7 @@ public class ProvinciaEditar extends javax.swing.JFrame {
             nombre = jTextField2.getText();
             ControladorProvincia.actualizarProvincia(codigo, nombre, codigoTabla, nombreTabla);
             dispose();
+            JOptionPane.showMessageDialog(null, "Provincia Editada");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
