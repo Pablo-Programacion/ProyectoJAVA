@@ -10,17 +10,17 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import controller.Conexion;
 
-
-
 /**
  *
  * @author MEDAC
  */
 public class TableModelCamion extends AbstractTableModel {
+
     static ArrayList<camion> camiones;
     private static camion camion;
+    static Connection connection = Conexion.getConnection();
     /// ATRIBUTOS DE LA TABLA
-    private static TableModelCamion t6 = new TableModelCamion(Conexion.getInstance().getConnection());
+    private static TableModelCamion t6 = new TableModelCamion(connection);
     private static final String[] columnNames = {"Matricula", "Potencia", "Modelo", "Tipo"};
     private final LinkedList<camion> list;
 
@@ -30,7 +30,7 @@ public class TableModelCamion extends AbstractTableModel {
 
     public void cargarCamion() throws SQLException {
         // Obtiene la lista de provincias de la BD
-        ArrayList<camion> camiones = obtenerCamiones();
+        ArrayList<camion> camiones = getCamiones();
 
         // Borra el contenido anterior y añade el nuevo.
         list.clear();
@@ -40,9 +40,9 @@ public class TableModelCamion extends AbstractTableModel {
         fireTableDataChanged();
     }
 
-    public static ArrayList<camion> obtenerCamiones() throws SQLException {
+    public static void obtenerCamiones() throws SQLException {
         camiones = new ArrayList<camion>();
-        Statement stmt = (Statement) Conexion.getInstance().getConnection().createStatement();
+        Statement stmt = (Statement) connection.createStatement();
         ResultSet resultado = stmt.executeQuery("SELECT * FROM camion");
         while (resultado.next()) {
             String matricula = resultado.getString("matricula");
@@ -52,12 +52,12 @@ public class TableModelCamion extends AbstractTableModel {
             camion = new camion(matricula, potencia, modelo, tipo);
             camiones.add(camion);
         }
-        return camiones;
+        t6.cargarCamion();
     }
 
     public static int insertarCamion(String matricula, int potencia, String modelo, String tipo) throws SQLException {
         String insert = "INSERT INTO camion (matricula,potencia,modelo,tipo) values ('%s',%s,'%s','%s')".formatted(matricula, potencia, modelo, tipo);
-        Statement stmt = (Statement) Conexion.getInstance().getConnection().createStatement();
+        Statement stmt = (Statement) connection.createStatement();
         int filas = stmt.executeUpdate(insert);
         obtenerCamiones();
         return filas;
@@ -68,7 +68,7 @@ public class TableModelCamion extends AbstractTableModel {
         int filas = 0;
         String update = "UPDATE camion SET matricula='%s',potencia=%s,modelo='%s',tipo='%s' where matricula = '%s' and potencia = %s and modelo = '%s' and tipo = '%s'"
                 .formatted(matricula, potencia, modelo, tipo, matricula2, potencia2, modelo2, tipo2);
-        Statement stmt = (Statement) Conexion.getInstance().getConnection().createStatement();
+        Statement stmt = (Statement) connection.createStatement();
         filas = stmt.executeUpdate(update);
         obtenerCamiones();
         return filas;
@@ -76,14 +76,14 @@ public class TableModelCamion extends AbstractTableModel {
 
     public static void limpiarCamion() throws SQLException {
         String delete = "DELETE FROM camion WHERE 1 = 1";
-        Statement stmt = (Statement) Conexion.getInstance().getConnection().createStatement();
+        Statement stmt = (Statement) connection.createStatement();
         int filas = stmt.executeUpdate(delete);
         obtenerCamiones();
     }
 
     public static int eliminarCamion(String matricula, int potencia, String modelo, String tipo) throws SQLException {
         String delete = "DELETE FROM camion where matricula = '%s' and potencia = %s and modelo = '%s' and tipo = '%s'".formatted(matricula, potencia, modelo, tipo);
-        Statement stmt = (Statement) Conexion.getInstance().getConnection().createStatement();
+        Statement stmt = (Statement) connection.createStatement();
         int filas = stmt.executeUpdate(delete);
         obtenerCamiones();
         return filas;

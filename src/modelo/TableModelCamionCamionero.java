@@ -17,8 +17,9 @@ public class TableModelCamionCamionero extends AbstractTableModel {
 
     static ArrayList<camion> camiones;
     private static camion camion;
+    static Connection con = Conexion.getConnection();
     /// ATRIBUTOS DE LA TABLA
-    private static TableModelCamionCamionero t7 = new TableModelCamionCamionero(Conexion.getInstance().getConnection());
+    private static TableModelCamionCamionero t7 = new TableModelCamionCamionero(con);
     private static final String[] columnNames = {"Matricula", "Potencia", "Modelo", "Tipo"};
     private final LinkedList<camion> list;
 
@@ -40,7 +41,7 @@ public class TableModelCamionCamionero extends AbstractTableModel {
 
     public static void obtenerCamiones(String nDni) throws SQLException {
         camiones = new ArrayList<camion>();
-        Statement stmt = (Statement) Conexion.getInstance().getConnection().createStatement();
+        Statement stmt = (Statement) con.createStatement();
         ResultSet resultado = stmt.executeQuery("SELECT camion.matricula,camion.modelo,camion.potencia,camion.tipo FROM camion INNER JOIN conduce ON camion.matricula = conduce.matricula_camion where conduce.dni_camionero ='"+nDni+"'");
         while (resultado.next()) {
             String matricula = resultado.getString("matricula");

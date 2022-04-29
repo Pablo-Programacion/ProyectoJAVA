@@ -17,14 +17,15 @@ import javax.swing.JOptionPane;
  */
 public class TableModelPaquete extends AbstractTableModel {
 
+    static Connection con = Conexion.getConnection();
     static ArrayList<paquete> paquetes;
     private static paquete paquete;
     //
-    private static TableModelPaquete t3 = new TableModelPaquete(Conexion.getInstance().getConexion());
+    private static TableModelPaquete t3 = new TableModelPaquete(con);
     private static final String[] columnNames = {"codigo", "descripcion", "destinatario", "direccion", "fecha", "dni_camionero", "cod_provincia"};
     private final LinkedList<paquete> list;
 
-    public TableModelPaquete(Conexion conexion) {
+    public TableModelPaquete(Connection conexion) {
         list = new LinkedList<>();
     }
 
@@ -35,23 +36,22 @@ public class TableModelPaquete extends AbstractTableModel {
     public void cargarPaquetes() {
         // Obtiene la lista de provincias de la BD
         try {
-            ArrayList<paquete> paquetes = obtenerPaquetes();
+            ArrayList<paquete> paquetes = getPaquetes();
             // Borra el contenido anterior y añade el nuevo.
-        list.clear();
-        list.addAll(paquetes);
+            list.clear();
+            list.addAll(paquetes);
 
-        // Notifica a la vista que el contenido ha cambiado para que se refresque.
-        fireTableDataChanged();
+            // Notifica a la vista que el contenido ha cambiado para que se refresque.
+            fireTableDataChanged();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
 
-        
     }
 
-    public static ArrayList<paquete> obtenerPaquetes() throws SQLException {
+    public static void obtenerPaquetes() throws SQLException {
         paquetes = new ArrayList<paquete>();
-        Statement stmt = (Statement) Conexion.getInstance().getConnection().createStatement();
+        Statement stmt = con.createStatement();
         ResultSet resultado = stmt.executeQuery("SELECT * FROM paquete");
         while (resultado.next()) {
             int codigo = resultado.getInt("codigo");
@@ -64,12 +64,12 @@ public class TableModelPaquete extends AbstractTableModel {
             paquete = new paquete(codigo, descripcion, destinatario, direccion, fecha, dni_camionero, cod_provincia);
             paquetes.add(paquete);
         }
-        return paquetes;
+        t3.cargarPaquetes();
     }
 
     public static int insertarPaquete(int nCodigo, String nDescripcion, String nDestinatario, String nDireccion, String nFecha, String nDni_Camionero, int nCod_Provincia) throws SQLException {
         String insert = "INSERT INTO paquete (codigo, descripcion, destinatario, direccion, fecha, dni_camionero, cod_provincia) values (%s,'%s', '%s','%s','%s','%s',%s)".formatted(nCodigo, nDescripcion, nDestinatario, nDireccion, nFecha, nDni_Camionero, nCod_Provincia);
-        Statement stmt = (Statement) Conexion.getInstance().getConnection().createStatement();
+        Statement stmt = con.createStatement();
         int filas = stmt.executeUpdate(insert);
         obtenerPaquetes();
         t3.cargarPaquetes();
@@ -80,7 +80,7 @@ public class TableModelPaquete extends AbstractTableModel {
         JOptionPane.showMessageDialog(null, "Llega Table Model");
         String delete = "DELETE FROM paquete where codigo = " + nCodigo;
         System.out.println(delete);
-        Statement stmt = (Statement) Conexion.getInstance().getConnection().createStatement();
+        Statement stmt = con.createStatement();
         int filas = stmt.executeUpdate(delete);
         obtenerPaquetes();
         t3.cargarPaquetes();
@@ -90,7 +90,7 @@ public class TableModelPaquete extends AbstractTableModel {
     public static int actualizarPaquete(int nCodigo, String nDescripcion, String nDestinatario, String nDireccion, String nFecha, String nDni_Camionero, int nCod_Provincia, int nCodigo2, String nDescripcion2, String nDestinatario2, String nDireccion2, String nFecha2, String nDni_Camionero2, int nCod_Provincia2) throws SQLException {
         String update = "UPDATE paquete SET codigo =" + nCodigo2 + ", descripcion = '" + nDescripcion2 + "', destinatario = '" + nDestinatario2 + "', direccion = '" + nDireccion2 + "', fecha = '" + nFecha2 + "', dni_camionero = '" + nDni_Camionero2 + "', cod_provincia = " + nCod_Provincia2 + "  where codigo =" + nCodigo;
         System.out.println(update);
-        Statement stmt = (Statement) Conexion.getInstance().getConnection().createStatement();
+        Statement stmt = con.createStatement();
         int filas = stmt.executeUpdate(update);
         obtenerPaquetes();
         t3.cargarPaquetes();

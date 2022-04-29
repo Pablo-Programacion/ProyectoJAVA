@@ -376,7 +376,6 @@ public class Paquetería extends javax.swing.JFrame {
             try {
                 jLabel3.setText("INICIAR SESIÓN");
                 Conexion.desconectar();
-                Conexion.setConnection(conne);
                 this.valor = 0;
                 jPanel3.removeAll();
                 ImageIcon imagen2 = new ImageIcon("src/img/paquete.jpg");
@@ -530,7 +529,7 @@ public class Paquetería extends javax.swing.JFrame {
                 jLabel13.setVisible(false);
                 jProgressBar2.setVisible(false);
 
-                Conexion.getInstance();
+                Conexion.conectarMySQL();
 
                 JOptionPane.showMessageDialog(null, "Conectado");
 
