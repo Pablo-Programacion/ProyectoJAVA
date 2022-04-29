@@ -249,7 +249,13 @@ public class CamioneroT extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:
+        this.jTextField1.setText("");
+         this.jTextField2.setText("");
+          this.jTextField3.setText("");
+           this.jTextField4.setText("");
+            this.jTextField5.setText("");
+             this.jTextField6.setText("");
+            
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
