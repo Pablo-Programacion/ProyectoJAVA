@@ -363,7 +363,6 @@ public class Paquetería extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        Connection conne = null;
         if (Conexion.getConnection() == null || valor == 0) {
             System.out.println(valor);
             try {
@@ -379,6 +378,8 @@ public class Paquetería extends javax.swing.JFrame {
                 Conexion.desconectar();
                 this.valor = 0;
                 jPanel3.removeAll();
+                jPanel3.revalidate();
+                jPanel3.repaint();
                 ImageIcon imagen2 = new ImageIcon("src/img/paquete.jpg");
                 Icon icono2 = new ImageIcon(imagen2.getImage().getScaledInstance(jLabel23.getWidth(),
                         jLabel23.getHeight(), Image.SCALE_SMOOTH));
