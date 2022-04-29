@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import javax.swing.table.AbstractTableModel;
-
+import view.CamioneroFECHA2;
 import controller.Conexion;
 import static modelo.TableModelCamioneroFecha.con;
 
@@ -17,6 +17,7 @@ import static modelo.TableModelCamioneroFecha.con;
  */
 public class TableModelCamionero extends AbstractTableModel {
 
+    static String a = "";
     static Connection connection = Conexion.getConnection();
     static ArrayList<camionero> camioneros;
     private static camionero camionero;
@@ -67,6 +68,19 @@ public class TableModelCamionero extends AbstractTableModel {
         int filas = stmt.executeUpdate(insert);
         obtenerCamioneros();
         return filas;
+    }
+
+    public static void updateCombo() {
+        try {
+            Statement stmt = con.createStatement();
+            ResultSet resultado = stmt.executeQuery("SELECT * FROM camionero");
+            while (resultado.next()) {
+                a = resultado.getString("dni");
+                CamioneroFECHA2.jComboBox1.addItem(a);
+                CamioneroFECHA2.jComboBox1.addItem("asd");
+            }
+        } catch (Exception e) {
+        }
     }
 
     public static int eliminarCamionero(String dni, String poblacion, String nombre, int telefono, String direccion,
