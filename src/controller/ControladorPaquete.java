@@ -19,7 +19,6 @@ public class ControladorPaquete {
     }
 
     public static void eliminarPaquete(int nCodigo) throws SQLException {
-        JOptionPane.showMessageDialog(null, "Llega Controlador");
         TableModelPaquete.eliminarPaquete(nCodigo);
     }
 

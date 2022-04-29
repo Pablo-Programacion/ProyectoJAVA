@@ -9,13 +9,14 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import controller.Conexion;
+import view.PaqueteT;
 
 /**
  *
  * @author MEDAC
  */
 public class TableModelProvincias extends AbstractTableModel {
-
+     static int num;
     static Connection connection = Conexion.getConnection();
     static ArrayList<provincia> provincias;
     private static provincia provincia;
@@ -89,7 +90,19 @@ public class TableModelProvincias extends AbstractTableModel {
         obtenerProvincias();
         return filas;
     }
-
+    
+    public static void updateCombo() {
+        try {
+            Statement stmt = connection.createStatement();
+            ResultSet resultado = stmt.executeQuery("SELECT codigo FROM provincia");
+            while (resultado.next()) {
+                 num = Integer.parseInt(resultado.getString("codigo"));
+                PaqueteT.cod_provincia.addItem(num);
+            }
+        } catch (Exception e) {
+        }
+    }
+    
     @Override
     public int getColumnCount() {
         return columnNames.length;

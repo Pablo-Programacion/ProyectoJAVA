@@ -20,7 +20,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
-
+import view.Inicio;
 /**
  *
  * @author HP
@@ -532,7 +532,7 @@ public class Paquetería extends javax.swing.JFrame {
                 Conexion.conectarMySQL();
 
                 JOptionPane.showMessageDialog(null, "Conectado");
-
+                
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }

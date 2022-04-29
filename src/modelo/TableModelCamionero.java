@@ -10,6 +10,7 @@ import javax.swing.table.AbstractTableModel;
 import view.CamioneroFECHA2;
 import controller.Conexion;
 import static modelo.TableModelCamioneroFecha.con;
+import view.PaqueteT;
 
 /**
  *
@@ -90,6 +91,17 @@ public class TableModelCamionero extends AbstractTableModel {
             while (resultado.next()) {
                 a = resultado.getString("dni");
                 CamioneroFECHA2.jComboBox1.addItem(a);
+            }
+        } catch (Exception e) {
+        }
+    }
+    public static void updateCombo2() {
+        try {
+            Statement stmt = con.createStatement();
+            ResultSet resultado = stmt.executeQuery("SELECT * FROM camionero");
+            while (resultado.next()) {
+                a = resultado.getString("dni");
+                PaqueteT.dni_camionero.addItem(a);
             }
         } catch (Exception e) {
         }

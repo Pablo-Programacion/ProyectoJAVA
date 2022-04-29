@@ -15,6 +15,8 @@ import java.text.SimpleDateFormat;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
 import modelo.ModeloProvincia;
+import modelo.TableModelCamionero;
+import modelo.TableModelProvincias;
 
 /**
  *
@@ -31,6 +33,8 @@ public class PaqueteT extends javax.swing.JPanel {
 
         try {
             initComponents();
+            TableModelCamionero.updateCombo2();
+            TableModelProvincias.updateCombo();
             ControladorPaquete.obtenerPaquete();
             TextPrompt codigo2 = new TextPrompt("Código", codigo);
             codigo.setBackground(new java.awt.Color(0, 0, 0, 1));
@@ -123,7 +127,7 @@ public class PaqueteT extends javax.swing.JPanel {
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Cod_Provincia:");
+        jLabel7.setText("Provincia:");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, -1, 20));
 
         destinatario.setBorder(null);
@@ -147,10 +151,8 @@ public class PaqueteT extends javax.swing.JPanel {
         jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 190, 10));
         jPanel2.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 190, -1));
 
-        dni_camionero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel2.add(dni_camionero, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 110, -1));
 
-        cod_provincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jPanel2.add(cod_provincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 110, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -280,12 +282,12 @@ public class PaqueteT extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAvanzada;
-    private javax.swing.JComboBox<String> cod_provincia;
+    public static javax.swing.JComboBox<Integer> cod_provincia;
     private javax.swing.JTextField codigo;
     private javax.swing.JTextField descripcion;
     private javax.swing.JTextField destinatario;
     private javax.swing.JTextField direccion;
-    private javax.swing.JComboBox<String> dni_camionero;
+    public static javax.swing.JComboBox<String> dni_camionero;
     private javax.swing.JButton jButton1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel2;

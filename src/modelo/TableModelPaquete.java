@@ -78,7 +78,6 @@ public class TableModelPaquete extends AbstractTableModel {
     }
 
     public static int eliminarPaquete(int nCodigo) throws SQLException {
-        JOptionPane.showMessageDialog(null, "Llega Table Model");
         String delete = "DELETE FROM paquete where codigo = " + nCodigo;
         System.out.println(delete);
         Statement stmt = con.createStatement();
