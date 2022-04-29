@@ -77,7 +77,6 @@ public class TableModelCamionero extends AbstractTableModel {
             while (resultado.next()) {
                 a = resultado.getString("dni");
                 CamioneroFECHA2.jComboBox1.addItem(a);
-                CamioneroFECHA2.jComboBox1.addItem("asd");
             }
         } catch (Exception e) {
         }

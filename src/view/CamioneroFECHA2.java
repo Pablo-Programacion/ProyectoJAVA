@@ -9,12 +9,14 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPopupMenu;
 import modelo.ModeloProvincia;
 import modelo.TableModelCamioneroFecha;
 import modelo.TableModelCamionero;
+
 /**
  *
  * @author FER
@@ -53,12 +55,12 @@ public class CamioneroFECHA2 extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        dnicamionero = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         fechaenvio = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -91,7 +93,6 @@ public class CamioneroFECHA2 extends javax.swing.JPanel {
             }
         });
         jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, 110, -1));
-        jPanel4.add(dnicamionero, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 110, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -112,7 +113,8 @@ public class CamioneroFECHA2 extends javax.swing.JPanel {
         });
         jPanel4.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 60, 110, -1));
 
-        jPanel4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 120, 20));
+        jPanel4.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 120, 20));
+        jPanel4.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, 150, -1));
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 120));
 
@@ -154,8 +156,11 @@ public class CamioneroFECHA2 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String dni = this.dnicamionero.getText();
-        System.out.println(jComboBox1.getSelectedItem().toString());
+        String dni = jComboBox1.getSelectedItem().toString();
+
+        SimpleDateFormat ff = new SimpleDateFormat("dd-MM-YYYY");
+        String date = ff.format(jDateChooser1.getDate());
+        System.out.println(date);
         String fecha = this.fechaenvio.getText();
         try {
             if (dni.length() == 0) {
@@ -205,7 +210,7 @@ public class CamioneroFECHA2 extends javax.swing.JPanel {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
-                    
+
                 }
             }
         } catch (ClassNotFoundException ex) {
@@ -232,11 +237,11 @@ public class CamioneroFECHA2 extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField dnicamionero;
     private javax.swing.JTextField fechaenvio;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     public static javax.swing.JComboBox<String> jComboBox1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

@@ -66,9 +66,7 @@ public class TableModelCamioneroFecha extends AbstractTableModel {
         t8.cargarPaquetes();
     }
 
-    public void updateCombo() {
-        
-    }
+   
 
     public static void obtenerPaquetesDni(String nDni) throws SQLException {
         paquetes = new ArrayList<paquete>();
