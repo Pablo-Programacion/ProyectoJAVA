@@ -140,7 +140,12 @@ public class IniciarSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel11MouseClicked
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        if (jTextField2.getText() == ""){
+            JOptionPane.showMessageDialog(null, "Debe indicar Usuario y Contraseña");
+            dispose();
+        }
         try {
+            
             Conexion.datosMySQL(jTextField2.getText(), jPasswordField1.getText());
             dispose();
             Paquetería.start();
