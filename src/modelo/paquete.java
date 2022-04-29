@@ -15,8 +15,9 @@ public class paquete {
     String fecha;
     String dni_camionero;
     int cod_provincia;
+    String nombre_provincia;
 
-    public paquete(int codigo, String descripcion, String destinatario, String direccion, String fecha, String c1, int p1) {
+    public paquete(int codigo, String descripcion, String destinatario, String direccion, String fecha, String c1, int p1, String nNombre_Provincia) {
         this.codigo = codigo;
         this.descripcion = descripcion;
         this.destinatario = destinatario;
@@ -24,6 +25,7 @@ public class paquete {
         this.fecha = fecha;
         this.dni_camionero = c1;
         this.cod_provincia = p1;
+        this.nombre_provincia = nNombre_Provincia;
     }
 
     public int getCodigo() {
@@ -32,6 +34,10 @@ public class paquete {
 
     public String getDescripcion() {
         return descripcion;
+    }
+
+    public String getNombreProvincia() {
+        return nombre_provincia;
     }
 
     public String getDestinatario() {

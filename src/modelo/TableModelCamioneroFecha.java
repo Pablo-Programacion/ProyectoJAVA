@@ -21,7 +21,7 @@ public class TableModelCamioneroFecha extends AbstractTableModel {
 
     //
     private static TableModelCamioneroFecha t8 = new TableModelCamioneroFecha(con);
-    private static final String[] columnNames = {"codigo", "descripcion", "destinatario", "direccion", "fecha", "dni_camionero", "cod_provincia"};
+    private static final String[] columnNames = {"Código", "Descripción", "Destinatario", "Direccion", "fecha", "Dni Camionero", "Codigo Provincia", "Nombre Provincia"};
     private final LinkedList<paquete> list;
 
     public TableModelCamioneroFecha(Connection conexion) {
@@ -49,9 +49,9 @@ public class TableModelCamioneroFecha extends AbstractTableModel {
     public static void obtenerPaquetes(String nDni, String nFecha) throws SQLException {
         paquetes = new ArrayList<paquete>();
         Statement stmt = con.createStatement();
-        String consulta = "SELECT * FROM paquete where dni_camionero='" + nDni + "' and fecha ='" + nFecha + "'";
+        String consulta = "SELECT * FROM vistapaquete where dni_camionero='" + nDni + "' and fecha ='" + nFecha + "'";
         System.out.println(consulta);
-        ResultSet resultado = stmt.executeQuery("SELECT * FROM paquete where dni_camionero='" + nDni + "' and fecha ='" + nFecha + "'");
+        ResultSet resultado = stmt.executeQuery(consulta);
         while (resultado.next()) {
             int codigo = resultado.getInt("codigo");
             String descripcion = resultado.getString("descripcion");
@@ -60,7 +60,8 @@ public class TableModelCamioneroFecha extends AbstractTableModel {
             String fecha = resultado.getString("fecha");
             String dni_camionero = resultado.getString("dni_camionero");
             int cod_provincia = resultado.getInt("cod_provincia");
-            paquete = new paquete(codigo, descripcion, destinatario, direccion, fecha, dni_camionero, cod_provincia);
+            String nombre_provincia = resultado.getString("nombre");
+            paquete = new paquete(codigo, descripcion, destinatario, direccion, fecha, dni_camionero, cod_provincia,nombre_provincia);
             paquetes.add(paquete);
         }
         t8.cargarPaquetes();
@@ -71,7 +72,7 @@ public class TableModelCamioneroFecha extends AbstractTableModel {
     public static void obtenerPaquetesDni(String nDni) throws SQLException {
         paquetes = new ArrayList<paquete>();
         Statement stmt = con.createStatement();
-        ResultSet resultado = stmt.executeQuery("SELECT * FROM paquete where dni_camionero='" + nDni + "'");
+        ResultSet resultado = stmt.executeQuery("SELECT * FROM vistapaquete where dni_camionero='" + nDni + "'");
         while (resultado.next()) {
             int codigo = resultado.getInt("codigo");
             String descripcion = resultado.getString("descripcion");
@@ -80,7 +81,8 @@ public class TableModelCamioneroFecha extends AbstractTableModel {
             String fecha = resultado.getString("fecha");
             String dni_camionero = resultado.getString("dni_camionero");
             int cod_provincia = resultado.getInt("cod_provincia");
-            paquete = new paquete(codigo, descripcion, destinatario, direccion, fecha, dni_camionero, cod_provincia);
+            String nombre_provincia = resultado.getString("nombre");
+            paquete = new paquete(codigo, descripcion, destinatario, direccion, fecha, dni_camionero, cod_provincia,nombre_provincia);
             paquetes.add(paquete);
         }
         t8.cargarPaquetes();
@@ -89,7 +91,7 @@ public class TableModelCamioneroFecha extends AbstractTableModel {
     public static void obtenerPaquetesFecha(String nFecha) throws SQLException {
         paquetes = new ArrayList<paquete>();
         Statement stmt = con.createStatement();
-        ResultSet resultado = stmt.executeQuery("SELECT * FROM paquete where fecha ='" + nFecha + "'");
+        ResultSet resultado = stmt.executeQuery("SELECT * FROM vistapaquete where fecha ='" + nFecha + "'");
         while (resultado.next()) {
             int codigo = resultado.getInt("codigo");
             String descripcion = resultado.getString("descripcion");
@@ -98,7 +100,8 @@ public class TableModelCamioneroFecha extends AbstractTableModel {
             String fecha = resultado.getString("fecha");
             String dni_camionero = resultado.getString("dni_camionero");
             int cod_provincia = resultado.getInt("cod_provincia");
-            paquete = new paquete(codigo, descripcion, destinatario, direccion, fecha, dni_camionero, cod_provincia);
+            String nombre_provincia = resultado.getString("nombre");
+            paquete = new paquete(codigo, descripcion, destinatario, direccion, fecha, dni_camionero, cod_provincia,nombre_provincia);
             paquetes.add(paquete);
         }
         t8.cargarPaquetes();
@@ -137,6 +140,8 @@ public class TableModelCamioneroFecha extends AbstractTableModel {
                 return list.get(rowIndex).getDni_camionero();
             case 6:
                 return list.get(rowIndex).getCod_provincia();
+            case 7:
+                return list.get(rowIndex).getNombreProvincia();
         }
         return null;
     }

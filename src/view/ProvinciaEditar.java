@@ -22,7 +22,7 @@ public class ProvinciaEditar extends javax.swing.JFrame {
     /**
      * Creates new form asddasd
      */
-    public ProvinciaEditar() {
+    public ProvinciaEditar(int nCProvincia, String nNombreProvincia) {
         initComponents();
         TextPrompt nombre = new TextPrompt("Código", jTextField1);
         TextPrompt contrasena = new TextPrompt("Nombre de la provincia", jTextField2);
@@ -30,8 +30,14 @@ public class ProvinciaEditar extends javax.swing.JFrame {
         jTextField2.setBackground(new java.awt.Color(0, 0, 0, 1));
         this.codigoTabla = ProvinciaT.getCodigoTabla();
         this.nombreTabla = ProvinciaT.getNombreTabla();
+        this.jTextField1.setText(nCProvincia+"");
+        this.jTextField2.setText(nNombreProvincia);
         actualizarNombresJtextField(codigoTabla, nombreTabla);
 
+    }
+
+    private ProvinciaEditar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**

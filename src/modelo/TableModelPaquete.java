@@ -22,7 +22,7 @@ public class TableModelPaquete extends AbstractTableModel {
     private static paquete paquete;
     //
     private static TableModelPaquete t3 = new TableModelPaquete(con);
-    private static final String[] columnNames = {"codigo", "descripcion", "destinatario", "direccion", "fecha", "dni_camionero", "cod_provincia"};
+    private static final String[] columnNames = {"codigo", "descripcion", "destinatario", "direccion", "fecha", "dni_camionero", "cod_provincia", "nombre"};
     private final LinkedList<paquete> list;
 
     public TableModelPaquete(Connection conexion) {
@@ -52,7 +52,7 @@ public class TableModelPaquete extends AbstractTableModel {
     public static void obtenerPaquetes() throws SQLException {
         paquetes = new ArrayList<paquete>();
         Statement stmt = con.createStatement();
-        ResultSet resultado = stmt.executeQuery("SELECT * FROM paquete");
+        ResultSet resultado = stmt.executeQuery("SELECT * FROM vistapaquete");
         while (resultado.next()) {
             int codigo = resultado.getInt("codigo");
             String descripcion = resultado.getString("descripcion");
@@ -61,7 +61,8 @@ public class TableModelPaquete extends AbstractTableModel {
             String fecha = resultado.getString("fecha");
             String dni_camionero = resultado.getString("dni_camionero");
             int cod_provincia = resultado.getInt("cod_provincia");
-            paquete = new paquete(codigo, descripcion, destinatario, direccion, fecha, dni_camionero, cod_provincia);
+            String nombre_provincia = resultado.getString("nombre");
+            paquete = new paquete(codigo, descripcion, destinatario, direccion, fecha, dni_camionero, cod_provincia,nombre_provincia);
             paquetes.add(paquete);
         }
         t3.cargarPaquetes();
@@ -94,6 +95,7 @@ public class TableModelPaquete extends AbstractTableModel {
         int filas = stmt.executeUpdate(update);
         obtenerPaquetes();
         t3.cargarPaquetes();
+        
         return filas;
     }
 
@@ -130,6 +132,8 @@ public class TableModelPaquete extends AbstractTableModel {
                 return list.get(rowIndex).getDni_camionero();
             case 6:
                 return list.get(rowIndex).getCod_provincia();
+            case 7:
+                return list.get(rowIndex).getNombreProvincia();
         }
         return null;
     }

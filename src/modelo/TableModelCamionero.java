@@ -20,6 +20,7 @@ public class TableModelCamionero extends AbstractTableModel {
     static String a = "";
     static Connection connection = Conexion.getConnection();
     static ArrayList<camionero> camioneros;
+    static ArrayList<String> dniCamioneros;
     private static camionero camionero;
     /// ATRIBUTOS DE LA TABLA
     private static TableModelCamionero t2 = new TableModelCamionero(con);
@@ -55,6 +56,18 @@ public class TableModelCamionero extends AbstractTableModel {
             int salario = resultado.getInt("salario");
             camionero = new camionero(dni, poblacion, nombre, telefono, direccion, salario);
             camioneros.add(camionero);
+        }
+        t2.cargarCamionero();
+
+    }
+    
+    public static void obtenerDniCamioneros() throws SQLException {
+        dniCamioneros = new ArrayList<String>();
+        Statement stmt = con.createStatement();
+        ResultSet resultado = stmt.executeQuery("SELECT dni FROM camionero");
+        while (resultado.next()) {
+            String dni = resultado.getString("dni");
+            dniCamioneros.add(dni);
         }
         t2.cargarCamionero();
 

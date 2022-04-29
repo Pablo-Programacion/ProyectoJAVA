@@ -143,6 +143,7 @@ public class ProvinciaT extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             ControladorProvincia.insertarProvincias(Integer.parseInt(jTextField1.getText()), jTextField2.getText());
+            JOptionPane.showMessageDialog(null, "Nueva Provincia Insertada");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -175,8 +176,9 @@ public class ProvinciaT extends javax.swing.JPanel {
                     nombreTabla = jTable133.getValueAt(index, 1).toString();
 
                     // Hacer visible el JFrame de editar
-                    new ProvinciaEditar().setVisible(true);
-
+                    ProvinciaEditar PE = new ProvinciaEditar(codigoTabla,nombreTabla);
+                    PE.setVisible(true);
+                    JOptionPane.showMessageDialog(null, "Provincia Editada");
                 } catch (Exception t) {
                     JOptionPane.showMessageDialog(null, t);
                 }
@@ -194,6 +196,7 @@ public class ProvinciaT extends javax.swing.JPanel {
                     int codigo = Integer.parseInt(jTable133.getValueAt(index, 0).toString());
                     String nombre = jTable133.getValueAt(index, 1).toString();
                     ControladorProvincia.eliminarProvincia(codigo, nombre);
+                    JOptionPane.showMessageDialog(null, "Provincia Eliminada");
                 } catch (SQLException r) {
                     JOptionPane.showMessageDialog(null, r);
                 }

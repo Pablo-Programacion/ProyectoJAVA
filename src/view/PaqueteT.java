@@ -72,9 +72,7 @@ public class PaqueteT extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         limpiar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        cod_provincia = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        dni_camionero = new javax.swing.JTextField();
         direccion = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         destinatario = new javax.swing.JTextField();
@@ -86,7 +84,8 @@ public class PaqueteT extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         jSeparator4 = new javax.swing.JSeparator();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        dni_camionero = new javax.swing.JComboBox<>();
+        cod_provincia = new javax.swing.JComboBox<>();
 
         jPanel2.setBackground(new java.awt.Color(51, 153, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -113,13 +112,11 @@ public class PaqueteT extends javax.swing.JPanel {
             }
         });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, -1, -1));
-        jPanel2.add(cod_provincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 90, -1));
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Dni_Camionero:");
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, -1, 20));
-        jPanel2.add(dni_camionero, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 91, -1));
 
         direccion.setBorder(null);
         jPanel2.add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 190, 20));
@@ -127,7 +124,7 @@ public class PaqueteT extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Cod_Provincia:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, -1, 20));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, -1, 20));
 
         destinatario.setBorder(null);
         jPanel2.add(destinatario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 190, 20));
@@ -150,8 +147,11 @@ public class PaqueteT extends javax.swing.JPanel {
         jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 190, 10));
         jPanel2.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, 190, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 70, 120, 30));
+        dni_camionero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(dni_camionero, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 100, 110, -1));
+
+        cod_provincia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(cod_provincia, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 110, -1));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -196,15 +196,14 @@ public class PaqueteT extends javax.swing.JPanel {
         destinatario.setText("");
         direccion.setText("");
      
-        cod_provincia.setText("");
-        dni_camionero.setText("");
+        cod_provincia.setSelectedIndex(0);
+        dni_camionero.setSelectedIndex(0);
     }//GEN-LAST:event_limpiarActionPerformed
 
     public void popupMetodo() {
         JPopupMenu popupMenu = new JPopupMenu();
         JMenuItem menuItem1 = new JMenuItem("Editar");
         JMenuItem menuItem2 = new JMenuItem("Eliminar");
-        JMenuItem menuItem3 = new JMenuItem("Ver Provincia");
         // EDITAR: Al hacer click se cogera esa fila selecionada y con los getters
         // extraigo los datos
         menuItem1.addActionListener(new ActionListener() {
@@ -223,6 +222,7 @@ public class PaqueteT extends javax.swing.JPanel {
                     // Hacer visible el JFrame de editar
                     PaqueteEditar PE = new PaqueteEditar(codigo, descripcion, destinatario, direccion, fecha, dni_camionero, cod_provincia);
                     PE.setVisible(true);
+                    JOptionPane.showMessageDialog(null, "Paquete Actualizado");
                 } catch (Exception t) {
                     JOptionPane.showMessageDialog(null, t);
                 }
@@ -237,36 +237,18 @@ public class PaqueteT extends javax.swing.JPanel {
                 try {
                     int index = tabla.getSelectedRow();
                     int codigo = Integer.parseInt(tabla.getValueAt(index, 0).toString());
-                    String descripcion = tabla.getValueAt(index, 1).toString();
-                    String destinatario = tabla.getValueAt(index, 2).toString();
-                    String direccion = tabla.getValueAt(index, 3).toString();
-                    String fecha = tabla.getValueAt(index, 4).toString();
-                    String dni_camionero = tabla.getValueAt(index, 5).toString();
-                    int cod_provincia = Integer.parseInt(tabla.getValueAt(index, 5).toString());
 
                     ControladorPaquete.eliminarPaquete(codigo);
-
+                    JOptionPane.showMessageDialog(null, "Paquete Eliminado");
                 } catch (Exception y) {
                     JOptionPane.showMessageDialog(null, y);
                 }
             }
         });
-        menuItem3.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    int index = tabla.getSelectedRow();
-                    int cod_provincia = Integer.parseInt(tabla.getValueAt(index, 6).toString());
-                    ModeloProvincia.obtenerProvincias(cod_provincia);
-                } catch (Exception t) {
-                    JOptionPane.showMessageDialog(null, t);
-                }
-            }
-        });
+        
         // Añadir los addActionListener al menu creado
         popupMenu.add(menuItem1);
         popupMenu.add(menuItem2);
-        popupMenu.add(menuItem3);
         // Los añadimos a la tabla
         tabla.setComponentPopupMenu(popupMenu);
     }
@@ -281,8 +263,8 @@ public class PaqueteT extends javax.swing.JPanel {
             SimpleDateFormat ff = new SimpleDateFormat("dd-MM-YYYY");
             String date = ff.format(jDateChooser2.getDate());
 
-            String dcamionero = dni_camionero.getText();
-            int cprovincia = Integer.parseInt(cod_provincia.getText());
+            String dcamionero = dni_camionero.getSelectedItem().toString();
+            int cprovincia = Integer.parseInt(cod_provincia.getSelectedItem().toString());
             ControladorPaquete.insertarPaquete(cod, desc, dest, dir, date, dcamionero, cprovincia);
             JOptionPane.showMessageDialog(null, "Paquete almacenado");
         } catch (Exception e) {
@@ -298,14 +280,13 @@ public class PaqueteT extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAvanzada;
-    private javax.swing.JTextField cod_provincia;
+    private javax.swing.JComboBox<String> cod_provincia;
     private javax.swing.JTextField codigo;
     private javax.swing.JTextField descripcion;
     private javax.swing.JTextField destinatario;
     private javax.swing.JTextField direccion;
-    private javax.swing.JTextField dni_camionero;
+    private javax.swing.JComboBox<String> dni_camionero;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;

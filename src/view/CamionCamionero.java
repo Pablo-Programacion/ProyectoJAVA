@@ -15,23 +15,26 @@ import modelo.TableModelCamionCamionero;
  */
 public class CamionCamionero extends javax.swing.JFrame {
     TableModelCamionCamionero t7 = ControladorCamionCamionero.getT7();
-    private String camioneroDni;
-    private String nombreCamionero;
-    public CamionCamionero(String nDni, String nNombre) {
-        initComponents();
-        this.camioneroDni = nDni;
-        this.nombreCamionero = nNombre;
+    
+    
+    
+    public CamionCamionero(String nDni){
+     initComponents();
         try {
-            initComponents();
-            ControladorCamionCamionero.obtenerCamion(camioneroDni);
+            ControladorCamionCamionero.obtenerCamion(nDni);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-    }
-
+    }   
+    
     private CamionCamionero() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+
+   
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,7 +49,6 @@ public class CamionCamionero extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setUndecorated(true);
 
         jTable1.setModel(t7);
         jScrollPane1.setViewportView(jTable1);
@@ -59,7 +61,7 @@ public class CamionCamionero extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
         );
 
         pack();

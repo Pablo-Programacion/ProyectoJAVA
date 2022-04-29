@@ -88,7 +88,7 @@ public class CamioneroT extends javax.swing.JPanel {
 
                     // Hacer visible el JFrame de editar
                     new CamioneroEditar().setVisible(true);
-
+                    JOptionPane.showMessageDialog(null, "Registro Editado");
                 } catch (Exception t) {
                     JOptionPane.showMessageDialog(null, t);
                 }
@@ -113,6 +113,7 @@ public class CamioneroT extends javax.swing.JPanel {
                     ControladorCamionero.eliminarCamionero(dni, poblacion, nombre,
                             telefono, direccion,
                             salario);
+                    JOptionPane.showMessageDialog(null, "Registro Eliminado");
                 } catch (Exception y) {
                     JOptionPane.showMessageDialog(null, y);
                 }
@@ -125,8 +126,7 @@ public class CamioneroT extends javax.swing.JPanel {
                 try {
                     int index = jTable2.getSelectedRow();
                     String dni = jTable2.getValueAt(index, 0).toString();
-                    String nombre = jTable2.getValueAt(index, 2).toString();
-                    new CamionCamionero(dni,nombre).setVisible(true);
+                    new CamionCamionero(dni).setVisible(true);
                     
                 } catch (Exception y) {
                     JOptionPane.showMessageDialog(null, y);
@@ -255,6 +255,7 @@ public class CamioneroT extends javax.swing.JPanel {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         try {
             ControladorCamionero.insertarCamionero(jTextField6.getText(), jTextField5.getText(), jTextField4.getText(), Integer.parseInt(jTextField3.getText()), jTextField2.getText(), Integer.parseInt(jTextField1.getText()));
+            JOptionPane.showMessageDialog(null, "Nuevo Trabajor Insertado");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }

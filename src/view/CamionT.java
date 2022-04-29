@@ -145,7 +145,7 @@ public class CamionT extends javax.swing.JPanel {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         try {
             ControladorCamion.insertarCamion(jTextField2.getText(), Integer.parseInt(jTextField1.getText()), jTextField3.getText(), jTextField4.getText());
-            JOptionPane.showMessageDialog(null, "Insertado");
+            JOptionPane.showMessageDialog(null, "Nuevo Camion Insertado");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -174,6 +174,7 @@ public class CamionT extends javax.swing.JPanel {
                     tipo = jTable4.getValueAt(index, 3).toString();
                     // Hacer visible el JFrame de editar
                     new CamionEditar().setVisible(true);
+                    JOptionPane.showMessageDialog(null, "Registro Editado Correctamente");
                 } catch (Exception t) {
                     JOptionPane.showMessageDialog(null, t);
                 }
@@ -194,6 +195,7 @@ public class CamionT extends javax.swing.JPanel {
                     String modelo = jTable4.getValueAt(index, 2).toString();
                     String tipo = jTable4.getValueAt(index, 3).toString();
                     ControladorCamion.eliminarCamion(matricula, potencia, modelo, tipo);
+                    JOptionPane.showMessageDialog(null, "Camion Eliminado Correctamente");
                 } catch (SQLException r) {
                     JOptionPane.showMessageDialog(null, r);
                 }

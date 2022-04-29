@@ -36,7 +36,7 @@ public class CamioneroFECHA2 extends javax.swing.JPanel {
         jTable1.getTableHeader().setBackground(new Color(32, 136, 203));
         jTable1.getTableHeader().setForeground(new Color(0, 0, 0));
         jTable1.setRowHeight(25);
-        popupMetodo();
+        /*popupMetodo();*/
     }
 
     /**
@@ -74,8 +74,7 @@ public class CamioneroFECHA2 extends javax.swing.JPanel {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -146,22 +145,22 @@ public class CamioneroFECHA2 extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String dni = jComboBox1.getSelectedItem().toString();
-
-        SimpleDateFormat ff = new SimpleDateFormat("dd-MM-YYYY");
-        String fecha = ff.format(jDateChooser1.getDate());
-        try {
-            if (dni.length() == 0) {
-                ControladorCamioneroFecha.obtenerPaqueteFecha(fecha);
-            } else if (fecha.length() == 0) {
-                ControladorCamioneroFecha.obtenerPaqueteDni(dni);
-            } else {
-                ControladorCamioneroFecha.obtenerPaquete(dni, fecha);
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        SimpleDateFormat ff = null;
+        String fecha = null;
+        ff = new SimpleDateFormat("dd-MM-YYYY");
+        fecha = ff.format(jDateChooser1.getDate());
+            
+        try{
+            ControladorCamioneroFecha.obtenerPaquete(dni, fecha);;
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
-    public void popupMetodo() {
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }}
+           
+        
+       
+    //GEN-LAST:event_jButton1ActionPerformed
+    /*public void popupMetodo() {
         JPopupMenu popupMenu = new JPopupMenu();
         JMenuItem menuItem1 = new JMenuItem("Ver Provincia");
 
@@ -181,7 +180,7 @@ public class CamioneroFECHA2 extends javax.swing.JPanel {
         popupMenu.add(menuItem1);
         // Los añadimos a la tabla
         jTable1.setComponentPopupMenu(popupMenu);
-    }
+    }*/
 
     /**
      * @param args the command line arguments
