@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import view.Inicio;
+
 /**
  *
  * @author HP
@@ -368,7 +369,7 @@ public class Paquetería extends javax.swing.JFrame {
             try {
                 IniciarSesion sesion = new IniciarSesion();
                 sesion.show();
-                
+
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
@@ -518,6 +519,14 @@ public class Paquetería extends javax.swing.JFrame {
                         case 100:
                             Thread.sleep(400);
                             jLabel3.setText("CERRAR SESIÓN");
+                            Inicio p1 = new Inicio();
+                            p1.setSize(930, 660);
+                            p1.setLocation(0, 0);
+
+                            jPanel3.removeAll();
+                            jPanel3.add(p1, BorderLayout.CENTER);
+                            jPanel3.revalidate();
+                            jPanel3.repaint();
                             break;
                     }
 
@@ -532,7 +541,7 @@ public class Paquetería extends javax.swing.JFrame {
                 Conexion.conectarMySQL();
 
                 JOptionPane.showMessageDialog(null, "Conectado");
-                
+
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);
             }
