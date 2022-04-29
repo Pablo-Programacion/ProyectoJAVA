@@ -155,6 +155,7 @@ public class CamioneroFECHA2 extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String dni = this.dnicamionero.getText();
+        System.out.println(jComboBox1.getSelectedItem().toString());
         String fecha = this.fechaenvio.getText();
         try {
             if (dni.length() == 0) {
