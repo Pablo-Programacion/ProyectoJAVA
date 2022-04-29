@@ -122,7 +122,7 @@ public class PaqueteT extends javax.swing.JPanel {
         jPanel2.add(dni_camionero, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 90, 91, -1));
 
         direccion.setBorder(null);
-        jPanel2.add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 20, 190, 20));
+        jPanel2.add(direccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, 190, 20));
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -144,7 +144,7 @@ public class PaqueteT extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tabla);
 
         jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 930, 480));
-        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 40, 190, 10));
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 40, 190, 10));
         jPanel2.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 190, 10));
         jPanel2.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, 190, 10));
         jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 190, 10));
