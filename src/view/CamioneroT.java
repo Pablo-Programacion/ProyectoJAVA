@@ -36,7 +36,7 @@ public class CamioneroT extends javax.swing.JPanel {
             initComponents();
             ControladorCamionero.obtenerCamioneros();
             popupMetodo();
-            TextPrompt dni2 = new TextPrompt("Código", jTextField6);
+            TextPrompt dni2 = new TextPrompt("Dni", jTextField6);
             jTextField6.setBackground(new java.awt.Color(0, 0, 0, 1));
 
             TextPrompt nombre2 = new TextPrompt("Nombre", jTextField4);
