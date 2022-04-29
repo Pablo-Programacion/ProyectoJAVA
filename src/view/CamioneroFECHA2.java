@@ -154,6 +154,7 @@ public class CamioneroFECHA2 extends javax.swing.JPanel {
             ControladorCamioneroFecha.obtenerPaquete(dni, fecha);;
         }
         catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Se debe introducir la Fecha junto con el Dni");
             System.out.println(e.getMessage());
         }}
            
