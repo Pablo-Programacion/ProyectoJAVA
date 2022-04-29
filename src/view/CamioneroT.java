@@ -88,7 +88,7 @@ public class CamioneroT extends javax.swing.JPanel {
 
                     // Hacer visible el JFrame de editar
                     new CamioneroEditar().setVisible(true);
-                    JOptionPane.showMessageDialog(null, "Registro Editado");
+                    
                 } catch (Exception t) {
                     JOptionPane.showMessageDialog(null, t);
                 }

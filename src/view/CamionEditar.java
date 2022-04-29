@@ -129,6 +129,7 @@ public class CamionEditar extends javax.swing.JFrame {
         try {
             ControladorCamion.actualizar(jTextField2.getText(), Integer.parseInt(jTextField1.getText()), jTextField3.getText(), jTextField4.getText(), matricula, potencia, modelo, tipo);
             dispose();
+            JOptionPane.showMessageDialog(null, "Registro Editado Correctamente");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }

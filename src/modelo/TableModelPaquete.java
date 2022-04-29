@@ -22,7 +22,7 @@ public class TableModelPaquete extends AbstractTableModel {
     private static paquete paquete;
     //
     private static TableModelPaquete t3 = new TableModelPaquete(con);
-    private static final String[] columnNames = {"codigo", "descripcion", "destinatario", "direccion", "fecha", "dni_camionero", "cod_provincia", "nombre"};
+    private static final String[] columnNames = {"Codigo", "Descripcion", "Destinatario", "Direccion", "Fecha", "Dni Camionero", "Cod Provincia", "Nombre"};
     private final LinkedList<paquete> list;
 
     public TableModelPaquete(Connection conexion) {
