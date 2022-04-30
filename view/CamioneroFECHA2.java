@@ -152,7 +152,7 @@ public class CamioneroFECHA2 extends javax.swing.JPanel {
             String fecha = null;
             ff = new SimpleDateFormat("dd-MM-YYYY");
             fecha = ff.format(jDateChooser1.getDate());
-            ControladorCamioneroFecha.obtenerPaquete(dni, fecha);;
+            ControladorCamioneroFecha.obtenerPaquete(dni, fecha);
         }
         catch(Exception e){
             JOptionPane.showMessageDialog(null, "Se debe introducir la Fecha junto con el Dni", "Error", JOptionPane.WARNING_MESSAGE);

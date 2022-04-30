@@ -236,7 +236,7 @@ public class PaqueteT extends javax.swing.JPanel {
                     PE.setVisible(true);
                     
                 } catch (Exception t) {
-                    JOptionPane.showMessageDialog(null, t);
+                    JOptionPane.showMessageDialog(null, t, "Error", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
@@ -280,7 +280,7 @@ public class PaqueteT extends javax.swing.JPanel {
             ControladorPaquete.insertarPaquete(cod, desc, dest, dir, date, dcamionero, cprovincia);
             JOptionPane.showMessageDialog(null, "Paquete almacenado");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e, "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "vista paquete", "Error", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
