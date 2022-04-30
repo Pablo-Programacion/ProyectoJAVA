@@ -215,6 +215,11 @@ public class CamioneroT extends javax.swing.JPanel {
                 jButton1MouseClicked(evt);
             }
         });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 40, 120, -1));
         jPanel3.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 180, 10));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, 180, 10));
@@ -260,13 +265,21 @@ public class CamioneroT extends javax.swing.JPanel {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         try {
-            ControladorCamionero.insertarCamionero(jTextField6.getText(), jTextField5.getText(), jTextField4.getText(), Integer.parseInt(jTextField3.getText()), jTextField2.getText(), Integer.parseInt(jTextField1.getText()));
+            if(jTextField6.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this, "Para insertar un camionero debe introducir su DNI");
+            }else{
+                    ControladorCamionero.insertarCamionero(jTextField6.getText(), jTextField5.getText(), jTextField4.getText(), Integer.parseInt(jTextField3.getText()), jTextField2.getText(), Integer.parseInt(jTextField1.getText()));
             JOptionPane.showMessageDialog(null, "Nuevo Trabajor Insertado");
-        } catch (Exception e) {
+            }
+            } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-
+        
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static String getDni() {
         return dni;
